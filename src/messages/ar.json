@@ -1,0 +1,653 @@
+{
+    "components": {
+        "avatar": {
+            "up_to": "حتى",
+            "upload": "رفع الصورة",
+            "uploaded": "تم رفع الصورة"
+        },
+        "cover": {
+            "change": "تغيير الغلاف",
+            "remove": "إزالة",
+            "title": "رفع صورة الغلاف",
+            "drag_drop": "اسحب وأفلت الصورة هنا، أو انقر لاستعراض الملفات",
+            "size": "الحجم الموصى به: 1200x514 بكسل • الحد الأقصى للحجم: 2 ميجابايت",
+            "browse": "استعراض الملفات"
+        },
+        "multi_file_uploader": {
+            "title": "قم بتحميل ملفاتك",
+            "drag_drop": "اسحب وأفلت صورة هنا، أو انقر للتصفح",
+            "support": "دعم لأنواع ملفات متعددة حتى حجم {size} لكل ملف",
+            "select_files": "اختر الملفات",
+            "selected_files": "الملفات المحددة",
+            "clear_all": "مسح الكل"
+        },
+        "file": {
+            "add_file": "إضافة ملف"
+        },
+        "languages": {
+            "en": "الإنجليزية",
+            "ar": "العربية",
+            "fr": "الفرنسية"
+        },
+        "navbar": {
+            "home": "الرئيسية",
+            "sale": "بيع",
+            "rent": "كراء",
+            "search": "بحث",
+            "properties": "العقارات",
+            "sign_in": "تسجيل الدخول",
+            "dashboard": "لوحة التحكم",
+            "logout": "تسجيل الخروج"
+        },
+        "location_picker": {
+            "placeholder": "اختر موقعًا..."
+        },
+        "price_range": {
+            "min_price": "أدنى سعر (دج)",
+            "max_price": "أعلى سعر (دج)",
+            "placeholder": "اختر نطاق السعر",
+            "done": "تم",
+            "clear": "مسح",
+            "error": "يجب أن يكون السعر الأقصى أعلى من أو يساوي السعر الأدنى.",
+            "input_placeholder": "السعر..."
+        },
+        "card": {
+            "area_unit": "م²",
+            "for_sale": "للبيع",
+            "to_rent": "للإيجار",
+            "view_details": "عرض التفاصيل"
+        }
+    },
+    "auth": {
+        "sign_in": "تسجيل الدخول",
+        "sign_up": "إنشاء حساب",
+        "sign_up_title": "إنشاء حساب",
+        "sign_in_title": "تسجيل الدخول",
+        "welcom_message": "مرحبا ! الرجاء إدخال بياناتك",
+        "email": "البريد الإلكتروني",
+        "email_placeholder": "أدخل بريدك الإلكتروني...",
+        "fullname": "الإسم واللقب",
+        "fullname_placeholder": "أدخل اسمك واللقب...",
+        "password": "كلمة المرور",
+        "password_placeholder": "أدخل كلمة المرور...",
+        "confirm_password": "تأكيد كلمة المرور",
+        "confirm_password_placeholder": "أكد كلمة المرور...",
+        "sign_up_action": "إنشاء حساب جديد",
+        "create_account_via": "إنشاء حساب عن طريق",
+        "have_account": " تمتلك حساب مسبقا ؟",
+        "login_via": "تسجيل الدخول عن طريق",
+        "dont_have_account": "لا تمتلك حساب ؟",
+        "forget_password": "نسيت كلمة المرور ؟",
+        "errors": {
+            "fullname_required": "الاسم الكامل مطلوب",
+            "email_required": "يرجى إدخال بريدك الإلكتروني",
+            "email_invalid": "عنوان البريد الإلكتروني غير صالح",
+            "password_required": "يرجى إدخال كلمة المرور",
+            "password_length": "يجب أن تتكون كلمة المرور من 7 أحرف على الأقل",
+            "confirm_password_required": "يرجى تأكيد كلمة المرور",
+            "password_match": "كلمتا المرور غير متطابقتين",
+            "wrong_credentials": "البريد الإلكتروني أو كلمة المرور خاطئة، يرجى المحاولة مرة أخرى"
+        }
+    },
+    "sidebar": {
+        "operations": "لوحة التحكم",
+        "statistics": "الإحصائيات",
+        "messages": "الرسائل المباشرة",
+        "users": "المستخدمون",
+        "ads": "الإعلانات",
+        "settings": "الإعدادات",
+        "account": "إعدادات الحساب",
+        "help": "مركز المساعدة",
+        "ads_create": "إعلان جديد",
+        "edit_ad": "تعديل الإعلان",
+        "favorite": "المفضلة" , 
+        "logout" : "تسجيل الخروج"
+    },
+    "statistics": {
+        "welcome": "مرحبًا",
+        "welcome_message": "إليك ما يحدث في ممتلكاتك بين {from} و {to}.",
+        "from_date": "من تاريخ",
+        "to_date": "إلى تاريخ",
+        "date_picker": "اختر تاريخًا",
+        "pending_ads": "إعلانات بانتظار المراجعة",
+        "pending_messages": "رسائل بانتظار الرد",
+        "new_ads": "إعلانات جديدة",
+        "tending_up": "الأداء في ازدياد خلال",
+        "tending_down": "الأداء في انخفاض خلال",
+        "comparison": "{key} خلال آخر {value} {period}",
+        "ads": "الإعلانات",
+        "messages": "الرسائل",
+        "day": "يوم",
+        "week": "أسبوع",
+        "month": "شهر",
+        "year": "سنة",
+        "general_statistics": "الإحصائيات العامة",
+        "general_statistics_message": "عرض إحصائيات الإعلانات للفترة الحالية",
+        "views": "المشاهدات",
+        "revenue": "الإيرادات",
+        "this": "هذا",
+        "others": "أخرى",
+        "sign_ups": "عمليات التسجيل"
+    },
+    "account": {
+        "account": "الحساب",
+        "login_settings": "إعدادات تسجيل الدخول",
+        "notifications": "الإشعارات",
+        "notifications_header": "قم بتخصيص إعدادات الإشعارات الخاصة بك",
+        "new_password": "كلمة المرور الجديدة",
+        "old_password": "كلمة المرور القديمة",
+        "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+        "save": "حفظ التغييرات",
+        "ads_notifications": "إشعارات الإعلانات",
+        "ads_notifications_description": "تلقَّ إشعارات حول حالة إعلاناتك، بما في ذلك الموافقات أو الرفض.",
+        "messages_notifications": "إشعارات الرسائل",
+        "messages_notifications_description": "تلقَّ إشعارات عندما تستقبل رسالة جديدة.",
+        "profile_info": "معلومات الملف الشخصي",
+        "profile_info_description": "معلومات ملفك الشخصي التي يمكنك تغييرها في أي وقت.",
+        "profile_picture": "صورة الملف الشخصي",
+        "profile_picture_description": "ستُعرض هذه الصورة علنًا كصورة ملفك الشخصي وستساعد الزوار على التعرف عليك.",
+        "personal_info": "المعلومات الشخصية",
+        "personal_info_description": "معلوماتك الشخصية ستكون مرئية فقط لفريق عقاركم وستُستخدم لأغراض التواصل فقط.",
+        "business_info": "معلومات العمل",
+        "business_info_description": "ملف عملك سيكون مرئيًا لجميع مستخدمي عقاركم والزوار الخارجيين.",
+        "social_media": "حسابات التواصل الاجتماعي",
+        "reset_password": "إعادة تعيين كلمة المرور",
+        "form": {
+            "fullname": "الاسم الكامل",
+            "fullname_placeholder": "أدخل اسمك...",
+            "email": "البريد الإلكتروني",
+            "email_placeholder": "أدخل بريدك الإلكتروني...",
+            "phone_number": "رقم الهاتف",
+            "phone_number_placeholder": "أدخل رقم الهاتف...",
+            "gender": "الجنس",
+            "gender_placeholder": "اختر الجنس...",
+            "male": "ذكر",
+            "female": "أنثى",
+            "birthday": "تاريخ الميلاد",
+            "birthday_placeholder": "أدخل تاريخ ميلادك...",
+            "business_name": "اسم العمل",
+            "business_name_placeholder": "أدخل اسم عملك...",
+            "address": "العنوان",
+            "address_placeholder": "أدخل عنوان عملك...",
+            "cover_picture": "صورة الغلاف",
+            "whatsapp": "واتساب",
+            "facebook": "فيسبوك",
+            "tiktok": "تيك توك",
+            "instagram": "إنستغرام",
+            "save": "حفظ التغييرات"
+        },
+        "upgrade": {
+            "title": "أنشئ حساب أعمال مجانًا",
+            "description": "قم بترقية حسابك الشخصي إلى حساب <b>وكالة عقارية</b> أو <b>مطور عقاري</b> احترافي. افتح أدوات متقدمة، واعرض نشاطك التجاري عبر صفحة مخصصة، واجذب المزيد من العملاء.",
+            "button": "ترقية",
+            "dialog_title": "الترقية إلى حساب أعمال",
+            "dialog_description": "اختر بين نوعين من حسابات الأعمال: وكالة عقارية أو مطور عقاري",
+            "agency": "وكالة",
+            "developer": "مطور",
+            "confirm": "تأكيد",
+            "cancel": "إلغاء"
+        },
+        "success": {
+            "profile_updated": "تم تحديث الملف الشخصي بنجاح",
+            "profile_updated_description": "تم حفظ وتحديث معلومات ملفك الشخصي بنجاح.",
+            "password_reset": "تم إعادة تعيين كلمة المرور بنجاح",
+            "password_reset_description": "تم تحديث كلمة المرور الخاصة بك. يمكنك الآن تسجيل الدخول باستخدام كلمة المرور الجديدة.",
+            "notifications_updated": "تم تحديث إعدادات الإشعارات",
+            "notifications_updated_description": "تم حفظ تفضيلات الإشعارات الخاصة بك بنجاح."
+        },
+        "errors": {
+            "invalid_old_password": "يرجى إدخال كلمة المرور القديمة الصحيحة.",
+            "failed_to_load": "فشل تحميل الملف الشخصي.",
+            "failed_to_load_description": "خطأ غير معروف. يرجى المحاولة مرة أخرى لاحقًا.",
+            "full_name": {
+                "required": "الاسم الكامل مطلوب."
+            },
+            "email": {
+                "required": "البريد الإلكتروني مطلوب.",
+                "invalid": "يرجى إدخال بريد إلكتروني صالح."
+            },
+            "picture_url": {
+                "invalid_type": "يجب أن تكون صورة الملف الشخصي ملفًا صالحًا أو رابطًا صحيحًا.",
+                "upload_failed": "فشل في تحميل صورة الملف الشخصي."
+            },
+            "phone_number": {
+                "invalid": "يجب أن يتبع رقم الهاتف النمط التالي: 0 XX XX XX XX."
+            },
+            "birthday": {
+                "invalid": "يرجى تحديد تاريخ ميلاد صالح."
+            },
+            "gender": {
+                "invalid": "اختيار الجنس غير صالح."
+            },
+            "social_media": {
+                "facebook": "يجب أن يكون رابط فيسبوك صالحًا.",
+                "instagram": "يجب أن يكون رابط إنستغرام صالحًا.",
+                "tiktok": "يجب أن يكون رابط تيك توك صالحًا.",
+                "whatsapp": "يجب أن يكون رقم واتساب صالحًا."
+            },
+            "business_accounts": {
+                "agency_name": {
+                    "required": "اسم الوكالة مطلوب."
+                },
+                "business_address": {
+                    "required": "عنوان العمل مطلوب."
+                },
+                "cover_picture_url": {
+                    "invalid_type": "يجب أن تكون صورة الغلاف ملفًا صالحًا أو رابطًا صحيحًا.",
+                    "upload_failed": "فشل في تحميل صورة الغلاف."
+                }
+            }
+        }
+    },
+    "users": {
+        "user_list": "قائمة المستخدمين",
+        "user_list_header": "قم بإدارة المستخدمين وأدوارهم هنا.",
+        "add_user": "إضافة مستخدم",
+        "view": {
+            "view": "عرض",
+            "toggle": "تبديل الأعمدة",
+            "email": "البريد الإلكتروني",
+            "phone_number": "رقم الهاتف",
+            "created_at": "تاريخ الانضمام"
+        },
+        "toolbar": {
+            "filter": "تصفية المستخدمين...",
+            "reset": "إعادة تعيين",
+            "user_type": "نوع المستخدم"
+        },
+        "user_types": {
+            "admin": "مدير",
+            "employee": "موظف",
+            "developer": "مطور",
+            "agency": "وكالة",
+            "individual": "فرد"
+        },
+        "errors": {
+            "failed_to_load": "فشل في تحميل المستخدمين.",
+            "failed_to_load_description": "حدث خطأ غير معروف. يرجى المحاولة لاحقًا.",
+            "duplicate_email": {
+                "title": "بريد إلكتروني مكرر",
+                "description": "عنوان البريد الإلكتروني الذي أدخلته مستخدم بالفعل. يرجى استخدام بريد إلكتروني آخر أو تحديث المستخدم الحالي."
+            },
+            "duplicate_phone_number": {
+                "title": "رقم هاتف مكرر",
+                "description": "رقم الهاتف الذي أدخلته مرتبط بالفعل بحساب آخر. يرجى إدخال رقم هاتف فريد."
+            },
+            "failed_to_create_user": {
+                "title": "تعذر إنشاء المستخدم",
+                "description": "لم نتمكن من إنشاء مستخدم جديد في الوقت الحالي. يرجى التحقق من البيانات والمحاولة مرة أخرى."
+            },
+            "failed_to_delete_user": {
+                "title": "تعذر حذف المستخدم",
+                "description": "لم نتمكن من حذف المستخدم في الوقت الحالي. يرجى التحقق من البيانات والمحاولة مرة أخرى."
+            }
+        },
+        "success": {
+            "user_created": {
+                "title": "تم إنشاء المستخدم بنجاح",
+                "description": "تمت إضافة المستخدم الجديد إلى النظام وهو متاح الآن في قائمة المستخدمين."
+            },
+            "user_deleted": {
+                "title": "تم حذف المستخدم بنجاح",
+                "description": "تم حذف المستخدم من النظام."
+            }
+        },
+        "columns": {
+            "full_name": "الاسم الكامل",
+            "email": "البريد الإلكتروني",
+            "phone_number": "رقم الهاتف",
+            "created_at": "تاريخ الانضمام",
+            "user_type": "نوع المستخدم",
+            "action": "إجراء",
+            "delete": "حذف",
+            "asc": "تصاعدي",
+            "desc": "تنازلي",
+            "hide": "إخفاء"
+        },
+        "pagination": {
+            "page": "الصفحة {page} من {total}"
+        },
+        "dialogs": {
+            "add_new_user": "إضافة مستخدم جديد",
+            "add_new_user_header": "قم بإنشاء مستخدم جديد هنا. اضغط على حفظ عند الانتهاء.",
+            "save_changes": "حفظ التغييرات",
+            "delete_user": "حذف المستخدم",
+            "sure": "هل أنت متأكد أنك تريد الحذف؟",
+            "action": "سيؤدي هذا الإجراء إلى إزالة المستخدم صاحب الدور",
+            "from_system": "من النظام بشكل دائم. لا يمكن التراجع عن هذا الإجراء.",
+            "full_name": "الاسم الكامل",
+            "full_name_placeholder": "أدخل اسم المستخدم لتأكيد الحذف.",
+            "warning": "تحذير!",
+            "warning_description": "يرجى الحذر، لا يمكن التراجع عن هذه العملية.",
+            "delete": "حذف",
+            "cancel": "إلغاء"
+        }
+    },
+    "ads": {
+        "ads_title": "العقارات",
+        "ads_description": "قم بإنشاء وتحديث وتنظيم قوائم العقارات الخاصة بك.",
+        "create_action": "إنشاء إعلان",
+        "create": {
+            "ad_title": "عنوان الإعلان",
+            "ad_title_description": "أدخل عنوانًا قصيرًا وجذابًا يبرز الميزات الرئيسية للعقار.",
+            "ad_title_placeholder": "أدخل عنوان الإعلان...",
+            "ad_desc": "الوصف",
+            "ad_desc_description": "يرجى كتابة وصف كافٍ لشرح العقار وجميع تفاصيله.",
+            "ad_desc_placeholder": "شقة واسعة من 3 غرف نوم مع إطلالة على البحر ومطبخ حديث وقريبة من وسائل النقل العام.",
+            "property_type": "نوع العقار",
+            "property_type_description": "يرجى اختيار نوع العقار من القائمة التالية.",
+            "property_type_placeholder": "اختر النوع",
+            "ad_type": "نوع المعاملة",
+            "ad_type_description": "يرجى اختيار نوع المعاملة من الخيارات التالية (بيع أو إيجار).",
+            "sale": "بيع",
+            "rent": "إيجار",
+            "num_rooms": "عدد الغرف",
+            "num_rooms_description": "يرجى إدخال عدد الغرف",
+            "num_rooms_placeholder": "أدخل عدد الغرف...",
+            "bethrooms": "الحمامات",
+            "bethrooms_description": "يرجى إدخال عدد الحمامات داخل العقار.",
+            "bethrooms_placeholder": "عدد الحمامات...",
+            "area": "المساحة (م²)",
+            "area_description": "يرجى إدخال مساحة العقار.",
+            "area_placeholder": "أدخل المساحة بالمتر المربع...",
+            "schools": "المدارس القريبة",
+            "schools_description": "يرجى إدخال عدد المدارس القريبة.",
+            "schools_placeholder": "عدد المدارس القريبة...",
+            "mosques": "المساجد القريبة",
+            "mosques_description": "يرجى إدخال عدد المساجد القريبة.",
+            "mosques_placeholder": "عدد المساجد القريبة...",
+            "furnished": "هل العقار مفروش؟",
+            "ownership_book": "توافر سند الملكية",
+            "property_tags": "الكلمات المفتاحية",
+            "property_tags_description": "يرجى كتابة كلمات مفتاحية تصف العقار",
+            "property_tags_placeholder": "اختر كلمة مفتاحية",
+            "location": "الموقع",
+            "location_description": "يمكنك تحديد الموقع وإدخال معلومات الزيارة الافتراضية إذا كانت متوفرة.",
+            "address": "العنوان",
+            "address_placeholder": "أدخل عنوان العقار...",
+            "city": "المدينة",
+            "city_placeholder": "المدينة...",
+            "postal_code": "الرمز البريدي",
+            "postal_code_placeholder": "الرمز البريدي...",
+            "property_images": "الصور",
+            "property_images_description": "يمكنك إضافة جميع الصور والفيديوهات للعقار.",
+            "save": "حفظ التغييرات",
+            "map": "الخريطة",
+            "price": "السعر",
+            "price_description": "أدخل سعر البيع أو الإيجار",
+            "price_placeholder": "أدخل السعر...",
+            "rent_period": "مدة الإيجار",
+            "rent_period_placeholder": "اختر المدة",
+            "monthly": "شهري",
+            "yearly": "سنوي",
+            "condition": "حالة العقار",
+            "condition_placeholder": "اختر الحالة...",
+            "condition_description": "يرجى اختيار حالة العقار من القائمة التالية.",
+            "conditions": {
+                "new": "جديد",
+                "excellent": "ممتاز",
+                "good": "جيد",
+                "needs_renovation": "بحاجة إلى تجديد",
+                "damaged": "متضرر"
+            },
+            "virtual_visit": "الزيارة الافتراضية",
+            "virtual_visit_description": "يرجى تحميل ملف الزيارة الافتراضية",
+            "virtual_visit_placeholder": "اسحب وأفلت ملف .zip الخاص بالزيارة الافتراضية",
+            "errors": {
+                "title_required": "العنوان مطلوب",
+                "description_invalid": "يجب أن يكون الوصف نصًا صالحًا",
+                "image_360_invalid": "يجب أن يكون رابط الصورة 360 صالحًا",
+                "property_type_required": "نوع العقار مطلوب",
+                "add_type_invalid": "نوع الإعلان مطلوب",
+                "rent_period_invalid": "يجب أن تكون مدة الإيجار شهرية أو سنوية أو مخصصة",
+                "latitude_invalid": "يجب أن يكون خط العرض رقمًا صالحًا",
+                "longitude_invalid": "يجب أن يكون خط الطول رقمًا صالحًا",
+                "address_required": "العنوان مطلوب",
+                "city_required": "المدينة مطلوبة",
+                "price_required": "السعر مطلوب",
+                "postal_code_invalid": "يجب أن يكون الرمز البريدي صالحًا",
+                "area_invalid": "يجب أن تكون المساحة (بالمتر المربع) رقمًا صالحًا",
+                "num_rooms_invalid": "يجب أن يكون عدد الغرف رقمًا صالحًا",
+                "bethrooms_invalid": "يجب أن يكون عدد الحمامات رقمًا صالحًا",
+                "furnished_invalid": "يجب أن تكون قيمة التأثيث صحيحة (true أو false)",
+                "schools_invalid": "يجب أن يكون عدد المدارس رقمًا صالحًا",
+                "mosques_invalid": "يجب أن يكون عدد المساجد رقمًا صالحًا",
+                "project_plan_invalid": "يجب أن يكون رابط خطة المشروع صالحًا",
+                "ownership_book_invalid": "سند الملكية يجب أن يكون قيمة منطقية",
+                "property_images_required": "مطلوب صورة واحدة على الأقل",
+                "property_tags_invalid": "يجب أن تكون الكلمات المفتاحية للعقار مصفوفة صالحة"
+            },
+            "toast": {
+                "success": {
+                    "title": "تم إنشاء العقار",
+                    "description": "تم إنشاء العقار بنجاح وهو الآن متاح في قوائمك."
+                },
+                "error": {
+                    "title": "فشل الإنشاء",
+                    "description": "حدث خطأ أثناء إنشاء العقار. يرجى المحاولة مرة أخرى أو التحقق من بيانات الإدخال."
+                }
+            }
+        },
+        "columns": {
+            "title": "العنوان",
+            "created_by": "أنشئ بواسطة",
+            "property_type_id": "نوع العقار",
+            "address": "العنوان",
+            "created_at": "تاريخ الإنشاء",
+            "status": "الحالة",
+            "actions": "الإجراءات",
+            "add_type": "نوع الإعلان",
+            "ad_types": {
+                "rent": "إيجار",
+                "sale": "بيع",
+                "project": "مشروع"
+            },
+            "delete": "حذف",
+            "approuve": "موافقة",
+            "reject": "رفض",
+            "edit": "تعديل",
+            "preview": "معاينة",
+            "stop": "إيقاف",
+            "re_publish": "إعادة النشر",
+            "filter": "تصفية العقارات...",
+            "property_status": {
+                "all": "الكل",
+                "draft": "قيد المراجعة",
+                "published": "منشور",
+                "closed": "مغلق",
+                "rejected": "مرفوض"
+            },
+            "reset": "إعادة تعيين"
+        },
+        "dialogs": {
+            "delete_property": "حذف العقار",
+            "sure": "هل أنت متأكد أنك تريد الحذف؟",
+            "action": "سيؤدي هذا الإجراء إلى إزالة الإعلان نهائيًا من النظام. لا يمكن التراجع عن هذا الإجراء."
+        },
+        "toast": {
+            "property_deleted": {
+                "title": "تم حذف العقار بنجاح",
+                "description": "تم حذف العقار من النظام."
+            },
+            "property_deleted_fail": {
+                "title": "فشل الحذف",
+                "description": "حدث خطأ أثناء حذف العقار. يرجى المحاولة مرة أخرى أو التحقق من البيانات المدخلة."
+            }
+        }
+    },
+    "favorite": {
+        "title": "الإعلانات المفضلة",
+        "description": "تصفح إعلاناتك المفضلة هنا."
+    },
+    "home": {
+        "filter": {
+            "all": "الكل",
+            "sale": "بيع",
+            "rent": "كراء",
+            "location": "الموقع",
+            "property_type": "نوع العقار",
+            "property_type_placeholder": "اختر نوع العقار",
+            "price": "السعر",
+            "operation_type": "نوع العملية"
+        },
+        "title": "موقع عقاركم <span>خياركم الأول.</span>",
+        "description": "استكشف آلاف العقارات المعروضة للبيع والإيجار، جميعها في متناول يدك، من خلال منصة عقارية موثوقة وسهلة الاستخدام.",
+        "error": {
+            "title": "فشل في جلب العقارات",
+            "description": "حدث خطأ أثناء تحميل العقارات. يرجى المحاولة مرة أخرى لاحقًا."
+        },
+        "errors": {
+            "failed_to_load": {
+                "title": "فشل في جلب العقارات",
+                "description": "حدث خطأ أثناء تحميل العقارات. يرجى المحاولة مرة أخرى لاحقًا."
+            }
+        },
+        "chosen_ads": "الإعلانات المختارة",
+        "latest_ads": "أحدث الإعلانات",
+        "features": {
+            "title": "الميزات والفوائد",
+            "card_title": "أفضل طريقة للعثور على ما تحتاجه!",
+            "card_description": "يمكنك العثور على العقار المناسب من بين آلاف الخيارات المتاحة على منصتكم.",
+            "create_account": "أنشئ حساباً الآن!",
+            "cards": {
+                "card_1": {
+                    "title": "بحث تفاعلي",
+                    "description": "يمكنك البحث مباشرة على الخريطة مما يعطيك نظرة شاملة على العقارات في المنطقة."
+                },
+                "card_2": {
+                    "title": "الزيارة الافتراضية",
+                    "description": "يوفر لك عقاركم تجربة فريدة لمشاهدة العقارات مباشرة بتقنية الواقع الافتراضي 360°"
+                },
+                "card_3": {
+                    "title": "ضمان الجودة",
+                    "description": "إعلانات عقاركم تراقب قبل و بعد وضعها مما يسمح بالتصفح الآمن لعقارات مميزة."
+                },
+                "card_4": {
+                    "title": "وكلاء معتمدون",
+                    "description": "يقدم لكم موقع عقاركم الدعم الأمثل لوكلاء مميزين من أجل التجربة المثالية"
+                }
+            }
+        },
+        "wishlist": {
+            "discover": "اكتشف خدماتنا",
+            "have_agency": "هل تمتلك وكالة عقارية؟",
+            "description": "اكتشف مجموعة خدماتنا المميزة وارتق بوكالتك إلى المستوى التالي.",
+            "get_account": "احصل على حساب مجاني.",
+            "join": "انضم إلى أكثر من {num_users} وكالة عقارية تستخدم خدماتنا!"
+        },
+        "footer": {
+            "copyright": "© {year} عقاركم. جميع الحقوق محفوظة."
+        }
+    },
+    "search": {
+        "title": "ابحث عن العقارات.",
+        "description": "يمكن للبحث المتقدم مساعدتك في العثور على العقار المثالي.",
+        "advanced_search": "بحث متقدم",
+        "results": "النتائج"
+    },
+    "property": {
+        "share": "مشاركة",
+        "favorite": "إضافة إلى المفضلة",
+        "description": "وصف العقار",
+        "sale_price": "سعر البيع",
+        "rent_price": "سعر الإيجار",
+        "currency": "دج",
+        "monthly": "شهري",
+        "yearly": "سنوي",
+        "num_rooms": "الغرف",
+        "bethrooms": "الحمّامات",
+        "mosques": "المساجد",
+        "schools": "المدارس",
+        "area": "المساحة (م²)",
+        "furnished": "مفروش",
+        "ownership_book": "دفتر الملكية",
+        "condition": "الحالة",
+        "furnisher_title": "التأثيث والملكية",
+        "conditions": {
+            "1": "جديد",
+            "2": "ممتاز",
+            "3": "جيد",
+            "4": "يحتاج إلى ترميم",
+            "5": "متضرر"
+        },
+        "created_at": "نُشر في",
+        "virtual_visit": "زيارة افتراضية",
+        "watch_now": "شاهد الآن بزاوية 360°",
+        "user_types": {
+            "admin": "مدير",
+            "employee": "موظف",
+            "developer": "مطوّر",
+            "agency": "وكالة",
+            "individual": "فرد"
+        },
+        "message": "راسل البائع"
+    },
+    "chat": {
+        "new_chat": {
+            "title": "رسالة جديدة",
+            "placeholder": "ابحث عن أشخاص...",
+            "not_found": "لم يتم العثور على أشخاص.",
+            "chat": "محادثة",
+            "to": "إلى:",
+            "user_types": {
+                "admin": "مسؤول",
+                "employee": "موظف",
+                "developer": "مطور",
+                "agency": "وكالة",
+                "individual": "فرد"
+            }
+        },
+        "inbox": "صندوق الوارد",
+        "you": "أنت",
+        "load_more": "تحميل المزيد",
+        "type": "اكتب رسالتك...",
+        "send": "إرسال",
+        "your_messages": "رسائلك",
+        "start_chat": "أرسل رسالة لبدء محادثة.",
+        "send_message": "إرسال رسالة"
+    },
+    "help": {
+        "faq": "الأسئلة الشائعة",
+        "my_questions": "أسئلتي",
+        "all_questions": "جميع الأسئلة",
+        "create": {
+            "new_ticket": "تذكرة جديدة",
+            "reply_ticket": "رد",
+            "description": "قم بإرسال تذكرة دعم وسيقوم فريقنا بالرد عليك خلال 24 ساعة.",
+            "form": {
+                "required": "العنوان مطلوب",
+                "max_length": "يجب أن لا يقل الوصف عن 20 حرفًا",
+                "title": "العنوان",
+                "title_placeholder": "عنوان التذكرة",
+                "description": "الوصف",
+                "description_placeholder": "اشرح مشكلتك",
+                "answer": "الإجابة",
+                "answer_placeholder": "الرد على التذكرة",
+                "submit": "إرسال",
+                "close": "إغلاق",
+                "success": {
+                    "title": "تم إرسال التذكرة بنجاح",
+                    "description": "تم استلام تذكرة الدعم الخاصة بك. سيقوم فريقنا بمراجعتها والرد عليك خلال 24 ساعة."
+                },
+                "error": {
+                    "title": "فشل في إرسال التذكرة",
+                    "description": "حدث خطأ أثناء إرسال التذكرة. يرجى المحاولة مرة أخرى لاحقًا أو التواصل مع الدعم إذا استمرت المشكلة."
+                }
+            }
+        },
+        "load_more": "تحميل المزيد",
+        "card": {
+            "ticket": "تذكرة",
+            "replay": "رد",
+            "mark_faq": "تعيين كأسئلة شائعة",
+            "status": {
+                "opened": "مفتوحة",
+                "closed": "مغلقة",
+                "faq": "سؤال شائع"
+            },
+            "submitted_by": "تم الإرسال بواسطة",
+            "answered_by": "تم الرد بواسطة",
+            "answer": "الإجابة"
+        }
+    }
+}

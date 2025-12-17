@@ -1,0 +1,653 @@
+{
+    "components": {
+        "avatar": {
+            "up_to": "Jusqu’à",
+            "upload": "Téléverser une image",
+            "uploaded": "Image téléversée"
+        },
+        "cover": {
+            "change": "Changer la couverture",
+            "remove": "Supprimer",
+            "title": "Téléverser l’image de couverture",
+            "drag_drop": "Glissez-déposez une image ici ou cliquez pour parcourir",
+            "size": "Taille recommandée : 1200x514px • Taille max : 2MB",
+            "browse": "Parcourir les fichiers"
+        },
+        "multi_file_uploader": {
+            "title": "Téléverser vos fichiers",
+            "drag_drop": "Glissez-déposez une image ici ou cliquez pour parcourir",
+            "support": "Prise en charge de plusieurs types de fichiers jusqu’à {size} chacun",
+            "select_files": "Sélectionner des fichiers",
+            "selected_files": "Fichiers sélectionnés",
+            "clear_all": "Tout effacer"
+        },
+        "file": {
+            "add_file": "Ajouter un fichier"
+        },
+        "languages": {
+            "en": "Anglais",
+            "ar": "Arabe",
+            "fr": "Français"
+        },
+        "navbar": {
+            "home": "Accueil",
+            "sale": "Vente",
+            "rent": "Location",
+            "search": "Recherche",
+            "properties": "Biens",
+            "sign_in": "Connexion",
+            "dashboard": "Tableau de bord",
+            "logout": "Déconnexion"
+        },
+        "location_picker": {
+            "placeholder": "Choisir un emplacement..."
+        },
+        "price_range": {
+            "min_price": "Prix minimum (DA)",
+            "max_price": "Prix maximum (DA)",
+            "placeholder": "Choisir une fourchette de prix",
+            "done": "Valider",
+            "clear": "Effacer",
+            "error": "Le prix maximum doit être supérieur ou égal au prix minimum.",
+            "input_placeholder": "Prix..."
+        },
+        "card": {
+            "area_unit": "m²",
+            "for_sale": "À vendre",
+            "to_rent": "À louer",
+            "view_details": "Voir les détails"
+        }
+    },
+    "auth": {
+        "sign_in": "Connexion",
+        "sign_up": "Inscription",
+        "sign_up_title": "Créer un compte",
+        "sign_in_title": "Connexion",
+        "welcom_message": "Bonjour ! Veuillez saisir vos informations",
+        "email": "Email",
+        "email_placeholder": "Entrez votre email...",
+        "fullname": "Nom complet",
+        "fullname_placeholder": "Entrez votre nom complet...",
+        "password": "Mot de passe",
+        "password_placeholder": "Entrez votre mot de passe...",
+        "confirm_password": "Confirmer le mot de passe",
+        "confirm_password_placeholder": "Confirmez votre mot de passe...",
+        "sign_up_action": "Créer un nouveau compte",
+        "create_account_via": "Créer un compte via",
+        "have_account": "Vous avez déjà un compte ?",
+        "login_via": "Se connecter via",
+        "dont_have_account": "Vous n’avez pas de compte ?",
+        "forget_password": "Mot de passe oublié ?",
+        "errors": {
+            "fullname_required": "Le nom complet est requis",
+            "email_required": "Veuillez saisir votre email",
+            "email_invalid": "Adresse email invalide",
+            "password_required": "Veuillez saisir votre mot de passe",
+            "password_length": "Le mot de passe doit contenir au moins 7 caractères",
+            "confirm_password_required": "Veuillez confirmer votre mot de passe",
+            "password_match": "Les mots de passe ne correspondent pas",
+            "wrong_credentials": "Email ou mot de passe incorrect, veuillez réessayer",
+            "email_taken": "Un compte avec cet email existe déjà",
+            "invalid_data": "Informations invalides, veuillez réessayer"
+        }
+    },
+    "sidebar": {
+        "operations": "Tableau de bord",
+        "statistics": "Statistiques",
+        "messages": "Messages directs",
+        "users": "Utilisateurs",
+        "ads": "Annonces",
+        "settings": "Paramètres",
+        "account": "Paramètres du compte",
+        "help": "Centre d’aide",
+        "ads_create": "Nouvelle annonce",
+        "edit_ad": "Modifier l’annonce",
+        "favorite": "Favoris",
+        "logout": "Déconnexion"
+    },
+    "statistics": {
+        "welcome": "Bienvenue",
+        "welcome_message": "Voici ce qui se passe avec votre bien entre {from} et {to}.",
+        "from_date": "Date de début",
+        "to_date": "Date de fin",
+        "date_picker": "Choisir une date",
+        "pending_ads": "Annonces en attente de validation",
+        "pending_messages": "Messages en attente de réponse",
+        "new_ads": "Nouvelles annonces",
+        "tending_up": "En hausse sur cette période",
+        "tending_down": "En baisse sur cette période",
+        "comparison": "{key} pour les {value} derniers {period}",
+        "ads": "Annonces",
+        "messages": "Messages",
+        "day": "jour",
+        "week": "semaine",
+        "month": "mois",
+        "year": "année",
+        "general_statistics": "Statistiques générales",
+        "general_statistics_message": "Consultez les statistiques publicitaires pour la période actuelle",
+        "views": "Vues",
+        "revenue": "Revenus",
+        "this": "Ce",
+        "others": "Autres",
+        "sign_ups": "Inscriptions"
+    },
+    "account": {
+        "account": "Compte",
+        "login_settings": "Paramètres de connexion",
+        "notifications": "Notifications",
+        "notifications_header": "Personnalisez vos paramètres de notification",
+        "new_password": "Nouveau mot de passe",
+        "old_password": "Ancien mot de passe",
+        "confirm_new_password": "Confirmer le nouveau mot de passe",
+        "save": "Enregistrer les modifications",
+        "ads_notifications": "Notifications des annonces",
+        "ads_notifications_description": "Recevez des notifications sur le statut de vos annonces, y compris les approbations et les refus.",
+        "messages_notifications": "Notifications des messages",
+        "messages_notifications_description": "Recevez une notification à chaque nouveau message reçu.",
+        "profile_info": "Informations du profil",
+        "profile_info_description": "Informations du profil que vous pouvez modifier à tout moment.",
+        "profile_picture": "Photo de profil",
+        "profile_picture_description": "Cette image sera affichée publiquement comme photo de profil et aidera les visiteurs à vous identifier.",
+        "personal_info": "Informations personnelles",
+        "personal_info_description": "Vos informations personnelles ne seront visibles que par l’équipe Akarcom et seront utilisées uniquement à des fins de communication.",
+        "business_info": "Informations professionnelles",
+        "business_info_description": "Votre profil professionnel sera visible par tous les utilisateurs Akarcom ainsi que par les visiteurs externes.",
+        "reset_password": "Réinitialiser le mot de passe",
+        "social_media": "Réseaux sociaux",
+        "upgrade": {
+            "title": "Créer un compte professionnel gratuit",
+            "description": "Passez d’un compte personnel à un compte professionnel de <b>l’agence immobilière</b> ou de <b>promoteur</b>. Débloquez des outils avancés, mettez en valeur votre activité avec une page dédiée et attirez plus de clients.",
+            "button": "Mettre à niveau",
+            "dialog_title": "Passer à un compte professionnel",
+            "dialog_description": "Choisissez entre deux types de comptes professionnels : agence immobilière ou promoteur",
+            "agency": "Agence",
+            "developer": "Promoteur",
+            "confirm": "Confirmer",
+            "cancel": "Annuler"
+        },
+        "form": {
+            "fullname": "Nom complet",
+            "fullname_placeholder": "Entrez votre nom...",
+            "email": "Email",
+            "email_placeholder": "Entrez votre email...",
+            "phone_number": "Numéro de téléphone",
+            "phone_number_placeholder": "Entrez le numéro de téléphone...",
+            "gender": "Genre",
+            "gender_placeholder": "Choisir le genre...",
+            "male": "Homme",
+            "female": "Femme",
+            "birthday": "Date de naissance",
+            "birthday_placeholder": "Entrez votre date de naissance...",
+            "business_name": "Nom de l’entreprise",
+            "business_name_placeholder": "Entrez le nom de votre entreprise...",
+            "address": "Adresse",
+            "address_placeholder": "Entrez l’adresse de votre entreprise...",
+            "cover_picture": "Image de couverture",
+            "whatsapp": "WhatsApp",
+            "facebook": "Facebook",
+            "tiktok": "TikTok",
+            "instagram": "Instagram",
+            "save": "Enregistrer les modifications"
+        },
+        "success": {
+            "profile_updated": "Profil mis à jour avec succès",
+            "profile_updated_description": "Les informations de votre profil ont été enregistrées et mises à jour avec succès.",
+            "password_reset": "Mot de passe réinitialisé avec succès",
+            "password_reset_description": "Votre mot de passe a été mis à jour. Vous pouvez maintenant vous connecter avec votre nouveau mot de passe.",
+            "notifications_updated": "Paramètres de notification mis à jour",
+            "notifications_updated_description": "Vos préférences de notification ont été enregistrées avec succès."
+        },
+        "errors": {
+            "invalid_old_password": "Veuillez fournir l’ancien mot de passe correct",
+            "failed_to_load": "Échec du chargement du profil.",
+            "failed_to_load_description": "Erreur inconnue. Veuillez réessayer plus tard.",
+            "full_name": {
+                "required": "Le nom complet est requis."
+            },
+            "email": {
+                "required": "L’email est requis.",
+                "invalid": "Veuillez entrer une adresse email valide."
+            },
+            "picture_url": {
+                "invalid_type": "La photo de profil doit être un fichier ou une URL valide.",
+                "upload_failed": "Échec du téléversement de la photo de profil."
+            },
+            "phone_number": {
+                "invalid": "Le numéro de téléphone doit respecter le format 0 XX XX XX XX."
+            },
+            "birthday": {
+                "invalid": "Veuillez sélectionner une date de naissance valide."
+            },
+            "gender": {
+                "invalid": "La sélection du genre est invalide."
+            },
+            "social_media": {
+                "facebook": "Le lien Facebook doit être une URL valide.",
+                "instagram": "Le lien Instagram doit être une URL valide.",
+                "tiktok": "Le lien TikTok doit être une URL valide.",
+                "whatsapp": "Le lien WhatsApp doit être un numéro de téléphone ou une URL valide."
+            },
+            "business_accounts": {
+                "agency_name": {
+                    "required": "Le nom de l’agence est requis."
+                },
+                "business_address": {
+                    "required": "L’adresse professionnelle est requise."
+                },
+                "cover_picture_url": {
+                    "invalid_type": "L’image de couverture doit être un fichier ou une URL valide.",
+                    "upload_failed": "Échec du téléversement de l’image de couverture."
+                }
+            }
+        }
+    },
+    "users": {
+        "user_list": "Liste des utilisateurs",
+        "user_list_header": "Gérez vos utilisateurs et leurs rôles ici.",
+        "add_user": "Ajouter un utilisateur",
+        "view": {
+            "view": "Afficher",
+            "toggle": "Afficher / masquer les colonnes",
+            "email": "Email",
+            "phone_number": "Numéro de téléphone",
+            "created_at": "Date d’inscription"
+        },
+        "toolbar": {
+            "filter": "Filtrer les utilisateurs...",
+            "reset": "Réinitialiser",
+            "user_type": "Type d’utilisateur"
+        },
+        "user_types": {
+            "admin": "Administrateur",
+            "employee": "Employé",
+            "developer": "Promoteur",
+            "agency": "Agence",
+            "individual": "Particulier"
+        },
+        "errors": {
+            "failed_to_load": "Échec du chargement des utilisateurs.",
+            "failed_to_load_description": "Erreur inconnue. Veuillez réessayer plus tard.",
+            "duplicate_email": {
+                "title": "Email en double",
+                "description": "L’adresse email saisie est déjà utilisée. Veuillez utiliser un autre email ou modifier l’utilisateur existant."
+            },
+            "duplicate_phone_number": {
+                "title": "Numéro de téléphone en double",
+                "description": "Le numéro de téléphone saisi est déjà associé à un autre compte. Veuillez fournir un numéro unique."
+            },
+            "failed_to_create_user": {
+                "title": "Impossible de créer l’utilisateur",
+                "description": "Impossible de créer un nouvel utilisateur pour le moment. Veuillez vérifier vos informations et réessayer."
+            },
+            "failed_to_delete_user": {
+                "title": "Impossible de supprimer l’utilisateur",
+                "description": "Impossible de supprimer l’utilisateur pour le moment. Veuillez vérifier votre action et réessayer."
+            }
+        },
+        "success": {
+            "user_created": {
+                "title": "Utilisateur créé avec succès",
+                "description": "Le nouvel utilisateur a été ajouté au système et est maintenant disponible dans la liste des utilisateurs."
+            },
+            "user_deleted": {
+                "title": "Utilisateur supprimé avec succès",
+                "description": "L’utilisateur a été supprimé du système."
+            }
+        },
+        "columns": {
+            "full_name": "Nom complet",
+            "email": "Email",
+            "phone_number": "Numéro de téléphone",
+            "created_at": "Date d’inscription",
+            "user_type": "Type d’utilisateur",
+            "action": "Action",
+            "delete": "Supprimer",
+            "asc": "Croissant",
+            "desc": "Décroissant",
+            "hide": "Masquer"
+        },
+        "pagination": {
+            "page": "Page {page} sur {total}"
+        },
+        "dialogs": {
+            "add_new_user": "Ajouter un nouvel utilisateur",
+            "add_new_user_header": "Créez un nouvel utilisateur ici. Cliquez sur enregistrer lorsque vous avez terminé.",
+            "save_changes": "Enregistrer les modifications",
+            "delete_user": "Supprimer l’utilisateur",
+            "sure": "Êtes-vous sûr de vouloir supprimer",
+            "action": "Cette action supprimera définitivement l’utilisateur ayant le rôle de",
+            "from_system": "du système. Cette action est irréversible.",
+            "full_name": "Nom complet",
+            "full_name_placeholder": "Entrez le nom d’utilisateur pour confirmer la suppression.",
+            "warning": "Attention !",
+            "warning_description": "Veuillez faire attention, cette opération ne peut pas être annulée.",
+            "delete": "Supprimer",
+            "cancel": "Annuler"
+        }
+    },
+    "ads": {
+        "ads_title": "Immobilier",
+        "ads_description": "Créez, mettez à jour et gérez vos annonces immobilières.",
+        "create_action": "Créer une annonce",
+        "create": {
+            "ad_title": "Titre de l’annonce",
+            "ad_title_description": "Saisissez un titre court et accrocheur mettant en avant les principales caractéristiques du bien.",
+            "ad_title_placeholder": "Entrez le titre de l’annonce...",
+            "ad_desc": "Description",
+            "ad_desc_description": "Veuillez rédiger une description suffisante pour expliquer le bien et tous ses détails.",
+            "ad_desc_placeholder": "Appartement spacieux de 3 chambres avec vue sur la mer, cuisine moderne et transports publics à proximité.",
+            "property_type": "Type de bien",
+            "property_type_description": "Veuillez sélectionner le type de bien dans la liste suivante.",
+            "property_type_placeholder": "Choisir un type",
+            "ad_type": "Type de transaction",
+            "ad_type_description": "Veuillez sélectionner le type de transaction parmi les options suivantes (Vente ou location).",
+            "sale": "Vente",
+            "rent": "Location",
+            "num_rooms": "Nombre de pièces",
+            "num_rooms_description": "Veuillez saisir le nombre de pièces",
+            "num_rooms_placeholder": "Entrez le nombre de pièces...",
+            "bethrooms": "Salles de bain",
+            "bethrooms_description": "Veuillez saisir le nombre de salles de bain dans le bien.",
+            "bethrooms_placeholder": "Nombre de salles de bain...",
+            "area": "Superficie (m²)",
+            "area_description": "Veuillez saisir la superficie du bien.",
+            "area_placeholder": "Entrez la superficie en (m²)...",
+            "schools": "Écoles à proximité",
+            "schools_description": "Veuillez saisir le nombre d’écoles à proximité.",
+            "schools_placeholder": "Nombre d’écoles à proximité...",
+            "mosques": "Mosquées à proximité",
+            "mosques_description": "Veuillez saisir le nombre de mosquées à proximité.",
+            "mosques_placeholder": "Nombre de mosquées à proximité...",
+            "furnished": "Le bien est-il meublé ?",
+            "ownership_book": "Disponibilité du livret foncier",
+            "property_tags": "Mots-clés",
+            "property_tags_description": "Veuillez saisir des mots-clés décrivant le bien",
+            "property_tags_placeholder": "Sélectionner un mot-clé",
+            "location": "Localisation",
+            "location_description": "Vous pouvez préciser la localisation et saisir les informations de visite virtuelle, si disponibles.",
+            "address": "Adresse",
+            "address_placeholder": "Entrez l’adresse du bien...",
+            "city": "Ville",
+            "city_placeholder": "Ville...",
+            "postal_code": "Code postal",
+            "postal_code_placeholder": "Code postal...",
+            "property_images": "Images",
+            "property_images_description": "Vous pouvez ajouter toutes les images et vidéos du bien.",
+            "save": "Enregistrer les modifications",
+            "map": "Carte",
+            "price": "Prix",
+            "price_description": "Saisissez le prix de vente ou de location",
+            "price_placeholder": "Entrez le prix...",
+            "rent_period": "Période de location",
+            "rent_period_placeholder": "Choisir une période",
+            "monthly": "Mensuel",
+            "yearly": "Annuel",
+            "condition": "État du bien",
+            "condition_placeholder": "Choisir l’état...",
+            "condition_description": "Veuillez sélectionner l’état du bien dans la liste suivante.",
+            "conditions": {
+                "new": "Neuf",
+                "excellent": "Excellent",
+                "good": "Bon",
+                "needs_renovation": "À rénover",
+                "damaged": "Endommagé"
+            },
+            "virtual_visit": "Visite virtuelle",
+            "virtual_visit_description": "Veuillez téléverser la visite virtuelle",
+            "virtual_visit_placeholder": "Glissez-déposez le fichier .zip de la visite virtuelle",
+            "errors": {
+                "title_required": "Le titre est obligatoire",
+                "description_invalid": "La description doit être un texte valide",
+                "image_360_invalid": "L’URL de l’image 360° doit être valide",
+                "property_type_required": "Le type de bien est obligatoire",
+                "add_type_invalid": "Le type d’annonce est obligatoire",
+                "rent_period_invalid": "La période de location doit être mensuelle, annuelle ou personnalisée",
+                "latitude_invalid": "La latitude doit être un nombre valide",
+                "longitude_invalid": "La longitude doit être un nombre valide",
+                "address_required": "L’adresse est obligatoire",
+                "city_required": "La ville est obligatoire",
+                "price_required": "Le prix est obligatoire",
+                "postal_code_invalid": "Le code postal doit être valide",
+                "area_invalid": "La superficie (en m²) doit être un nombre valide",
+                "num_rooms_invalid": "Le nombre de pièces doit être un nombre valide",
+                "bethrooms_invalid": "Le nombre de salles de bain doit être un nombre valide",
+                "furnished_invalid": "La valeur meublé doit être vraie ou fausse",
+                "schools_invalid": "Le nombre d’écoles doit être un nombre valide",
+                "mosques_invalid": "Le nombre de mosquées doit être un nombre valide",
+                "project_plan_invalid": "L’URL du plan du projet doit être valide",
+                "ownership_book_invalid": "Le livret foncier doit être une valeur booléenne",
+                "property_images_required": "Au moins une image est requise",
+                "property_tags_invalid": "Les mots-clés doivent être un tableau valide"
+            },
+            "toast": {
+                "success": {
+                    "title": "Bien créé",
+                    "description": "Votre bien immobilier a été créé avec succès et est maintenant disponible dans vos annonces."
+                },
+                "error": {
+                    "title": "Échec de la création",
+                    "description": "Une erreur est survenue lors de la création du bien. Veuillez réessayer ou vérifier vos données."
+                }
+            }
+        },
+        "columns": {
+            "title": "Titre",
+            "created_by": "Créé par",
+            "property_type_id": "Type de bien",
+            "address": "Adresse",
+            "created_at": "Date de création",
+            "status": "Statut",
+            "actions": "Actions",
+            "add_type": "Type d’annonce",
+            "ad_types": {
+                "rent": "Location",
+                "sale": "Vente",
+                "project": "Projet"
+            },
+            "delete": "Supprimer",
+            "approuve": "Approuver",
+            "reject": "Rejeter",
+            "edit": "Modifier",
+            "preview": "Aperçu",
+            "stop": "Arrêter",
+            "re_publish": "Republier",
+            "filter": "Filtrer les biens...",
+            "property_status": {
+                "all": "Tous",
+                "draft": "En attente",
+                "published": "Publié",
+                "closed": "Clôturé",
+                "rejected": "Rejeté"
+            },
+            "reset": "Réinitialiser"
+        },
+        "dialogs": {
+            "delete_property": "Supprimer le bien",
+            "sure": "Êtes-vous sûr de vouloir supprimer",
+            "action": "Cette action supprimera définitivement l’annonce du système. Cette action est irréversible."
+        },
+        "toast": {
+            "property_deleted": {
+                "title": "Bien supprimé avec succès",
+                "description": "Le bien a été supprimé du système."
+            },
+            "property_deleted_fail": {
+                "title": "Échec de la suppression",
+                "description": "Une erreur est survenue lors de la suppression du bien. Veuillez réessayer ou vérifier vos données."
+            }
+        }
+    },
+    "favorite": {
+        "title": "Annonces favorites",
+        "description": "Parcourez vos annonces favorites ici."
+    },
+    "home": {
+        "filter": {
+            "all": "Tout",
+            "sale": "Vente",
+            "rent": "Location",
+            "location": "Localisation",
+            "property_type": "Type de bien",
+            "property_type_placeholder": "Choisir le type de bien",
+            "operation_type": "Type d’opération",
+            "price": "Prix"
+        },
+        "title": "Site Akarcom <span>Votre premier choix.</span>",
+        "description": "Explorez des milliers de biens à vendre et à louer grâce à une plateforme immobilière fiable et facile à utiliser.",
+        "errors": {
+            "failed_to_load": {
+                "title": "Échec du chargement des biens",
+                "description": "Une erreur est survenue lors du chargement des biens. Veuillez réessayer plus tard."
+            }
+        },
+        "chosen_ads": "Annonces sélectionnées",
+        "latest_ads": "Dernières annonces",
+        "features": {
+            "title": "Fonctionnalités et avantages",
+            "card_title": "La meilleure façon de trouver ce dont vous avez besoin",
+            "card_description": "Trouvez le bien idéal parmi des milliers d’options disponibles.",
+            "create_account": "Créer un compte maintenant",
+            "cards": {
+                "card_1": {
+                    "title": "Recherche interactive",
+                    "description": "Recherchez directement sur la carte pour une vue complète des biens disponibles."
+                },
+                "card_2": {
+                    "title": "Visite virtuelle",
+                    "description": "Akarcom vous offre une expérience immersive grâce à la visite virtuelle 360°."
+                },
+                "card_3": {
+                    "title": "Garantie de qualité",
+                    "description": "Les annonces sont vérifiées avant et après publication pour une navigation sécurisée."
+                },
+                "card_4": {
+                    "title": "Agents certifiés",
+                    "description": "Un accompagnement optimal par des agents professionnels."
+                }
+            }
+        },
+        "wishlist": {
+            "discover": "Découvrez nos services",
+            "have_agency": "Vous possédez une agence immobilière ?",
+            "description": "Découvrez notre gamme de services premium et faites passer votre agence au niveau supérieur.",
+            "get_account": "Obtenez un compte gratuit.",
+            "join": "Rejoignez plus de {num_users} agences immobilières qui utilisent nos services !"
+        },
+        "footer": {
+            "copyright": "© {year} Akarcom. Tous droits réservés."
+        }
+    },
+    "search": {
+        "title": "Rechercher un bien immobilier.",
+        "description": "La recherche avancée peut vous aider à trouver le bien idéal.",
+        "advanced_search": "Recherche avancée",
+        "results": "Résultats"
+    },
+    "property": {
+        "share": "Partager",
+        "favorite": "Ajouter aux favoris",
+        "description": "Description du bien",
+        "sale_price": "Prix de vente",
+        "rent_price": "Prix de location",
+        "currency": "DA",
+        "monthly": "mois",
+        "yearly": "année",
+        "num_rooms": "Pièces",
+        "bethrooms": "Salles de bain",
+        "mosques": "Mosquées",
+        "schools": "Écoles",
+        "area": "Superficie (m²)",
+        "furnished": "Meublé",
+        "ownership_book": "Acte de propriété",
+        "condition": "État",
+        "furnisher_title": "Mobilier et propriété",
+        "conditions": {
+            "1": "Neuf",
+            "2": "Excellent",
+            "3": "Bon",
+            "4": "À rénover",
+            "5": "Endommagé"
+        },
+        "created_at": "Publié le",
+        "virtual_visit": "Visite virtuelle",
+        "watch_now": "Voir maintenant en 360°",
+        "user_types": {
+            "admin": "Administrateur",
+            "employee": "Employé",
+            "developer": "Promoteur",
+            "agency": "Agence",
+            "individual": "Particulier"
+        },
+        "message": "Contacter le vendeur",
+        "whatsapp": "WhatsApp",
+        "social_media": "Réseaux sociaux"
+    },
+    "chat": {
+        "new_chat": {
+            "title": "Nouveau message",
+            "placeholder": "Rechercher des personnes...",
+            "not_found": "Aucune personne trouvée.",
+            "chat": "Discussion",
+            "to": "À :",
+            "user_types": {
+                "admin": "Administrateur",
+                "employee": "Employé",
+                "developer": "Promoteur",
+                "agency": "Agence",
+                "individual": "Particulier"
+            }
+        },
+        "inbox": "Boîte de réception",
+        "you": "Vous",
+        "load_more": "Charger plus",
+        "type": "Écrivez votre message...",
+        "send": "Envoyer",
+        "your_messages": "Vos messages",
+        "start_chat": "Envoyez un message pour démarrer une discussion.",
+        "send_message": "Envoyer le message"
+    },
+    "help": {
+        "faq": "FAQs",
+        "my_questions": "Mes questions",
+        "all_questions": "Toutes les questions",
+        "create": {
+            "new_ticket": "Nouveau ticket",
+            "reply_ticket": "Répondre",
+            "description": "Soumettez un ticket de support et notre équipe vous répondra sous 24 heures.",
+            "form": {
+                "required": "Le titre est requis",
+                "max_length": "La description doit contenir au moins 20 caractères",
+                "title": "Titre",
+                "title_placeholder": "Titre du ticket",
+                "description": "Description",
+                "description_placeholder": "Décrivez votre problème",
+                "answer": "Réponse",
+                "answer_placeholder": "Réponse au ticket",
+                "submit": "Envoyer",
+                "close": "Fermer",
+                "success": {
+                    "title": "Ticket envoyé avec succès",
+                    "description": "Votre ticket a été reçu. Notre équipe l’examinera et vous répondra sous 24 heures."
+                },
+                "error": {
+                    "title": "Échec de l’envoi du ticket",
+                    "description": "Une erreur est survenue lors de l’envoi du ticket. Veuillez réessayer plus tard ou contacter le support."
+                }
+            }
+        },
+        "load_more": "Charger plus",
+        "card": {
+            "ticket": "Ticket",
+            "replay": "Réponse",
+            "mark_faq": "Marquer comme FAQ",
+            "status": {
+                "opened": "Ouvert",
+                "closed": "Fermé",
+                "faq": "FAQ"
+            },
+            "submitted_by": "Soumis par",
+            "answered_by": "Répondu par",
+            "answer": "Réponse"
+        }
+    }
+}

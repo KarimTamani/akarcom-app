@@ -1,0 +1,653 @@
+{
+    "components": {
+        "avatar": {
+            "up_to": "Up to",
+            "upload": "Upload image",
+            "uploaded": "Image uploaded"
+        },
+        "cover": {
+            "change": "Change cover",
+            "remove": "Remove",
+            "title": "Upload Cover Image",
+            "drag_drop": "Drag and drop an image here, or click to browse",
+            "size": "Recommended size: 1200x514px • Max size: 2MB",
+            "browse": "Browse Files"
+        },
+        "multi_file_uploader": {
+            "title": "Upload your files",
+            "drag_drop": "Drag and drop an image here, or click to browse",
+            "support": "Support for multiple file types up to {size} each",
+            "select_files": "Select files",
+            "selected_files": "Selected files",
+            "clear_all": "Clear all"
+        },
+        "file": {
+            "add_file": "Add file"
+        },
+        "languages": {
+            "en": "English",
+            "ar": "Arabic",
+            "fr": "French"
+        },
+        "navbar": {
+            "home": "Home",
+            "sale": "Sale",
+            "rent": "Rent",
+            "search": "Search",
+            "properties": "Properties",
+            "sign_in": "Sign In",
+            "dashboard": "Dashboard",
+            "logout": "Log out"
+        },
+        "location_picker": {
+            "placeholder": "Pick a location..."
+        },
+        "price_range": {
+            "min_price": "Min Price (DA)",
+            "max_price": "Max Price (DA)",
+            "placeholder": "Pick a price range",
+            "done": "Done",
+            "clear": "Clear",
+            "error": "The maximum price must be higher than or equal to the minimum price.",
+            "input_placeholder": "Price .. "
+        },
+        "card": {
+            "area_unit": "m²",
+            "for_sale": "For sale",
+            "to_rent": "To rent",
+            "view_details": "View details"
+        }
+    },
+    "auth": {
+        "sign_in": "Sign In",
+        "sign_up": "Sign Up",
+        "sign_up_title": "Create an account",
+        "sign_in_title": "Login",
+        "welcom_message": "Hello! Please enter your information",
+        "email": "Email",
+        "email_placeholder": "Enter your email...",
+        "fullname": "Fullname",
+        "fullname_placeholder": "Enter your fullname...",
+        "password": "Password",
+        "password_placeholder": "Enter your password...",
+        "confirm_password": "Confirm password",
+        "confirm_password_placeholder": "Confirm your password...",
+        "sign_up_action": "Create new account",
+        "create_account_via": "Create an account via",
+        "have_account": "Already have an account?",
+        "login_via": "Log in via",
+        "dont_have_account": "Don't have an account?",
+        "forget_password": "Forget password?",
+        "errors": {
+            "fullname_required": "Full name is required",
+            "email_required": "Please enter your email",
+            "email_invalid": "Invalid email address",
+            "password_required": "Please enter your password",
+            "password_length": "Password must be at least 7 characters long",
+            "confirm_password_required": "Please confirm your password",
+            "password_match": "Passwords don't match.",
+            "wrong_credentials": "Wrong email or password , please try again",
+            "email_taken": "An account with this email already exists.",
+            "invalid_data": "Invalid informations please try again"
+        }
+    },
+    "sidebar": {
+        "operations": "Dashboard",
+        "statistics": "Statistics",
+        "messages": "Direct messages",
+        "users": "Users",
+        "ads": "Advertisements",
+        "settings": "Settings",
+        "account": "Account settings",
+        "help": "Help center",
+        "ads_create": "New ad",
+        "edit_ad": "Edit ad",
+        "favorite": "Favorite",
+        "logout": "Log out"
+    },
+    "statistics": {
+        "welcome": "Welcome",
+        "welcome_message": "Here's what's happening with your property between {from} and {to}.",
+        "from_date": "From date",
+        "to_date": "To date",
+        "date_picker": "Pick a date",
+        "pending_ads": "Ads awaiting review",
+        "pending_messages": "Messages waiting for a response",
+        "new_ads": "New ads",
+        "tending_up": "Trending up this",
+        "tending_down": "Trending down this",
+        "comparison": "{key} for the last {value} {period}",
+        "ads": "Ads",
+        "messages": "Messages",
+        "day": "day",
+        "week": "week",
+        "month": "month",
+        "year": "year",
+        "general_statistics": "General statistics",
+        "general_statistics_message": "View advertising statistics for the current period",
+        "views": "Views",
+        "revenue": "Revenue",
+        "this": "This",
+        "others": "Others",
+        "sign_ups": "Sign ups"
+    },
+    "account": {
+        "account": "Account",
+        "login_settings": "Login settings",
+        "notifications": "Notifications",
+        "notifications_header": "Customize your notification settings",
+        "new_password": "New password",
+        "old_password": "Old password",
+        "confirm_new_password": "Confirm new password",
+        "save": "Save changes",
+        "ads_notifications": "Ad Notifications",
+        "ads_notifications_description": "Get notified about the status of your ads, including approvals and rejections.",
+        "messages_notifications": "Message Notifications",
+        "messages_notifications_description": "Get notified whenever you receive a new message.",
+        "profile_info": "Profile info",
+        "profile_info_description": "Profile information that you can change at any time.",
+        "profile_picture": "Profile picture",
+        "profile_picture_description": "This image will be displayed publicly as your profile picture and will help site visitors identify you.",
+        "personal_info": "Personal information",
+        "personal_info_description": "Your personal information will only be visible to the Akarcom team and will be used solely for communication purposes.",
+        "business_info": "Business informations",
+        "business_info_description": "Your business profile will be visible to all Akarcom users and external visitors.",
+        "reset_password": "Reset password",
+        "social_media": "Social media accounts",
+        "upgrade": {
+            "title": "Create Free Business account",
+            "description": "Upgrade your personal account to a professional <b>real estate agency</b> or <b>developer account</b>. Unlock advanced tools, showcase your business with a dedicated page, and attract more clients.",
+            "button": "Upgrade",
+            "dialog_title": "Upgrade to Business",
+            "dialog_description": "Choose between 2 types of business accounts , real estate agency or developer",
+            "agency": "Agency",
+            "developer": "Developer",
+            "confirm": "Confirm",
+            "cancel": "Cancel"
+        },
+        "form": {
+            "fullname": "Full name",
+            "fullname_placeholder": "Enter your name ...",
+            "email": "Email",
+            "email_placeholder": "Enter your email...",
+            "phone_number": "Phone number",
+            "phone_number_placeholder": "Enter phone number...",
+            "gender": "Gender",
+            "gender_placeholder": "Pick gender...",
+            "male": "Male",
+            "female": "Female",
+            "birthday": "Birthday",
+            "birthday_placeholder": "Enter yout birthday...",
+            "business_name": "Business name",
+            "business_name_placeholder": "Enter yout business name...",
+            "address": "Address",
+            "address_placeholder": "Enter your business address...",
+            "cover_picture": "Cover picture",
+            "whatsapp": "Whatsapp",
+            "facebook": "Facebook",
+            "tiktok": "tiktok",
+            "instagram": "Instagram",
+            "save": "Save changes"
+        },
+        "success": {
+            "profile_updated": "Profile updated successfully",
+            "profile_updated_description": "Your profile information has been saved and updated successfully.",
+            "password_reset": "Password reset successfully",
+            "password_reset_description": "Your password has been updated. You can now log in using your new password.",
+            "notifications_updated": "Notification settings updated",
+            "notifications_updated_description": "Your notification preferences have been saved successfully."
+        },
+        "errors": {
+            "invalid_old_password": "Please provide the correct old password",
+            "failed_to_load": "Failed to load profile.",
+            "failed_to_load_description": "Unknown error. Please try again later.",
+            "full_name": {
+                "required": "Full name is required."
+            },
+            "email": {
+                "required": "Email is required.",
+                "invalid": "Please enter a valid email address."
+            },
+            "picture_url": {
+                "invalid_type": "Profile picture must be a valid file or URL.",
+                "upload_failed": "Failed to upload profile picture."
+            },
+            "phone_number": {
+                "invalid": "Phone number must follow the pattern 0 XX XX XX XX."
+            },
+            "birthday": {
+                "invalid": "Please select a valid date of birth."
+            },
+            "gender": {
+                "invalid": "Gender selection is invalid."
+            },
+            "social_media": {
+                "facebook": "Facebook link must be a valid URL.",
+                "instagram": "Instagram link must be a valid URL.",
+                "tiktok": "TikTok link must be a valid URL.",
+                "whatsapp": "WhatsApp link must be a valid phone number or URL."
+            },
+            "business_accounts": {
+                "agency_name": {
+                    "required": "Agency name is required."
+                },
+                "business_address": {
+                    "required": "Business address is required."
+                },
+                "cover_picture_url": {
+                    "invalid_type": "Cover picture must be a valid file or URL.",
+                    "upload_failed": "Failed to upload cover picture."
+                }
+            }
+        }
+    },
+    "users": {
+        "user_list": "User list",
+        "user_list_header": "Manage your users and their roles here.",
+        "add_user": "Add user",
+        "view": {
+            "view": "View",
+            "toggle": "Toggle columns",
+            "email": "Email",
+            "phone_number": "Phone number",
+            "created_at": "Joined date"
+        },
+        "toolbar": {
+            "filter": "Filter users...",
+            "reset": "Reset",
+            "user_type": "User type"
+        },
+        "user_types": {
+            "admin": "Admin",
+            "employee": "Employee",
+            "developer": "Developer",
+            "agency": "Agency",
+            "individual": "Individual"
+        },
+        "errors": {
+            "failed_to_load": "Failed to load users.",
+            "failed_to_load_description": "Unknown error. Please try again later.",
+            "duplicate_email": {
+                "title": "Duplicate Email",
+                "description": "The email address you entered is already in use. Please use a different email or update the existing user."
+            },
+            "duplicate_phone_number": {
+                "title": "Duplicate Phone Number",
+                "description": "The phone number you entered is already associated with another account. Please provide a unique phone number."
+            },
+            "failed_to_create_user": {
+                "title": "Unable to Create User",
+                "description": "We were unable to create a new user at this time. Please check your input and try again."
+            },
+            "failed_to_delete_user": {
+                "title": "Unable to Delete User",
+                "description": "We were unable to delete the user at this time. Please check your input and try again."
+            }
+        },
+        "success": {
+            "user_created": {
+                "title": "User Created Successfully",
+                "description": "The new user has been added to the system and is now available in the user list."
+            },
+            "user_deleted": {
+                "title": "User Deleted Successfully",
+                "description": "The user has been deleted froml the system ."
+            }
+        },
+        "columns": {
+            "full_name": "Full name",
+            "email": "Email",
+            "phone_number": "Phone number",
+            "created_at": "Joined date",
+            "user_type": "User type",
+            "action": "Action",
+            "delete": "Delete",
+            "asc": "Asc",
+            "desc": "Desc",
+            "hide": "Hide"
+        },
+        "pagination": {
+            "page": "Page {page} of {total}"
+        },
+        "dialogs": {
+            "add_new_user": "Add New User",
+            "add_new_user_header": "Create new user here. Click save when you're done.",
+            "save_changes": "Save changes",
+            "delete_user": "Delete User",
+            "sure": "Are you sure you want to delete",
+            "action": "This action will permanently remove the user with the role of",
+            "from_system": "from the system. This cannot be undone.",
+            "full_name": "Full name",
+            "full_name_placeholder": "Enter username to confirm deletion.",
+            "warning": "Warning!",
+            "warning_description": " Please be carefull, this operation can not be rolled back.",
+            "delete": "Delete",
+            "cancel": "Cancel"
+        }
+    },
+    "ads": {
+        "ads_title": "Real estate",
+        "ads_description": "Create, update, and organize your real estate listings.",
+        "create_action": "Create ad",
+        "create": {
+            "ad_title": "Ad title",
+            "ad_title_description": "Enter a short, catchy title that highlights the main features of your property.",
+            "ad_title_placeholder": "Enter ad title...",
+            "ad_desc": "Description",
+            "ad_desc_description": "Please write a sufficient description to explain the property and all its details.",
+            "ad_desc_placeholder": "Spacious 3-bedroom apartment with a sea view, modern kitchen, and nearby public transport.",
+            "property_type": "Property type",
+            "property_type_description": "Please select the property type from the following list.",
+            "property_type_placeholder": "Pick type",
+            "ad_type": "Transaction type",
+            "ad_type_description": "Please select the type of transaction from the following options (Sale or rent).",
+            "sale": "Sale",
+            "rent": "Rent",
+            "num_rooms": "Number of rooms",
+            "num_rooms_description": "Please enter the number of rooms",
+            "num_rooms_placeholder": "Enter number of rooms...",
+            "bethrooms": "Bathrooms",
+            "bethrooms_description": "Please enter the number of bathrooms inside the property.",
+            "bethrooms_placeholder": "Number of bathrooms...",
+            "area": "Area (m²)",
+            "area_description": "Please enter the property area.",
+            "area_placeholder": "Enter area in (m²)...",
+            "schools": "Nearby schools",
+            "schools_description": "Please enter the number of nearby schools.",
+            "schools_placeholder": "Number of nearby schools...",
+            "mosques": "Nearby mosques",
+            "mosques_description": "Please enter the number of nearby mosques.",
+            "mosques_placeholder": "Number of nearby mosques...",
+            "furnished": "Is the property furnished?",
+            "ownership_book": "Availability of ownership book",
+            "property_tags": "Keywords",
+            "property_tags_description": "Please write keywords that describe the property",
+            "property_tags_placeholder": "Select keyword",
+            "location": "The location",
+            "location_description": "You can specify the location and enter virtual visit information, if available.",
+            "address": "Address",
+            "address_placeholder": "Enter the property address...",
+            "city": "City",
+            "city_placeholder": "City...",
+            "postal_code": "Postal code",
+            "postal_code_placeholder": "Postal code...",
+            "property_images": "Pictures",
+            "property_images_description": "You can add all the images & videos of the property .",
+            "save": "Save changes",
+            "map": "Map",
+            "price": "Price",
+            "price_description": "Enter the sale or rent price",
+            "price_placeholder": "Enter price ...",
+            "rent_period": "Rent period",
+            "rent_period_placeholder": "Pick period",
+            "monthly": "Monthly",
+            "yearly": "Yearly",
+            "condition": "Property condition",
+            "condition_placeholder": "Pick condition...",
+            "condition_description": "Please select the property condition from the following list.",
+            "conditions": {
+                "new": "New",
+                "excellent": "Excellent",
+                "good": "Good",
+                "needs_renovation": "Needs Renovation",
+                "damaged": "Damaged"
+            },
+            "virtual_visit": "Virtual visit",
+            "virtual_visit_description": "Please upload the virtual visit",
+            "virtual_visit_placeholder": "Drag and drop the .zip file of the virtual visit ",
+            "errors": {
+                "title_required": "Title is required",
+                "description_invalid": "Description must be a valid text",
+                "image_360_invalid": "Image 360 URL must be a valid URL",
+                "property_type_required": "Property type is required",
+                "add_type_invalid": "Add type is required",
+                "rent_period_invalid": "Rent period must be monthly, yearly, or custom",
+                "latitude_invalid": "Latitude must be a valid number",
+                "longitude_invalid": "Longitude must be a valid number",
+                "address_required": "Address is required",
+                "city_required": "City is required",
+                "price_required": "Price is required",
+                "postal_code_invalid": "Postal code must be valid",
+                "area_invalid": "Area (in m²) must be a valid number",
+                "num_rooms_invalid": "Number of rooms must be a valid number",
+                "bethrooms_invalid": "Number of bathrooms must be a valid number",
+                "furnished_invalid": "Furnished value must be true or false",
+                "schools_invalid": "Schools must be a valid number",
+                "mosques_invalid": "Mosques must be a valid number",
+                "project_plan_invalid": "Project plan URL must be valid",
+                "ownership_book_invalid": "Ownership book must be a boolean",
+                "property_images_required": "At least one image is required",
+                "property_tags_invalid": "Property tags must be a valid array"
+            },
+            "toast": {
+                "success": {
+                    "title": "Property Created",
+                    "description": "Your real estate property has been successfully created and is now available in your listings."
+                },
+                "error": {
+                    "title": "Creation Failed",
+                    "description": "There was an error while creating the property. Please try again or check your input data."
+                }
+            }
+        },
+        "columns": {
+            "title": "Title",
+            "created_by": "Created by",
+            "property_type_id": "Property type",
+            "address": "Address",
+            "created_at": "Created at",
+            "status": "Status",
+            "actions": "Actions",
+            "add_type": "Ad type",
+            "ad_types": {
+                "rent": "Rent",
+                "sale": "Sale",
+                "project": "Project"
+            },
+            "delete": "Delete",
+            "approuve": "Approuve",
+            "reject": "Reject",
+            "edit": "Edit",
+            "preview": "Preview",
+            "stop": "Stop",
+            "re_publish": "Re-Publish",
+            "filter": "Filter properties...",
+            "property_status": {
+                "all": "All",
+                "draft": "Pending",
+                "published": "Published",
+                "closed": "Closed",
+                "rejected": "Rejected"
+            },
+            "reset": "Reset"
+        },
+        "dialogs": {
+            "delete_property": "Delete Property",
+            "sure": "Are you sure you want to delete",
+            "action": "This action will permanently remove the ad from the system. This cannot be undone."
+        },
+        "toast": {
+            "property_deleted": {
+                "title": "Property Deleted Successfully",
+                "description": "The property has been deleted froml the system ."
+            },
+            "property_deleted_fail": {
+                "title": "Deletion Failed",
+                "description": "There was an error while deleting the property. Please try again or check your input data."
+            }
+        }
+    },
+    "favorite": {
+        "title": "Favorite ads",
+        "description": "Browse your favorite ads here."
+    },
+    "home": {
+        "filter": {
+            "all": "All",
+            "sale": "Sale",
+            "rent": "Rent",
+            "location": "Location",
+            "property_type": "Property type",
+            "property_type_placeholder": "Choose the property type",
+            "operation_type": "Operation type",
+            "price": "Price"
+        },
+        "title": "Akarcom website <span>Your First Choice.</span>",
+        "description": "Explore thousands of properties listed for sale and rent, all within your reach, through a reliable and easy-to-use real estate platform.",
+        "errors": {
+            "failed_to_load": {
+                "title": "Failed to fetch properties",
+                "description": "An error occurred while loading properties. Please try again later."
+            }
+        },
+        "chosen_ads": "Choosen ads",
+        "latest_ads": "Latest ads",
+        "features": {
+            "title": "Features & Benefits",
+            "card_title": "The best way to find what you need!",
+            "card_description": "You can find the right property among the thousands of options available on your property.",
+            "create_account": "Create an account now!",
+            "cards": {
+                "card_1": {
+                    "title": "Interactive search",
+                    "description": "You can search directly on the map, giving you a comprehensive view of the properties in the area."
+                },
+                "card_2": {
+                    "title": "Virtual Tour",
+                    "description": "Akarkom offers you a unique experience to view properties directly with 360° virtual reality technology."
+                },
+                "card_3": {
+                    "title": "Quality Assurance",
+                    "description": "Akarkom property listings are reviewed before and after publishing, ensuring a safe browsing experience for premium properties."
+                },
+                "card_4": {
+                    "title": "Certified Agents",
+                    "description": "Akarkom provides optimal support for distinguished agents to ensure the perfect experience."
+                }
+            }
+        },
+        "wishlist": {
+            "discover": "Discover our services",
+            "have_agency": "Do you own a real estate agency?",
+            "description": "Discover our range of premium services and take your agency to the next level.",
+            "get_account": "Get a free account.",
+            "join": "Join over {num_users} real estate agencies that use our services!"
+        },
+        "footer": {
+            "copyright": "© {year} Akarcom. All rights reserved."
+        }
+    },
+    "search": {
+        "title": "Search for real estate.",
+        "description": "Advanced search can help you find your ideal property.",
+        "advanced_search": "Advanced search",
+        "results": "Results"
+    },
+    "property": {
+        "share": "Share",
+        "favorite": "Add Favorite",
+        "description": "Property decsription",
+        "sale_price": "Sale price",
+        "rent_price": "Rent price",
+        "currency": "DA",
+        "monthly": "month",
+        "yearly": "year",
+        "num_rooms": "Rooms",
+        "bethrooms": "Bathrooms",
+        "mosques": "Mosques",
+        "schools": "Schools",
+        "area": "Area (m²)",
+        "furnished": "Furnished",
+        "ownership_book": "Ownership book",
+        "condition": "Condition",
+        "furnisher_title": "Fursnisher & ownership ",
+        "conditions": {
+            "1": "New",
+            "2": "Excellent",
+            "3": "Good",
+            "4": "Needs Renovation",
+            "5": "Damaged"
+        },
+        "created_at": "Published at ",
+        "virtual_visit": "Virtual visit",
+        "watch_now": "Watch now in 360°",
+        "user_types": {
+            "admin": "Admin",
+            "employee": "Employee",
+            "developer": "Developer",
+            "agency": "Agency",
+            "individual": "Individual"
+        },
+        "message": "Message the seller",
+        "whatsapp": "WhatsApp",
+        "social_media": "Social media"
+    },
+    "chat": {
+        "new_chat": {
+            "title": "New Message",
+            "placeholder": "Search people...",
+            "not_found": "No people found.",
+            "chat": "Chat",
+            "to": "To:",
+            "user_types": {
+                "admin": "Admin",
+                "employee": "Employee",
+                "developer": "Developer",
+                "agency": "Agency",
+                "individual": "Individual"
+            }
+        },
+        "inbox": "Inbox",
+        "you": "You",
+        "load_more": "Load more",
+        "type": "Type your messages...",
+        "send": "Send",
+        "your_messages": "Your messages",
+        "start_chat": "Send a message to start a chat.",
+        "send_message": "Send message"
+    },
+    "help": {
+        "faq": "FAQs",
+        "my_questions": "My Questions",
+        "all_questions": "All Questions",
+        "create": {
+            "new_ticket": "New Ticket",
+            "reply_ticket": "Reply",
+            "description": "Submit a support ticket and our team will respond within 24 hours.",
+            "form": {
+                "required": "Title is required",
+                "max_length": "Description must be at least 20 characters long",
+                "title": "Title",
+                "title_placeholder": "Ticket title",
+                "description": "Description",
+                "description_placeholder": "Describe your issue",
+                "answer": "Answer",
+                "answer_placeholder": "Answer to the ticket",
+                "submit": "Submit",
+                "close": "Close",
+                "success": {
+                    "title": "Ticket Submitted Successfully",
+                    "description": "Your support ticket has been received. Our team will review it and get back to you within 24 hours."
+                },
+                "error": {
+                    "title": "Ticket Submission Failed",
+                    "description": "Something went wrong while submitting your ticket. Please try again later or contact support if the issue persists."
+                }
+            }
+        },
+        "load_more": "Load more",
+        "card": {
+            "ticket": "Ticket",
+            "replay": "Replay",
+            "mark_faq": "Mark as FAQ",
+            "status": {
+                "opened": "Opened",
+                "closed": "Closed",
+                "faq": "FAQ"
+            },
+            "submitted_by": "Submitted by",
+            "answered_by": "Answered by",
+            "answer": "Answer"
+        }
+    }
+}
