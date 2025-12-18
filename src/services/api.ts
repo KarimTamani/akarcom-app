@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://107.155.87.217:4000/api",
+  baseURL: "https://api.akarcom.com/api",
 });
 
 

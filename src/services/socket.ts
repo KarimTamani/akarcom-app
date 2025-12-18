@@ -11,7 +11,7 @@ export enum EVENTS {
 
 export const getSocket = (token: string) => {
   if (!socket) {
-    socket = io("http://107.155.87.217:4000", {
+    socket = io("https://api.akarcom.com", {
       transports: ["websocket"],
       withCredentials: true,
       autoConnect: false,
