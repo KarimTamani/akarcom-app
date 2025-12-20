@@ -2,7 +2,7 @@
 import { useGeoLocation } from "@/hooks/use-get-location";
 import PropertiesMap from "../../componenets/layout/properties-map";
 import useSearchProperty, { SearchPropertyFilter } from "../../hooks/use-search-property";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Label } from "@/components/ui/label";
 import { useTranslations } from "next-intl";
@@ -12,6 +12,7 @@ import PropertyTags from "../../dashboard/ads/create/components/property-tags";
 import { Property, PropertyTag } from "@/lib/property";
 import axios from "axios";
 import api from "@/services/api";
+import { useRouter } from "next/navigation";
 
 
 interface AdvancedFiltersProps {
@@ -50,7 +51,7 @@ const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({ refreshLocation, loca
 
 
     const [areaRange, setAreaRange] = useState<{ min_area: number | undefined, max_area: number | undefined } | undefined>(undefined);
-    const [ area , setArea] = useState<number> ()
+    const [area, setArea] = useState<number>()
 
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
@@ -62,7 +63,7 @@ const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({ refreshLocation, loca
                 const response = await api.get("property/area")
                 if (response && response.status == 200) {
                     const { data } = response.data;
-                 
+
                     setAreaRange(data)
                 }
             } catch (error) {
@@ -77,23 +78,32 @@ const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({ refreshLocation, loca
 
     }, [])
 
+    const router = useRouter();
+
+    const onMarkerClick = useCallback((property: Property) => {
+
+        router.push(`/property/${property.slug}`)
+    }, []);
+
 
     useEffect(() => {
         onChange && onChange(filters)
 
-    }, [filters]) ; 
+    }, [filters]);
 
-    useEffect(() => { 
-    
+    useEffect(() => {
+
         if (value?.max_area) {
             setArea(value?.max_area)
-            return ; 
+            return;
         }
-        if (areaRange?.max_area) { 
+        if (areaRange?.max_area) {
             setArea(areaRange?.max_area)
         }
-    } , [areaRange?.max_area , value?.max_area])
+    }, [areaRange?.max_area, value?.max_area])
 
+
+ 
 
 
     return (
@@ -105,6 +115,7 @@ const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({ refreshLocation, loca
                 getGeoLocation={refreshLocation}
                 height="300px"
                 className="rounded-md overflow-hidden border-2 border-background ring-1 ring-border "
+                onClick={onMarkerClick}
 
             />
             {
@@ -114,21 +125,21 @@ const AdvancedFilters: React.FC<AdvancedFiltersProps> = ({ refreshLocation, loca
                         {t("area")} {area}
                     </Label>
                     <Slider
-                        defaultValue={[areaRange.max_area as number ]}
+                        defaultValue={[areaRange.max_area as number]}
                         max={areaRange.max_area}
                         min={areaRange.min_area}
                         step={10}
                         className={"w-full mt-4"}
-                        value={[area as number ]}
-                        onValueChange={(value : number[]) => { 
+                        value={[area as number]}
+                        onValueChange={(value: number[]) => {
                             setArea(value[0])
                         }}
-                        
-                        onBlur={() => { 
-                            setFilters({ 
-                                ...filters , 
-                                max_area : area 
-                            }) 
+
+                        onBlur={() => {
+                            setFilters({
+                                ...filters,
+                                max_area: area
+                            })
                         }}
                     />
                 </div>

@@ -490,7 +490,9 @@
             "property_type": "Property type",
             "property_type_placeholder": "Choose the property type",
             "operation_type": "Operation type",
-            "price": "Price"
+            "price": "Price" , 
+            "search" :"Search" , 
+            "cancel" : "Cancel"
         },
         "title": "Akarcom website <span>Your First Choice.</span>",
         "description": "Explore thousands of properties listed for sale and rent, all within your reach, through a reliable and easy-to-use real estate platform.",

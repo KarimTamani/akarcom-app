@@ -488,7 +488,10 @@
             "property_type": "نوع العقار",
             "property_type_placeholder": "اختر نوع العقار",
             "price": "السعر",
-            "operation_type": "نوع العملية"
+            "operation_type": "نوع العملية" , 
+        
+            "search" : "بحث" , 
+            "cancel" : "إلغاء"
         },
         "title": "موقع عقاركم <span>خياركم الأول.</span>",
         "description": "استكشف آلاف العقارات المعروضة للبيع والإيجار، جميعها في متناول يدك، من خلال منصة عقارية موثوقة وسهلة الاستخدام.",
@@ -580,7 +583,9 @@
             "agency": "وكالة",
             "individual": "فرد"
         },
-        "message": "راسل البائع"
+        "message": "راسل البائع" , 
+        "social_media" : "وسائل التواصل الاجتماعي" , 
+        "whatsapp": "WhatsApp" 
     },
     "chat": {
         "new_chat": {

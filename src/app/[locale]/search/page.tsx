@@ -5,7 +5,7 @@ import Filter from "../componenets/layout/filter";
 import AdvancedFilters from "./components/advanced-filters";
 import useSearchProperty, { SearchPropertyFilter } from "../hooks/use-search-property";
 import { useGeoLocation } from "@/hooks/use-get-location";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { Property } from "@/lib/property";
 import AdCard from "../componenets/ad-card";
 import usePropertyQuery from "../dashboard/ads/hooks/use-get-property-types";
@@ -49,7 +49,7 @@ const SearchPage: React.FC = ({ }) => {
 
     }, [location, isLoadingLocation, error, params]);
 
-    const { properties, isLoading : isLoadingPorprties, pageCount } = useSearchProperty(filters);
+    const { properties, isLoading: isLoadingPorprties, pageCount } = useSearchProperty(filters);
 
     const { propertyTypes, isLoading: isFetchingTypes } = usePropertyQuery(false);
 
@@ -108,15 +108,16 @@ const SearchPage: React.FC = ({ }) => {
         const offset = value.pageIndex * value.pageSize;
         const limit = value.pageSize;
 
-    
+
         onFilterChange({
-            ...filters , 
-            offset  , 
-            limit 
-        })  ; 
-        setPagination( value )
+            ...filters,
+            offset,
+            limit
+        });
+        setPagination(value)
     }
-    
+
+
 
     const isLoading = !(isLoadingLocation || isLoadingPorprties || isFetchingTypes)
 
@@ -133,9 +134,10 @@ const SearchPage: React.FC = ({ }) => {
                 </div>
                 <Filter
                     typeSelection={true}
-                    className="shadow-none"
+                    className="shadow-none "
                     value={filters}
                     onValueChange={onFilterChange}
+
                 />
                 <div className="w-full flex mt-4 gap-4 ">
                     <div className="hidden md:flex w-[360px] max-w-[360px] min-w-[360px] shrink-0  sticky top-0 flex flex-col">
@@ -144,6 +146,7 @@ const SearchPage: React.FC = ({ }) => {
                             properties={properties}
                             onChange={onFilterChange}
                             value={filters}
+                            refreshLocation = { refreshLocation }
                         />
                     </div>
                     <div className="w-full max-w-full overflow-hidden ">
@@ -155,7 +158,7 @@ const SearchPage: React.FC = ({ }) => {
                                     <AdCard property={property} orientation="horizontal" propertyTypes={propertyTypes} />
                                 </div>
                             ))
-                                 : (Array.from({ length: 10 }, (_, i) => <PropertySkeletonCard/>)) 
+                                : (Array.from({ length: 10 }, (_, i) => <PropertySkeletonCard />))
 
                         }
 

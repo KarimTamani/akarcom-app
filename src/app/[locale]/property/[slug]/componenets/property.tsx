@@ -23,7 +23,8 @@ import FacebookIcon from "@/components/icons/facebook";
 import InstagramIcon from "@/components/icons/instagram";
 import TikTokIcon from "@/components/icons/tiktok";
 import AdsList from "@/app/[locale]/componenets/ads-list";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useAuth } from "@/providers/auth-provider";
 
 
 
@@ -39,6 +40,7 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
     const [galleryImages, setGalleryImages] = useState<any[]>([]);
 
     const [liked, setLiked] = useState<boolean>(false);
+    const { user, openAuthDialog } = useAuth();
 
     useEffect(() => {
         setLiked(property != undefined && property.favorites?.length > 0);
@@ -97,6 +99,10 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
     const t = useTranslations("property");
 
     const onLike = useCallback(async (like: boolean) => {
+        if (!user) {
+            openAuthDialog("signin")
+            return;
+        }
         try {
             const response = await api.put('property/favorite/' + property?.id)
 
@@ -131,6 +137,16 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
         window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
     };
 
+    const router = useRouter() ; 
+
+    const openMassanger = () => {
+        if (!user) {
+            openAuthDialog("signin")
+            return;
+        }
+        router.push(`/dashboard/chats/?user_id=${property?.users.id}&property_id=${property?.id}`)
+        
+    }
     if (loading || !property)
         return <PropertySkeleton />;
     return (
@@ -319,7 +335,7 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                                     </div>
                                 }
                             </div>
-                            <Button className="w-full">
+                            <Button className="w-full" onClick={openMassanger}>
                                 {t("message")}
                                 <MessageCircleIcon />
                             </Button>

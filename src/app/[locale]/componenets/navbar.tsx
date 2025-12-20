@@ -98,7 +98,7 @@ const Navbar = () => {
                                 quality={100}
                             />
                         </Link>
-                        <div className=" w-full flex justify-center">
+                        <div className=" w-full hidden md:flex justify-center">
                             <NavigationMenu viewport={isMobile} >
                                 <NavigationMenuList className="flex-wrap ">
                                     <NavigationMenuItem>
@@ -157,7 +157,7 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    <div className="hidden items-center lg:flex gap-2">
+                    <div className="items-center flex gap-2">
                         <LanguageDropDown />
                         <Button size="icon" variant="ghost" onClick={toggleTheme} className="hover:!bg-accent/20">
                             {

@@ -15,18 +15,21 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, UserCredential } from "firebase/auth";
 
 
+import { auth, googleProvider } from "../../../firebaseConfig";
 interface SigninLayoutProps {
-    children: React.ReactNode
+    children: React.ReactNode;
+    dialogMode?: boolean
 }
 
-const SigninLayout: React.FC<SigninLayoutProps> = ({ children }) => {
+const SigninLayout: React.FC<SigninLayoutProps> = ({ children, dialogMode = false }) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<boolean>(false);
-    const {  login } = useAuth() ; 
-    const router = useRouter() ; 
+    const { login, oAuth, openAuthDialog } = useAuth();
+    const router = useRouter();
     const t = useTranslations("auth");
 
     const formSchema = z
@@ -54,8 +57,11 @@ const SigninLayout: React.FC<SigninLayoutProps> = ({ children }) => {
 
 
         try {
-            await login(data) ; 
-            router.replace("/dashboard/statistics")
+            await login(data);
+            if (!dialogMode)
+                router.replace("/dashboard/statistics")
+            else
+                openAuthDialog(false)
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 setError(true);
@@ -66,8 +72,36 @@ const SigninLayout: React.FC<SigninLayoutProps> = ({ children }) => {
     }
 
     const redirectSignUp = () => {
-        router.push('/auth/sign-up'); // redirect to /dashboard
+        if (!dialogMode)
+            router.push('/auth/sign-up'); // redirect to /dashboard
+        else
+            openAuthDialog("signup")
     };
+
+
+
+    const handleLogin = async (provider: typeof googleProvider) => {
+        try {
+
+            const result: UserCredential = await signInWithPopup(auth, provider);
+            const idToken = await result.user.getIdToken();
+            setIsLoading(true)
+            await oAuth(idToken);
+            setIsLoading(false)
+            if (!dialogMode)
+                router.replace("/dashboard/statistics")
+            else
+                openAuthDialog(false)
+        } catch (error: any) {
+            if (error.code === 'auth/account-exists-with-different-credential') {
+
+                console.log(error)
+
+
+            }
+        }
+    };
+
     return (
 
         <div className="w-[360px] h-fit flex  flex-col gap-4">
@@ -121,7 +155,7 @@ const SigninLayout: React.FC<SigninLayoutProps> = ({ children }) => {
             </Form>
 
             <Button
-                //     onClick={() => handleLogin(googleProvider)}
+                onClick={() => handleLogin(googleProvider)}
                 variant="outline"
                 size={"lg"}
             >
@@ -131,18 +165,21 @@ const SigninLayout: React.FC<SigninLayoutProps> = ({ children }) => {
                 <GoogleIcon />
             </Button>
             {
-                error && 
-            <Alert variant="destructive" className="bg-destructive/10 ">
-                <AlertDescription >
-                    <span className="text-center w-full">
-                        {t("errors.wrong_credentials")}
-                    </span>
-                </AlertDescription>
-            </Alert>
+                error &&
+                <Alert variant="destructive" className="bg-destructive/10 ">
+                    <AlertDescription >
+                        <span className="text-center w-full">
+                            {t("errors.wrong_credentials")}
+                        </span>
+                    </AlertDescription>
+                </Alert>
             }
+            {
+                /*
             <a className="text-primary text-sm hover:underline text-center" href="/auth/reset-password">
                 {t("forget_password")}
-            </a>
+            </a>*/
+            }
             <p className="text-center text-muted-foreground text-sm">
                 {t("dont_have_account")}
                 <span className="text-primary inline-block  mx-1 font-bold cursor-pointer" onClick={redirectSignUp}>

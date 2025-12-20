@@ -10,6 +10,8 @@ export interface Conversation {
   creator: User; // relation to the creator user
   user: User;    // relation to the other user
   messages: Message[];
+  property_id?: number ; 
+  property?: Property 
 }
 
 export interface Message {
@@ -25,4 +27,5 @@ export interface Message {
   users_messages_sender_idTousers: User;
   conversation_id: number;
   conversation: Conversation;
+
 }

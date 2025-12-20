@@ -46,7 +46,7 @@ const Footer: React.FC = ({ }) => {
 
                             </div>
                             <div className=" flex gap-2 flex-row-reverse ">
-                                <a href="https://www.facebook.com" target="_blank">
+                                <a href="https://www.facebook.com/share/1FoqpkpV3i/" target="_blank">
                                     <img
                                         width={24}
                                         height={24}
@@ -54,7 +54,7 @@ const Footer: React.FC = ({ }) => {
                                         alt="Facebook"
                                     />
                                 </a>
-                                <a href="https://www.instagram.com" target="_blank">
+                                <a href="https://www.instagram.com/akarcomdz?igsh=NWg2b3ZrNTQwZzRs" target="_blank">
                                     <img
                                         width={24}
                                         height={24}
@@ -62,7 +62,7 @@ const Footer: React.FC = ({ }) => {
                                         alt="Instagram"
                                     />
                                 </a>
-                                <a href="https://www.x.com" target="_blank">
+                                <a href="https://x.com/16Akarcom" target="_blank">
                                     <img
                                         width={24}
                                         height={24}
@@ -70,7 +70,7 @@ const Footer: React.FC = ({ }) => {
                                         alt="X"
                                     />
                                 </a>
-                                <a href="https://www.linkedin.com" target="_blank">
+                                <a href="https://www.linkedin.com/company/akarcom/" target="_blank">
                                     <img
                                         width={24}
                                         height={24}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+
 import MainFilter from "./componenets/layout/main-filter";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import AnimationContainer from "@/components/animation-container";
@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import AdsList from "./componenets/ads-list";
 import Features from "./componenets/features";
 import WishList from "./componenets/wishlist";
-import Footer from "./componenets/footer";
+
 
 export default function Home() {
   const t = useTranslations("home");

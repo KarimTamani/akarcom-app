@@ -14,17 +14,23 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
 import axios from "axios";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { GithubAuthProvider, GoogleAuthProvider, signInWithPopup, UserCredential } from "firebase/auth";
+
+import { auth, googleProvider } from "../../../firebaseConfig";
 
 interface SignupLayoutProps {
-    children: React.ReactNode
+    children: React.ReactNode;
+    dialogMode?: boolean;
+
+
 }
 
-const SignupLayout: React.FC<SignupLayoutProps> = ({ children }) => {
+const SignupLayout: React.FC<SignupLayoutProps> = ({ children, dialogMode = false }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | undefined>(undefined);
 
     const router = useRouter();
-    const { signup } = useAuth()
+    const { signup, oAuth, openAuthDialog } = useAuth()
     const t = useTranslations("auth");
     const formSchema = z
         .object({
@@ -58,8 +64,11 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({ children }) => {
         setIsLoading(true)
         setError(undefined);
         try {
-            await signup(data) ; 
-            router.replace("/dashboard/statistics")
+            await signup(data);
+            if (!dialogMode)
+                router.replace("/dashboard/statistics")
+            else
+                openAuthDialog(false)
         } catch (error) {
             if (axios.isAxiosError(error)) {
                 const data = error.response?.data;
@@ -74,7 +83,36 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({ children }) => {
     }
 
     const redirectSignIn = () => {
-        router.push('/auth/sign-in'); 
+        if (!dialogMode)
+            router.push('/auth/sign-in');
+        else
+            openAuthDialog("signin")
+
+    };
+
+
+
+    const handleLogin = async (provider: typeof googleProvider) => {
+        try {
+
+            const result: UserCredential = await signInWithPopup(auth, provider);
+            const idToken = await result.user.getIdToken();
+            setIsLoading(true)
+            await oAuth(idToken);
+            setIsLoading(false)
+            if (!dialogMode)
+                router.replace("/dashboard/statistics")
+            else
+
+                openAuthDialog(false)
+        } catch (error: any) {
+            if (error.code === 'auth/account-exists-with-different-credential') {
+
+                console.log(error)
+
+
+            }
+        }
     };
 
     return (
@@ -157,7 +195,7 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({ children }) => {
                 </form>
             </Form>
             <Button
-                //     onClick={() => handleLogin(googleProvider)}
+                onClick={() => handleLogin(googleProvider)}
                 variant="outline"
                 size={"lg"}
             >

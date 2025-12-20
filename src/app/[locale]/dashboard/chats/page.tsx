@@ -34,12 +34,13 @@ import axios from 'axios'
 import api from '@/services/api'
 import { EVENTS, getSocket } from '@/services/socket'
 import { useTranslations } from 'next-intl'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { PropertyType } from '@/lib/property'
+import useGetPropertyById from '../ads/hooks/use-get-property-by-id'
+import useGetUserById from '../../hooks/use-get-user-by-id'
+import LongText from '@/components/long-text'
 
 const PAGE_SIZE = 20;
-
-
-
-
 const DEFAULT_PAGINATION = {
   offset: 0,
   limit: PAGE_SIZE
@@ -53,9 +54,25 @@ const ChatPage: React.FC = ({ }) => {
   const { user: currentUser } = useAuth();
   const [sending, setSending] = useState<boolean>(false);
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
-
+  const searchParams = useSearchParams();
+  const [_, setSearchParams] = useSearchParams();
   const [pagination, setPagination] = useState(DEFAULT_PAGINATION)
   let { conversation: selectedConversation, loading: loadingConversation, setConversation, loadMore, count } = useGetConversation(selectedUser?.id);
+
+  const user_id = searchParams.get('user_id'); // For URL /dashboard?search=my-project
+  const property_id = searchParams.get('property_id') ? searchParams.get('property_id') : selectedConversation?.property_id;
+
+  const { property, isFetching: loadingProperty } = useGetPropertyById(property_id ? Number(property_id) : undefined)
+  const { user: seller, isFetching } = useGetUserById(user_id ? Number(user_id) : undefined)
+
+
+  const [mobileSelectedConversation, setMobileSelectedConversation] = useState<Conversation | null>(
+    null
+  )
+
+  useEffect(() => {
+    setSelectedUser(seller);
+  }, [seller])
 
   if (!selectedConversation && !loadingConversation && selectedUser) {
     selectedConversation = {
@@ -63,17 +80,19 @@ const ChatPage: React.FC = ({ }) => {
       created_by: currentUser?.id as number,
       user: selectedUser as User,
       creator: currentUser as User,
-      messages: []
-    }
+      messages: [],
+      property_id: property_id ? Number(property_id) : undefined,
+      property
+    } as Conversation
   };
 
+  useEffect(() => {
+    setMobileSelectedConversation(selectedConversation as Conversation | null)
+  }, [selectedConversation?.user_id])
   useEffect(() => {
     setMessage("");
   }, [selectedUser?.id])
 
-  const [mobileSelectedConversation, setMobileSelectedConversation] = useState<Conversation | null>(
-    null
-  )
   const [createConversationDialogOpened, setCreateConversationDialog] =
     useState(false)
 
@@ -84,12 +103,10 @@ const ChatPage: React.FC = ({ }) => {
   const currentMessage = selectedConversation?.messages.reduce(
     (acc: Record<string, Message[]>, obj) => {
       const key = format(obj.sent_at as Date, 'd MMM, yyyy')
-
       // Create an array for the category if it doesn't exist
       if (!acc[key]) {
         acc[key] = []
       }
-
       // Push the current object to the array
       acc[key].push(obj)
       return acc
@@ -97,12 +114,13 @@ const ChatPage: React.FC = ({ }) => {
     {}
   )
 
+  const router = useRouter();
   const openConversation = (user: User) => {
     setCreateConversationDialog(false);
     setSelectedUser(user);
-
+    if (user_id || property_id)
+      router.replace(`/dashboard/chats`);
   }
-
 
   useEffect(() => {
     if (!selectedUser?.id) return;
@@ -128,7 +146,8 @@ const ChatPage: React.FC = ({ }) => {
 
       const response = await api.post("/chat/message", {
         content: message,
-        receiver_id: selectedUser?.id
+        receiver_id: selectedUser?.id,
+        property_id: property ? property.id : undefined
       })
       if (response && response.status == 200) {
         const { data } = response.data;
@@ -136,6 +155,7 @@ const ChatPage: React.FC = ({ }) => {
         const previousMessages: Message[] = selectedConversation?.messages ?? [] as Message[]
         setConversation({
           ...selectedConversation,
+
           messages: [
             ...data.messages as Message[],
             ...previousMessages
@@ -155,7 +175,7 @@ const ChatPage: React.FC = ({ }) => {
     } finally {
       setSending(false);
     }
-  }, [setConversation, selectedUser, message, selectedConversation, addMessage]);
+  }, [setConversation, selectedUser, message, selectedConversation, addMessage, property]);
 
 
 
@@ -250,7 +270,7 @@ const ChatPage: React.FC = ({ }) => {
               </Button>
             </div>
 
-           
+
           </div>
 
           <ScrollArea className='-mx-3 h-full overflow-x-hidden overflow-y-scroll p-3'>
@@ -276,6 +296,10 @@ const ChatPage: React.FC = ({ }) => {
                     onClick={() => {
                       setSelectedUser(profile)
                       setMobileSelectedConversation(conversation)
+
+                      if (user_id || property_id)
+                        router.replace(`/dashboard/chats`);
+
                     }}
                   >
                     <div className='flex gap-2 '>
@@ -345,8 +369,19 @@ const ChatPage: React.FC = ({ }) => {
                   </div>
                 </div>
               </div>
+              {
+                property &&
+                <div className='flex items-center gap-2'>
+                  <img src={property.property_images.pop()?.image_url as string} className='w-12 h-12 rounded-sm' />
 
 
+                  <a className=' text-sm hover:underline cursor-pointer' href={'/property/' + property.slug} target='_blank'>
+                    <LongText>
+                      {property?.title}
+                    </LongText>
+                  </a>
+                </div>
+              }
             </div>
 
             {/* Conversation */}

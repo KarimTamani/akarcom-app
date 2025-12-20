@@ -30,11 +30,11 @@ interface MapProps {
     getGeoLocation?: () => void;
     height?: string;
     className?: string;
-    showMarker?: boolean; 
-    onClick? : ( property : Property) => void , 
+    showMarker?: boolean;
+    onClick?: (property: Property) => void,
 }
 
-const PropertiesMap: React.FC<MapProps> = ({ location, defaultZoom = 5, properties = [], getGeoLocation, className, height , onClick }) => {
+const PropertiesMap: React.FC<MapProps> = ({ location, defaultZoom = 5, properties = [], getGeoLocation, className, height, onClick }) => {
 
 
     const [zoom, setZoom] = useState<number>(defaultZoom);
@@ -78,7 +78,7 @@ const PropertiesMap: React.FC<MapProps> = ({ location, defaultZoom = 5, properti
                 }
                 {
                     properties.filter((property: Property) => property.latitude && property.longitude).map((property: Property) => (
-                        <PropertyMarker property={property} onClick={onClick}/>
+                        <PropertyMarker property={property} onClick={onClick} />
                     ))
                 }
                 <FitMarkers
@@ -159,15 +159,17 @@ function CustomZoomControl(props: any) {
             >
                 <ZoomOut size={18} />
             </Button>
-
-            <Button
-                onClick={props.getGeoLocation}
-                size={"icon"}
-                variant={"outline"}
-                className="backdrop-blur-sm bg-background/20 border-none hover:!bg-accent/20 shadow-md hover:text-primary"
-            >
-                <Navigation size={18} />
-            </Button>
+            {
+                props.getGeoLocation &&
+                <Button
+                    onClick={props.getGeoLocation}
+                    size={"icon"}
+                    variant={"outline"}
+                    className="backdrop-blur-sm bg-background/20 border-none hover:!bg-accent/20 shadow-md hover:text-primary"
+                >
+                    <Navigation size={18} />
+                </Button>
+            }
         </div>
     );
 }

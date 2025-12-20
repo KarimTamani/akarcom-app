@@ -6,6 +6,7 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { useRouter } from "@/i18n/navigation"
 import { Property, PropertyImage, PropertyType } from "@/lib/property"
 import { cn } from "@/lib/utils"
+import { useAuth } from "@/providers/auth-provider"
 import api from "@/services/api"
 import axios from "axios"
 import { BedDouble, HeartIcon, Layers2, MapPin, ShowerHead } from "lucide-react"
@@ -26,6 +27,7 @@ const AdCard: React.FC<Props> = ({ property, orientation = "vertical", propertyT
     const [firstImage, setFirstImage] = useState<PropertyImage | undefined>(undefined);
     const [propertyType, setPropertyType] = useState<PropertyType | undefined>(undefined);
 
+    const { user , openAuthDialog } = useAuth() ; 
 
     useEffect(() => {
         const flatTypes: PropertyType[] | undefined = propertyTypes?.flatMap((propertyType: PropertyType) => propertyType.other_property_types);
@@ -45,6 +47,11 @@ const AdCard: React.FC<Props> = ({ property, orientation = "vertical", propertyT
 
 
     const onLike = useCallback(async (like: boolean) => {
+        if ( ! user) { 
+            openAuthDialog("signin")
+            return ; 
+        } 
+
         try {
             const response = await api.put('property/favorite/' + property.id)
 
@@ -54,7 +61,7 @@ const AdCard: React.FC<Props> = ({ property, orientation = "vertical", propertyT
             }
         }
         setLiked(like);
-    }, [property]);
+    }, [property , user]);
 
     const router = useRouter();
     
@@ -151,7 +158,7 @@ const AdCard: React.FC<Props> = ({ property, orientation = "vertical", propertyT
                             <Button
                                 variant={"default"}
                                 className="w-full dark:text-white"
-                                onClick={() => router.push(`property/${property.slug}`)}
+                                onClick={() => router.push(`/property/${property.slug}`)}
                             >
                                 {t("view_details")}
 
