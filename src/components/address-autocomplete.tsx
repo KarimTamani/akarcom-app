@@ -17,9 +17,9 @@ export interface Location {
 
 
 
-interface Props { 
-    onChange? : ( location : Location | undefined) => void ; 
-} 
+interface Props {
+    onChange?: (location: Location | undefined) => void;
+}
 
 const AddressAutoComplete: React.FC<Props> = ({ onChange }) => {
 
@@ -29,17 +29,19 @@ const AddressAutoComplete: React.FC<Props> = ({ onChange }) => {
 
     const [locations, setLocations] = useState<Location[]>([])
 
+    const [loading, setLoading] = useState<boolean>(false);
     useEffect(() => {
-        if (searchQuery.trim().length == 0) 
-            return ;         
+        if (searchQuery.trim().length == 0)
+            return;
         (async () => {
+            setLoading(true) ; 
             const response: any = await geopify(searchQuery)
             if (response?.features) {
                 setLocations(response.features.map((feature: any) => {
-                
-                    const address: string = feature.properties.formatted + (feature.properties.postcode ? (" " + `(${feature.properties.postcode})`) : "") 
+
+                    const address: string = feature.properties.formatted + (feature.properties.postcode ? (" " + `(${feature.properties.postcode})`) : "")
                     return {
-                        id : address,
+                        id: address,
                         address,
                         latitude: feature.properties.lat,
                         longitude: feature.properties.lon,
@@ -48,13 +50,14 @@ const AddressAutoComplete: React.FC<Props> = ({ onChange }) => {
                     } as Location
                 }))
             }
+            setLoading(false) ; 
         })()
     }, [searchQuery])
 
-    const onSelectionChange = ( address : string) => {
+    const onSelectionChange = (address: string) => {
 
-        const location : Location | undefined = locations.find((location : Location) => location.id == address) ; 
-        onChange && onChange (location)
+        const location: Location | undefined = locations.find((location: Location) => location.id == address);
+        onChange && onChange(location)
     }
 
     const t = useTranslations("components.location_picker")
@@ -64,10 +67,11 @@ const AddressAutoComplete: React.FC<Props> = ({ onChange }) => {
                 items={locations}
                 onQueryChange={setQuery}
                 label="address"
-                placeholder={ t("placeholder")}
+                placeholder={t("placeholder")}
                 onSelectionChange={onSelectionChange}
                 className="overflow-hidden bg-transparent hover:bg-transparent "
-            > 
+                isLoading={loading}
+            >
 
             </Combobox>
         </div>

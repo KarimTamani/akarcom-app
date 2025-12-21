@@ -104,7 +104,7 @@ const SigninLayout: React.FC<SigninLayoutProps> = ({ children, dialogMode = fals
 
     return (
 
-        <div className="w-[360px] h-fit flex  flex-col gap-4">
+        <div className={cn( " h-fit flex  flex-col gap-4 "  , !dialogMode && "w-[360px]" )}>
             <div className="text-center flex-col space-y-2">
 
                 <h1 className="text-3xl font-semibold ">

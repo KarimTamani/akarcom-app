@@ -149,9 +149,9 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
     }
     if (loading || !property)
         return <PropertySkeleton />;
-    return (
 
-        <div className="h-full flex  flex-col  gap-2  " >
+    return (
+        <div className="h-full flex flex-col gap-2" >
             <div className='mb-2 flex flex-wrap items-center justify-between space-y-2 '>
                 <div>
                     <h2 className='text-2xl font-bold tracking-tight'>{property.title} </h2>
@@ -213,11 +213,7 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                             <Badge variant={"outline"}>
                                 <University className="text-primary" />
                                 {t("schools")} {property.schools}
-                            </Badge>
-                            <Badge variant={"outline"}>
-                                <Layers2 className="text-primary" />
-                                {t("area")} {property.area_sq_meters}
-                            </Badge>
+                            </Badge> 
                         </div>
                         {
                             (property.ownership_book || property.furnished) && <>
@@ -287,7 +283,7 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                                 </Label>
                             }
                             <Label className="text-primary font-semibold text-md">
-                                {property.price} {t("currency")} / {t(property.rent_period as string)}
+                                {property.price} {t("currency")} { property.add_type == "rent" ? "/" + t(property.rent_period as string) : "" } 
                             </Label>
                         </div>
 
