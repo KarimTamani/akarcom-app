@@ -490,10 +490,9 @@
             "property_type": "Type de bien",
             "property_type_placeholder": "Choisir le type de bien",
             "operation_type": "Type d’opération",
-            "price": "Prix" , 
-            
-            "search" : "Recherche" , 
-            "cancel" : "Annuler"
+            "price": "Prix",
+            "search": "Recherche",
+            "cancel": "Annuler"
         },
         "title": "Site Akarcom <span>Votre premier choix.</span>",
         "description": "Explorez des milliers de biens à vendre et à louer grâce à une plateforme immobilière fiable et facile à utiliser.",
@@ -537,7 +536,9 @@
             "join": "Rejoignez plus de {num_users} agences immobilières qui utilisent nos services !"
         },
         "footer": {
-            "copyright": "© {year} Akarcom. Tous droits réservés."
+            "copyright": "© {year} Akarcom. Tous droits réservés.",
+            "privacy": "Politique de confidentialité",
+            "terms": "Conditions d’utilisation"
         }
     },
     "search": {

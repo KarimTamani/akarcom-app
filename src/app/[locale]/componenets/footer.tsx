@@ -35,6 +35,16 @@ const Footer: React.FC = ({ }) => {
 
                     quality={100}
                 />
+                
+                <MaxWidthWrapper className="flex items-end w-full gap-2 text-muted-foreground">
+                    <a href="/privacy-policy">
+                        {t("privacy")}
+                    </a>
+                    <a href="/terms">
+                        {t("terms")}
+                    </a>
+                </MaxWidthWrapper>
+
                 <div className="w-full border-1 mt-10">
                     <MaxWidthWrapper>
                         <div className="flex items-center p-2 text-muted-foreground justify-between">

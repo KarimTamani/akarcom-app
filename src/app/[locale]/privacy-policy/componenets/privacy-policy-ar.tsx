@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 export default function PrivacyPolicyAR() {
   return (
     <section dir="rtl" className="py-10">
-      <Card className="w-full mx-auto border-none shadow-none ">
+      <Card className="w-full mx-auto border-none shadow-none">
         <CardContent className="space-y-6 p-6 text-right">
           <header className="space-y-2">
             <h1 className="text-3xl font-bold">سياسة الخصوصية</h1>

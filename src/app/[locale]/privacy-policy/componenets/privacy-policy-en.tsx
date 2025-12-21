@@ -13,7 +13,7 @@ export default function PrivacyPolicyEN() {
           </header>
 
           <p>
-            Welcome to <strong>Aqarcom</strong>, your trusted platform for
+            Welcome to <strong>Akarcom</strong>, your trusted platform for
             searching, buying, selling, and renting real estate. We place great
             importance on your privacy and the protection of your personal data.
             This document explains how we collect, use, store, and share your
@@ -161,7 +161,7 @@ export default function PrivacyPolicyEN() {
           <section>
             <h2 className="text-xl font-semibold mb-2">Our Commitment</h2>
             <p>
-              At <strong>Aqarcom</strong>, we believe that your privacy is a core
+              At <strong>Akarcom</strong>, we believe that your privacy is a core
               part of your real estate experience. We are committed to using
               your data solely to serve you and to provide a secure, reliable,
               and efficient real estate platform.

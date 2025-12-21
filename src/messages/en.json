@@ -536,7 +536,9 @@
             "join": "Join over {num_users} real estate agencies that use our services!"
         },
         "footer": {
-            "copyright": "© {year} Akarcom. All rights reserved."
+            "copyright": "© {year} Akarcom. All rights reserved." , 
+            "privacy" : "Privacy policy" , 
+            "terms" : "Terms & conditions" 
         }
     },
     "search": {

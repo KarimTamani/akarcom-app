@@ -100,8 +100,8 @@
         "help": "مركز المساعدة",
         "ads_create": "إعلان جديد",
         "edit_ad": "تعديل الإعلان",
-        "favorite": "المفضلة" , 
-        "logout" : "تسجيل الخروج"
+        "favorite": "المفضلة",
+        "logout": "تسجيل الخروج"
     },
     "statistics": {
         "welcome": "مرحبًا",
@@ -488,10 +488,9 @@
             "property_type": "نوع العقار",
             "property_type_placeholder": "اختر نوع العقار",
             "price": "السعر",
-            "operation_type": "نوع العملية" , 
-        
-            "search" : "بحث" , 
-            "cancel" : "إلغاء"
+            "operation_type": "نوع العملية",
+            "search": "بحث",
+            "cancel": "إلغاء"
         },
         "title": "موقع عقاركم <span>خياركم الأول.</span>",
         "description": "استكشف آلاف العقارات المعروضة للبيع والإيجار، جميعها في متناول يدك، من خلال منصة عقارية موثوقة وسهلة الاستخدام.",
@@ -539,7 +538,9 @@
             "join": "انضم إلى أكثر من {num_users} وكالة عقارية تستخدم خدماتنا!"
         },
         "footer": {
-            "copyright": "© {year} عقاركم. جميع الحقوق محفوظة."
+            "copyright": "© {year} عقاركم. جميع الحقوق محفوظة.",
+            "privacy": "سياسة الخصوصية",
+            "terms": "شروط الاستخدام"
         }
     },
     "search": {
@@ -583,9 +584,9 @@
             "agency": "وكالة",
             "individual": "فرد"
         },
-        "message": "راسل البائع" , 
-        "social_media" : "وسائل التواصل الاجتماعي" , 
-        "whatsapp": "WhatsApp" 
+        "message": "راسل البائع",
+        "social_media": "وسائل التواصل الاجتماعي",
+        "whatsapp": "WhatsApp"
     },
     "chat": {
         "new_chat": {

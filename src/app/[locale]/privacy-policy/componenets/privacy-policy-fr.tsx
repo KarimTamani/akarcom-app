@@ -15,7 +15,7 @@ export default function PrivacyPolicyFR() {
           </header>
 
           <p>
-            Bienvenue sur <strong>Aqarcom</strong>, votre plateforme de confiance
+            Bienvenue sur <strong>Akarcom</strong>, votre plateforme de confiance
             pour la recherche, l’achat, la vente et la location de biens
             immobiliers. Nous accordons une grande importance à votre vie privée
             et à la protection de vos données personnelles. Ce document explique
@@ -173,7 +173,7 @@ export default function PrivacyPolicyFR() {
           <section>
             <h2 className="text-xl font-semibold mb-2">Notre engagement</h2>
             <p>
-              Chez <strong>Aqarcom</strong>, nous considérons que votre vie privée
+              Chez <strong>Akarcom</strong>, nous considérons que votre vie privée
               est essentielle à votre expérience immobilière. Nous nous engageons
               à utiliser vos données uniquement pour vous servir et vous offrir
               une plateforme sécurisée, fiable et efficace.

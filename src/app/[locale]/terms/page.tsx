@@ -1,29 +1,29 @@
 import MaxWidthWrapper from "@/components/max-width-wrapper";
-import PrivacyPolicyAR from "./componenets/privacy-policy-ar";
-import PrivacyPolicyFR from "./componenets/privacy-policy-fr";
-import PrivacyPolicyEN from "./componenets/privacy-policy-en";
+import TermsConditionsAR from "./componenets/terms-ar";
+import TermsConditionsFR from "./componenets/terms-fr";
+import TermsConditionsEN from "./componenets/terms-en";
 
 type Props = {
     params: { locale: 'en' | 'fr' | 'ar' }
 }
 
-export default function PrivacyPolicy({ params }: Props) {
+export default function Terms({ params }: Props) {
  
 
     return (
         <MaxWidthWrapper>
             {
                 params.locale == "ar" &&
-                <PrivacyPolicyAR />
+                <TermsConditionsAR />
             }
             {
                 params.locale == "fr" &&
-                <PrivacyPolicyFR />
+                <TermsConditionsFR />
 
             }
             {
                 params.locale == "en" &&
-                <PrivacyPolicyEN />
+                <TermsConditionsEN />
 
             }
 
