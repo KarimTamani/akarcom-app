@@ -103,7 +103,8 @@
         "ads_create": "Nouvelle annonce",
         "edit_ad": "Modifier l’annonce",
         "favorite": "Favoris",
-        "logout": "Déconnexion"
+        "logout": "Déconnexion" , 
+        "subscriptions" : "Abonnements" 
     },
     "statistics": {
         "welcome": "Bienvenue",

@@ -14,15 +14,10 @@ const Footer: React.FC = ({ }) => {
     const currentDate = new Date();
     const t = useTranslations("home.footer")
 
-
-
     const pathname = usePathname();
 
     if (pathname.includes("dashboard"))
         return;
-
-
-
 
     return (
         <AnimationContainer delay={0.1} className="pt-10">

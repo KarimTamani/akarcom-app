@@ -101,7 +101,8 @@
         "ads_create": "إعلان جديد",
         "edit_ad": "تعديل الإعلان",
         "favorite": "المفضلة",
-        "logout": "تسجيل الخروج"
+        "logout": "تسجيل الخروج" , 
+        "subscriptions" : "الاشتراكات"
     },
     "statistics": {
         "welcome": "مرحبًا",

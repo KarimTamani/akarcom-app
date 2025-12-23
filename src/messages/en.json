@@ -103,7 +103,8 @@
         "ads_create": "New ad",
         "edit_ad": "Edit ad",
         "favorite": "Favorite",
-        "logout": "Log out"
+        "logout": "Log out",
+        "subscriptions": "Subscriptions"
     },
     "statistics": {
         "welcome": "Welcome",
@@ -490,9 +491,9 @@
             "property_type": "Property type",
             "property_type_placeholder": "Choose the property type",
             "operation_type": "Operation type",
-            "price": "Price" , 
-            "search" :"Search" , 
-            "cancel" : "Cancel"
+            "price": "Price",
+            "search": "Search",
+            "cancel": "Cancel"
         },
         "title": "Akarcom website <span>Your First Choice.</span>",
         "description": "Explore thousands of properties listed for sale and rent, all within your reach, through a reliable and easy-to-use real estate platform.",
@@ -536,9 +537,9 @@
             "join": "Join over {num_users} real estate agencies that use our services!"
         },
         "footer": {
-            "copyright": "© {year} Akarcom. All rights reserved." , 
-            "privacy" : "Privacy policy" , 
-            "terms" : "Terms & conditions" 
+            "copyright": "© {year} Akarcom. All rights reserved.",
+            "privacy": "Privacy policy",
+            "terms": "Terms & conditions"
         }
     },
     "search": {
@@ -652,6 +653,62 @@
             "submitted_by": "Submitted by",
             "answered_by": "Answered by",
             "answer": "Answer"
+        }
+    },
+    "subscriptions": {
+        "title": "Subscriptions",
+        "description": "Manage user subscription and subscription plans",
+        "create_action": "New plan",
+        "create_plan": {
+            "title": "Create subscription plan",
+            "edit_title" : "Edit subscription plan" , 
+            
+            "description": "create a new subscription plan with new name , price and features",
+            "create": "Create",
+            "edit" : "Edit" , 
+            "name": "Plan name",
+            "name_placeholder": "Give the plan a name...",
+            "plan_description": "Description",
+            "plan_description_placeholder": "description...",
+            "price": "Price",
+            "price_placeholder": "Plan price (DA)",
+            "max_properties": "Max published property",
+            "max_properties_placeholder": " Max properties",
+            "features": "Features",
+            "features_placeholder": "Select features...",
+            "errors": {
+                "name_required": "Plan name is required",
+                "price": "Price must be a positive integer",
+                "property_min": "Min 1 property"
+            } , 
+            "toast" : {
+                "create" : {
+                    "title" : "Plan created" , 
+                    "description" : "The subscription plan has been created successfully."
+                } , 
+                "edit" : { 
+                    "title" :  "Plan updated" , 
+                    "description" : "Your subscription plan was updated successfully."
+                }
+            }
+        },
+        "features": {
+            "properties" : "Properties",
+            "faqs" : "FAQs",
+            "tickets" : "Tickets",
+            "chat" : "Chat",
+            "virtual_visit" : "Virtual visit"
+        } , 
+        "subscriptions" : "Subscriptions" , 
+        "plans" : "Plans" , 
+        "plans_columns" : { 
+            "name" : "Plan name" , 
+            "price" : "Price (DZD)" , 
+            "max_properties" : "Max Property" , 
+            "features" : "Features" , 
+            "is_active" : "Active" , 
+            "actions" : "Actions", 
+            "created_at" : "Created at"
         }
     }
 }

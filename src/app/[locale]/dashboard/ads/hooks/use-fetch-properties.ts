@@ -27,7 +27,6 @@ const useFetchProperties = (pagination?: PaginationState, filters?: PropertyFetc
 
     const { user } = useAuth();
 
-
     const fetch = useCallback(async () => {
 
         if (!pagination)
@@ -67,9 +66,7 @@ const useFetchProperties = (pagination?: PaginationState, filters?: PropertyFetc
     }, [pagination, filters, user])
 
     useEffect(() => {
-
         fetch()
-
     }, [pagination, filters])
 
 

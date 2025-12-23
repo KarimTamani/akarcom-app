@@ -3,7 +3,7 @@
 
 import type { SidebarData } from '../types';
 import { useMemo } from 'react';
-import { FileSpreadsheetIcon, GitCompareArrowsIcon, HeadsetIcon, HeartIcon, HouseIcon, MessageSquareTextIcon, SettingsIcon, UserIcon } from 'lucide-react';
+import { FileSpreadsheetIcon, GitCompareArrowsIcon, HeadsetIcon, HeartIcon, HouseIcon, MessageSquareTextIcon, SettingsIcon, UserIcon, WalletIcon } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useAuth } from '@/providers/auth-provider';
 import { UserType } from '@/lib/user';
@@ -45,7 +45,13 @@ export const useSidebarData = () => {
             title: t("favorite"),
             url: '/dashboard/favorite',
             icon: HeartIcon,
-             label: "favorite",
+            label: "favorite",
+        },
+        {
+            title: t("subscriptions"),
+            url: '/dashboard/subscriptions',
+            icon: WalletIcon,
+            label: "subscriptions",
         },
     ];
 
@@ -65,13 +71,13 @@ export const useSidebarData = () => {
                         title: t("account"),
                         url: '/dashboard/account',
                         icon: SettingsIcon,
-                        label : "account"
+                        label: "account"
                     },
                     {
                         title: t("help"),
                         url: '/dashboard/help',
                         icon: HeadsetIcon,
-                        label : "help"
+                        label: "help"
                     },
 
                 ],
