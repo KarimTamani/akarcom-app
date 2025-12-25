@@ -393,6 +393,10 @@
                 "needs_renovation": "Needs Renovation",
                 "damaged": "Damaged"
             },
+            "wilaya_id" : "Wilaya" , 
+            "wilaya_placeholder" : "Select wilaya..." , 
+            "commune_id" : "Commune" , 
+            "commune_placeholder" : "Select commune..." , 
             "virtual_visit": "Virtual visit",
             "virtual_visit_description": "Please upload the virtual visit",
             "virtual_visit_placeholder": "Drag and drop the .zip file of the virtual visit ",
@@ -418,7 +422,9 @@
                 "project_plan_invalid": "Project plan URL must be valid",
                 "ownership_book_invalid": "Ownership book must be a boolean",
                 "property_images_required": "At least one image is required",
-                "property_tags_invalid": "Property tags must be a valid array"
+                "property_tags_invalid": "Property tags must be a valid array" , 
+                "wilaya_required" : "Wilaya is required" , 
+                "commune_required" : "Commune is required"
             },
             "toast": {
                 "success": {

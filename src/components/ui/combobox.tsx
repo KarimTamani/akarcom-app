@@ -33,12 +33,14 @@ interface ComboboxProps {
   className?: string;
   isDisabled?: boolean;
   isLoading?: boolean;
+
+  onBlur? : any
 }
 
 
 export const Combobox = (props: ComboboxProps) => {
 
-  const { items, label = "label", placeholder, onSelectionChange, selectedItem, className, isDisabled, onQueryChange, isLoading } = props;
+  const { items, label = "label", placeholder, onSelectionChange, selectedItem, className, isDisabled, onQueryChange, isLoading , onBlur} = props;
   const [query, setQuery] = React.useState<string>("");
   const ref = React.useRef<HTMLDivElement>(null);
   const [width, setWidth] = React.useState<number | undefined>(undefined);
@@ -46,6 +48,8 @@ export const Combobox = (props: ComboboxProps) => {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState<string | undefined>("")
 
+
+  
   React.useEffect(() => {
     setValue(selectedItem);
   }, [selectedItem]);
@@ -92,6 +96,7 @@ export const Combobox = (props: ComboboxProps) => {
           role="combobox"
           aria-expanded={open}
           className={cn("justify-between w-full truncate whitespace-nowrap", className)}
+          onBlur={onBlur}
         >
           {value
             ? <LongText>{value}</LongText>
@@ -105,9 +110,9 @@ export const Combobox = (props: ComboboxProps) => {
       }} >
         <Command
 
-          filter={(value, search) => {
+          filter={onQueryChange ? (value, search) => {
             return 1
-          }}
+          } : undefined}
         >
           <CommandInput placeholder={placeholder ? placeholder : "Select items..."}
             onValueChange={setQuery}

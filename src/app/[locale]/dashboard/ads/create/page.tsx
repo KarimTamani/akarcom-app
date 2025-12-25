@@ -10,7 +10,7 @@ import FormRow from "@/components/form-row";
 import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { MinimalTiptap } from "@/components/ui/shadcn-io/minimal-tiptap";
-import { PropertyImage, PropertyPropertyTag, PropertyType } from "@/lib/property";
+import { Commune, PropertyImage, PropertyPropertyTag, PropertyType, Wilaya } from "@/lib/property";
 import usePropertyQuery from "../hooks/use-get-property-types";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -31,6 +31,8 @@ import useGetPropertyById from "../hooks/use-get-property-by-id";
 import SkeletonPropertyForm from "../components/property-form-skeleton";
 import mime from 'mime-types';
 import { useRouter } from "next/navigation";
+import useLocations from "@/hooks/use-locations";
+import { Combobox } from "@/components/ui/combobox";
 
 
 interface PropertyFormProps {
@@ -41,7 +43,7 @@ const CreatePropertyPage: React.FC<PropertyFormProps> = ({ id }) => {
 
     const { propertyTypes, propertyTags, isLoading: isFetchingTypes } = usePropertyQuery();
 
-
+    const [wilayaDefaultValue , setWialayaDefaultValue] = useState<Wilaya | undefined>( undefined)
     const isEdit = id !== undefined;
     const [mount, setMount] = useState<boolean>(false);
     const { property, isFetching: isFetchingProperty } = useGetPropertyById(id);
@@ -52,8 +54,9 @@ const CreatePropertyPage: React.FC<PropertyFormProps> = ({ id }) => {
 
     type CreatePropertyInput = z.infer<typeof createPropertySchema>
     const router = useRouter();
-    const isFetching = isFetchingTypes || isFetchingProperty
+
     const saveChanges = useCallback(async (propertyInput: CreatePropertyInput) => {
+
         setLoading(true);
         try {
             if (propertyInput.image_360_url && propertyInput.image_360_url instanceof File) {
@@ -132,6 +135,29 @@ const CreatePropertyPage: React.FC<PropertyFormProps> = ({ id }) => {
     const latitude = useWatch({ control: form.control, name: "latitude" });
     const longitude = useWatch({ control: form.control, name: "longitude" });
     const ad_type = useWatch({ control: form.control, name: "add_type" });
+    const wilaya_id = useWatch({ control: form.control, name: "wilaya_id" });
+    const commune_id = useWatch({ control: form.control, name: "commune_id" });
+
+    const { wilayas, communes, isLoading: loadingWilayas, loadingCommune } = useLocations(wilaya_id);
+
+    useEffect(() => {
+        form.resetField("commune_id")
+    }, [wilaya_id]);
+
+    useEffect(() => {
+        if (!commune_id)
+            return; 
+        const commune: Commune | undefined = communes.find((commune: Commune) => commune.id == commune_id)
+
+        if (commune) {
+            form.setValue("postal_code", commune.postal_code)
+        }
+
+    }, [commune_id, communes])
+
+
+    const isFetching = isFetchingTypes || isFetchingProperty || loadingWilayas
+
 
     let coordinates = undefined;
 
@@ -141,17 +167,22 @@ const CreatePropertyPage: React.FC<PropertyFormProps> = ({ id }) => {
             longitude
         }
     }
-    useEffect(() => { 
-        if (isEdit && property && !isFetching) {
+    useEffect(() => {
+        if (isEdit && property && !isFetching) { 
+            
+            setWialayaDefaultValue(wilayas.find(( wilaya : Wilaya) => wilaya.id == property.commune?.wilaya_id)) ; 
+
             form.reset({
                 ...property,
-                property_tags: property.property_property_tags.map((property_property_tag: PropertyPropertyTag) => property_property_tag.property_tags)
+                property_tags: property.property_property_tags.map((property_property_tag: PropertyPropertyTag) => property_property_tag.property_tags) , 
+                wilaya_id : wilayas.find(( wilaya : Wilaya) => wilaya.id == property.commune?.wilaya_id)?.id 
             });
+
             setMount(true)
         } else if (!isEdit && !isFetching) {
             setMount(true);
         }
-    }, [isEdit, property, isFetching]);
+    }, [isEdit, property, isFetching , wilayas]);
 
 
 
@@ -173,9 +204,12 @@ const CreatePropertyPage: React.FC<PropertyFormProps> = ({ id }) => {
             }) : []
     }, [property, isEdit])
 
+
+ 
     if (!mount)
         return <SkeletonPropertyForm />;
 
+ 
     return (
         <div className="flex flex-col gap-4 p-4 ">
             <Form {...form} >
@@ -532,6 +566,60 @@ const CreatePropertyPage: React.FC<PropertyFormProps> = ({ id }) => {
                                     </FormItem>
                                 )}
                             />
+
+                            <div className="flex gap-4">
+                                <div className="w-full">
+                                    <FormField
+                                        control={form.control}
+                                        name='wilaya_id'
+                                        render={({ field }) => (
+                                            <FormItem >
+                                                <FormLabel>{t("wilaya_id")}</FormLabel>
+                                                <Combobox
+                                                    items={wilayas}
+                                                    label="name" 
+                                                    selectedItem={wilayaDefaultValue?.name}
+                                                    placeholder={t("wilaya_placeholder")}
+                                                    onSelectionChange={(name: string) => {
+                                                        field.onChange(wilayas.find((wilaya: Wilaya) => wilaya.name == name)?.id)
+                                                    }}
+                                                    onBlur={field.onBlur}
+                                                />
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                                <div className="w-full">
+                                    <FormField
+                                        control={form.control}
+                                        name='commune_id'
+                                        render={({ field }) => (
+                                            <FormItem >
+                                                <FormLabel>{t("commune_id")}</FormLabel>
+                                                <FormControl>
+
+                                                    <Combobox
+                                                        items={communes}
+
+                                                        selectedItem={communes.find((commune: Commune) => commune.id == field.value)?.name}
+                                                        label="name"
+                                                        placeholder={t("commune_placeholder")}
+                                                        onSelectionChange={(name: string) => {
+                                                            field.onChange(communes.find((commune: Commune) => commune.name == name)?.id)
+                                                        }}
+                                                        onBlur={field.onBlur}
+                                                        isLoading={wilaya_id !== undefined && loadingCommune}
+                                                        isDisabled={!wilaya_id}
+                                                    />
+
+                                                </FormControl>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                </div>
+                            </div>
                             <div className="flex gap-4">
                                 <div className="w-full">
                                     <FormField
@@ -639,7 +727,7 @@ const CreatePropertyPage: React.FC<PropertyFormProps> = ({ id }) => {
                                                 }
                                             }}
                                             maxSize={1024 * 1024 * 1024}
-                                            placeholder={property?.image_360_url ? 
+                                            placeholder={property?.image_360_url ?
                                                 <a href={property.image_360_url as string} target="_blank" className="underline">
                                                     {property.image_360_url as string}
                                                 </a> : t("virtual_visit_placeholder")}

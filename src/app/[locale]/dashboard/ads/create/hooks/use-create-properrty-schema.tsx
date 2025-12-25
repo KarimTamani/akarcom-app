@@ -51,6 +51,8 @@ const useCreatePropertySchema = () => {
             latitude: z.coerce.number().nullable().optional(),
             longitude: z.coerce.number().nullable().optional(),
             address: z.string().min(1, t("address_required")),
+            wilaya_id : z.number(t("wilaya_required")) , 
+            commune_id : z.number(t("commune_required")) , 
             city: z.string().min(1, t("city_required")),
             postal_code: z.string().optional(),
             area_sq_meters: z.coerce.number().nullable().optional(),

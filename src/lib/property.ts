@@ -61,7 +61,9 @@ export interface Property {
   views : number
   users: User
   property_property_tags :PropertyPropertyTag[] ; 
-  favorites : any[]
+  favorites : any[] ; 
+  commune_id: number; 
+  commune? : Commune
 }
 
 
@@ -72,6 +74,22 @@ export interface PropertyView {
 }
 
 
+export interface Wilaya { 
+  id : number ; 
+  name : string ; 
+  name_ar : string ; 
+  communes : Commune[] 
+} 
+
+
+export interface Commune { 
+  id : number ; 
+  name : string ; 
+  name_ar : string ; 
+  wilaya_id : number ; 
+  postal_code : string ; 
+  wilaya : Wilaya ; 
+}
 
 export enum PropertyStatus {
   draft = "draft",
