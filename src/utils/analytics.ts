@@ -8,7 +8,7 @@ export function toLocalISODate(date: Date) {
 
 
 export function getGrowth(a: number, b: number): number | null {
-  return b ? (a - b) / b : null
+  return b ? Number(((a - b) / b).toFixed(2))  : null
 }
 
 

@@ -37,6 +37,8 @@ import { defaultPagination, useProperty } from '../context/property-context'
 import { DataTablePagination } from '@/components/layout/table/data-table-pagination'
 import { PropertyDataTableToolbar } from './property-data-table-toolbar'
 import { useDebounce } from '@/hooks/use-debounce'
+import { useIsMobile } from '@/hooks/use-mobile'
+import PropertyMobileCard from './property-mobile-card'
 
 declare module '@tanstack/react-table' {
     interface ColumnMeta<TData extends RowData, TValue> {
@@ -55,7 +57,7 @@ interface DataTableProps {
 
 // 👇 Add forwardRef here
 export const PropertiesTable = forwardRef(function PropertiesTable(
-    {  }: DataTableProps,
+    { }: DataTableProps,
     ref
 ) {
 
@@ -69,7 +71,7 @@ export const PropertiesTable = forwardRef(function PropertiesTable(
         status: "all"
     })
     const [sorting, setSorting] = useState<SortingState>([])
-    const { properties, setFilters, pageCount , isLoading } = useProperty();
+    const { properties, setFilters, pageCount, isLoading } = useProperty();
     const searchFilters = useDebounce(columnFilters);
     const columns: ColumnDef<Property>[] = usersColumns(propertyTypes);
 
@@ -107,6 +109,9 @@ export const PropertiesTable = forwardRef(function PropertiesTable(
         pageCount: pageCount ?? 1,
     });
 
+
+    const isMobile = useIsMobile();
+
     return (
         <div className='space-y-4'>
             <PropertyDataTableToolbar
@@ -114,65 +119,84 @@ export const PropertiesTable = forwardRef(function PropertiesTable(
                 onChange={setColumnFilters}
                 table={table}
             />
-            <div className='overflow-hidden rounded-md border'>
-                <Table>
-                    <TableHeader>
-                        {table.getHeaderGroups().map((headerGroup) => (
-                            <TableRow key={headerGroup.id} className='group/row'>
-                                {headerGroup.headers.map((header) => (
-                                    <TableHead
-                                        key={header.id}
-                                        colSpan={header.colSpan}
-                                        className={header.column.columnDef.meta?.className ?? ''}
-                                    >
-                                        {header.isPlaceholder
-                                            ? null
-                                            : flexRender(header.column.columnDef.header, header.getContext())}
-                                    </TableHead>
-                                ))}
-                            </TableRow>
-                        ))}
-                    </TableHeader>
-                    <TableBody>
-                        {isLoading ? (
-                            Array.from({ length: 10 }).map((_, i) => (
-                                <TableRow key={i}>
-                                    <TableCell><Skeleton className='h-8 w-[150px]' /></TableCell>
-                                    <TableCell><Skeleton className='h-8 w-[100px]' /></TableCell>
-                                    <TableCell><Skeleton className='h-8 w-[120px]' /></TableCell>
-                                    <TableCell><Skeleton className='h-8 w-[120px]' /></TableCell>
-                                    <TableCell><Skeleton className='h-8 w-[120px]' /></TableCell>
-                                </TableRow>
-                            ))
-                        ) : table.getRowModel().rows?.length ? (
-                            table.getRowModel().rows.map((row) => (
-                                <TableRow
-                                    key={row.id}
-                                    data-state={row.getIsSelected() && 'selected'}
-                                    className='group/row'
-                                >
-                                    {row.getVisibleCells().map((cell) => (
-                                        <TableCell
-                                            key={cell.id}
-                                            className={cell.column.columnDef.meta?.className ?? ''}
+            <div className='overflow-hidden rounded-md md:border'>
+                {
+                    !isMobile &&
+                    <Table>
+                        <TableHeader>
+                            {table.getHeaderGroups().map((headerGroup) => (
+                                <TableRow key={headerGroup.id} className='group/row'>
+                                    {headerGroup.headers.map((header) => (
+                                        <TableHead
+                                            key={header.id}
+                                            colSpan={header.colSpan}
+                                            className={header.column.columnDef.meta?.className ?? ''}
                                         >
-                                            {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                        </TableCell>
+                                            {header.isPlaceholder
+                                                ? null
+                                                : flexRender(header.column.columnDef.header, header.getContext())}
+                                        </TableHead>
                                     ))}
                                 </TableRow>
+                            ))}
+                        </TableHeader>
+                        <TableBody>
+                            {isLoading ? (
+                                Array.from({ length: 10 }).map((_, i) => (
+                                    <TableRow key={i}>
+                                        <TableCell><Skeleton className='h-8 w-[150px]' /></TableCell>
+                                        <TableCell><Skeleton className='h-8 w-[100px]' /></TableCell>
+                                        <TableCell><Skeleton className='h-8 w-[120px]' /></TableCell>
+                                        <TableCell><Skeleton className='h-8 w-[120px]' /></TableCell>
+                                        <TableCell><Skeleton className='h-8 w-[120px]' /></TableCell>
+                                    </TableRow>
+                                ))
+                            ) : table.getRowModel().rows?.length ? (
+                                table.getRowModel().rows.map((row) => (
+                                    <TableRow
+                                        key={row.id}
+                                        data-state={row.getIsSelected() && 'selected'}
+                                        className='group/row'
+                                    >
+                                        {row.getVisibleCells().map((cell) => (
+                                            <TableCell
+                                                key={cell.id}
+                                                className={cell.column.columnDef.meta?.className ?? ''}
+                                            >
+                                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                            </TableCell>
+                                        ))}
+                                    </TableRow>
+                                ))
+                            ) : (
+                                <TableRow>
+                                    <TableCell colSpan={columns.length} className='h-24 text-center'>
+                                        No results.
+                                    </TableCell>
+                                </TableRow>
+                            )}
+                        </TableBody>
+                    </Table>
+                }
+                {
+                    isMobile && (
+                        table.getRowModel().rows?.length ?
+                            table.getRowModel().rows.map((row) => (
+                                <div key={row.id} className='mb-2'>
+                                    <PropertyMobileCard
+                                        row={row}
+                                        propertyTypes={propertyTypes}
+                                    />
+                                </div>
                             ))
-                        ) : (
-                            <TableRow>
-                                <TableCell colSpan={columns.length} className='h-24 text-center'>
-                                    No results.
-                                </TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
+                            :
+                            <div className='w-full text-center'>
+                                No result
+                            </div>
+                    )
+                }
             </div>
             {
-
                 !isLoading && <DataTablePagination table={table} />
             }
         </div>

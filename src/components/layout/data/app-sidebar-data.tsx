@@ -47,12 +47,13 @@ export const useSidebarData = () => {
             icon: HeartIcon,
             label: "favorite",
         },
+        /*
         {
             title: t("subscriptions"),
             url: '/dashboard/subscriptions',
             icon: WalletIcon,
             label: "subscriptions",
-        },
+        },*/
     ];
 
     if (user?.user_type !== UserType.admin && user?.user_type !== UserType.employee) {

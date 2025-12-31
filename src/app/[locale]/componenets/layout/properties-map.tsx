@@ -3,7 +3,7 @@
 "use client"; // if using app directory
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import L, { LatLngBoundsExpression, marker } from "leaflet";
 
 import markerIconUrl from "leaflet/dist/images/marker-icon.png";
@@ -28,7 +28,7 @@ interface MapProps {
     defaultZoom?: number,
     properties?: Property[],
     getGeoLocation?: () => void;
-    height?: string;
+    height?: string | "full";
     className?: string;
     showMarker?: boolean;
     onClick?: (property: Property) => void,
@@ -63,7 +63,7 @@ const PropertiesMap: React.FC<MapProps> = ({ location, defaultZoom = 5, properti
         <div className={cn("relative  overflow-hidden rounded-md ", className)} style={{
             zIndex: 0
         }}>
-            <MapContainer center={location} zoom={defaultZoom} style={{ height: height || "660px", width: "100%", position: "relative" }} className={"min-h-0 !relative "} zoomControl={false} >
+            <MapContainer center={location} zoom={defaultZoom} style={{ height:  height == "full" ? "100%" :  ( height || "660px"), width: "100%", position: "relative" }} className={cn("min-h-0 !relative "  )} zoomControl={false} >
                 <CustomZoomControl getGeoLocation={getGeoLocation} />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -78,7 +78,7 @@ const PropertiesMap: React.FC<MapProps> = ({ location, defaultZoom = 5, properti
                 }
                 {
                     properties.filter((property: Property) => property.latitude && property.longitude).map((property: Property) => (
-                        <PropertyMarker property={property} onClick={onClick} />
+                        <PropertyMarker property={property} onClick={onClick as any } key={property.id} />
                     ))
                 }
                 <FitMarkers
@@ -133,20 +133,33 @@ import { Plus, Minus, ZoomIn, ZoomOut, Navigation } from "lucide-react"; // exam
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-function CustomZoomControl(props: any) {
+export function CustomZoomControl(props: any) {
     const map = useMap();
 
+      const controlRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!controlRef.current) return;
+
+    // 🚫 Stop Leaflet from treating clicks as map clicks
+    L.DomEvent.disableClickPropagation(controlRef.current);
+    L.DomEvent.disableScrollPropagation(controlRef.current);
+  }, []);
 
     return (
-        <div className="absolute top-[50%] -translate-y-[50%] left-4 flex flex-col  gap-2 rounded-lg  bg-transparent z-[99px] text-foreground dark:text-accent"
+        <div  ref={controlRef} className="absolute top-[50%] -translate-y-[50%] left-4 flex flex-col  gap-2 rounded-lg  bg-transparent z-[99px] text-foreground dark:text-accent"
             style={{
                 zIndex: 999
             }}
         >
             <Button
-                onClick={() => map.zoomIn()}
+                onClick={(event : any) => {
+                    event.preventDefault() 
+                    map.zoomIn() 
+                }}
                 size={"icon"}
                 variant={"outline"}
+                type="button"
                 className="backdrop-blur-sm bg-background/20 border-none hover:!bg-accent/20  shadow-md hover:text-primary"
             >
                 <ZoomIn size={18} />
@@ -155,6 +168,7 @@ function CustomZoomControl(props: any) {
                 onClick={() => map.zoomOut()}
                 size={"icon"}
                 variant={"outline"}
+                type="button"
                 className="backdrop-blur-sm bg-background/20 border-none hover:!bg-accent/20 shadow-md hover:text-primary"
             >
                 <ZoomOut size={18} />
@@ -165,6 +179,7 @@ function CustomZoomControl(props: any) {
                     onClick={props.getGeoLocation}
                     size={"icon"}
                     variant={"outline"}
+                    type="button"
                     className="backdrop-blur-sm bg-background/20 border-none hover:!bg-accent/20 shadow-md hover:text-primary"
                 >
                     <Navigation size={18} />

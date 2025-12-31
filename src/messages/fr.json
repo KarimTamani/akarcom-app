@@ -76,6 +76,8 @@
         "create_account_via": "Créer un compte via",
         "have_account": "Vous avez déjà un compte ?",
         "login_via": "Se connecter via",
+        "phone_number": "Numéro de téléphone",
+        "phone_number_placeholder": "Entrez le numéro de téléphone...",
         "dont_have_account": "Vous n’avez pas de compte ?",
         "forget_password": "Mot de passe oublié ?",
         "errors": {
@@ -88,7 +90,8 @@
             "password_match": "Les mots de passe ne correspondent pas",
             "wrong_credentials": "Email ou mot de passe incorrect, veuillez réessayer",
             "email_taken": "Un compte avec cet email existe déjà",
-            "invalid_data": "Informations invalides, veuillez réessayer"
+            "invalid_data": "Informations invalides, veuillez réessayer",
+            "phone_number_invalid": "Le numéro de téléphone doit respecter le format 0 XX XX XX XX."
         }
     },
     "sidebar": {
@@ -103,8 +106,8 @@
         "ads_create": "Nouvelle annonce",
         "edit_ad": "Modifier l’annonce",
         "favorite": "Favoris",
-        "logout": "Déconnexion" , 
-        "subscriptions" : "Abonnements" 
+        "logout": "Déconnexion",
+        "subscriptions": "Abonnements"
     },
     "statistics": {
         "welcome": "Bienvenue",
@@ -386,6 +389,11 @@
             "condition": "État du bien",
             "condition_placeholder": "Choisir l’état...",
             "condition_description": "Veuillez sélectionner l’état du bien dans la liste suivante.",
+            "gaz": "Disponibilité du gaz",
+            "electricity": "Disponibilité de l’électricité",
+            "water": "Disponibilité de l’eau",
+            "buit_date": "Date de construction",
+            "visitability": "Possibilité de visite",
             "conditions": {
                 "new": "Neuf",
                 "excellent": "Excellent",
@@ -393,6 +401,10 @@
                 "needs_renovation": "À rénover",
                 "damaged": "Endommagé"
             },
+            "wilaya_id": "Wilaya",
+            "wilaya_placeholder": "Sélectionnez la wilaya...",
+            "commune_id": "Commune",
+            "commune_placeholder": "Sélectionnez la commune...",
             "virtual_visit": "Visite virtuelle",
             "virtual_visit_description": "Veuillez téléverser la visite virtuelle",
             "virtual_visit_placeholder": "Glissez-déposez le fichier .zip de la visite virtuelle",
@@ -418,7 +430,17 @@
                 "project_plan_invalid": "L’URL du plan du projet doit être valide",
                 "ownership_book_invalid": "Le livret foncier doit être une valeur booléenne",
                 "property_images_required": "Au moins une image est requise",
-                "property_tags_invalid": "Les mots-clés doivent être un tableau valide"
+                "property_tags_invalid": "Les mots-clés doivent être un tableau valide",
+                "wilaya_required": "La wilaya est obligatoire",
+                "commune_required": "La commune est obligatoire"
+            },
+            "steps": {
+                "step_1": "Étape 1",
+                "step_1_description": "Informations générales",
+                "step_2": "Étape 2",
+                "step_2_description": "Site",
+                "step_3": "Étape 3",
+                "step_3_description": "Médias"
             },
             "toast": {
                 "success": {
@@ -546,7 +568,10 @@
         "title": "Rechercher un bien immobilier.",
         "description": "La recherche avancée peut vous aider à trouver le bien idéal.",
         "advanced_search": "Recherche avancée",
-        "results": "Résultats"
+        "results": "Résultats",
+        "classic_search": "Recherche classique",
+        "map_search": "Recherche sur la carte",
+        "search": "Rechercher"
     },
     "property": {
         "share": "Partager",
@@ -585,7 +610,11 @@
         },
         "message": "Contacter le vendeur",
         "whatsapp": "WhatsApp",
-        "social_media": "Réseaux sociaux"
+        "social_media": "Réseaux sociaux",
+        "general_info": "Informations générales",
+        "visitability": "Possibilité de visite",
+        "yes": "Oui",
+        "no": "Non"
     },
     "chat": {
         "new_chat": {

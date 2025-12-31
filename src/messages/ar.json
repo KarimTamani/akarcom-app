@@ -73,6 +73,8 @@
         "confirm_password": "تأكيد كلمة المرور",
         "confirm_password_placeholder": "أكد كلمة المرور...",
         "sign_up_action": "إنشاء حساب جديد",
+        "phone_number": "رقم الهاتف",
+        "phone_number_placeholder": "أدخل رقم الهاتف...",
         "create_account_via": "إنشاء حساب عن طريق",
         "have_account": " تمتلك حساب مسبقا ؟",
         "login_via": "تسجيل الدخول عن طريق",
@@ -86,7 +88,8 @@
             "password_length": "يجب أن تتكون كلمة المرور من 7 أحرف على الأقل",
             "confirm_password_required": "يرجى تأكيد كلمة المرور",
             "password_match": "كلمتا المرور غير متطابقتين",
-            "wrong_credentials": "البريد الإلكتروني أو كلمة المرور خاطئة، يرجى المحاولة مرة أخرى"
+            "wrong_credentials": "البريد الإلكتروني أو كلمة المرور خاطئة، يرجى المحاولة مرة أخرى",
+            "phone_number_invalid": "يجب أن يتبع رقم الهاتف النمط التالي: 0 XX XX XX XX."
         }
     },
     "sidebar": {
@@ -101,8 +104,8 @@
         "ads_create": "إعلان جديد",
         "edit_ad": "تعديل الإعلان",
         "favorite": "المفضلة",
-        "logout": "تسجيل الخروج" , 
-        "subscriptions" : "الاشتراكات"
+        "logout": "تسجيل الخروج",
+        "subscriptions": "الاشتراكات"
     },
     "statistics": {
         "welcome": "مرحبًا",
@@ -384,6 +387,11 @@
             "condition": "حالة العقار",
             "condition_placeholder": "اختر الحالة...",
             "condition_description": "يرجى اختيار حالة العقار من القائمة التالية.",
+            "gaz": "توفر الغاز",
+            "electricity": "توفر الكهرباء",
+            "water": "توفر المياه",
+            "buit_date": "تاريخ البناء",
+            "visitability": "إمكانية الزيارة",
             "conditions": {
                 "new": "جديد",
                 "excellent": "ممتاز",
@@ -391,6 +399,10 @@
                 "needs_renovation": "بحاجة إلى تجديد",
                 "damaged": "متضرر"
             },
+            "wilaya_id": "الولاية",
+            "wilaya_placeholder": "اختر الولاية...",
+            "commune_id": "البلدية",
+            "commune_placeholder": "اختر البلدية...",
             "virtual_visit": "الزيارة الافتراضية",
             "virtual_visit_description": "يرجى تحميل ملف الزيارة الافتراضية",
             "virtual_visit_placeholder": "اسحب وأفلت ملف .zip الخاص بالزيارة الافتراضية",
@@ -416,7 +428,17 @@
                 "project_plan_invalid": "يجب أن يكون رابط خطة المشروع صالحًا",
                 "ownership_book_invalid": "سند الملكية يجب أن يكون قيمة منطقية",
                 "property_images_required": "مطلوب صورة واحدة على الأقل",
-                "property_tags_invalid": "يجب أن تكون الكلمات المفتاحية للعقار مصفوفة صالحة"
+                "property_tags_invalid": "يجب أن تكون الكلمات المفتاحية للعقار مصفوفة صالحة",
+                "wilaya_required": "الولاية مطلوبة",
+                "commune_required": "البلدية مطلوبة"
+            },
+            "steps": {
+                "step_1": "الخطوة 1",
+                "step_1_description": "معلومات عامة",
+                "step_2": "الخطوة 2",
+                "step_2_description": "الموقع",
+                "step_3": "الخطوة 3",
+                "step_3_description": "الوسائط"
             },
             "toast": {
                 "success": {
@@ -548,7 +570,10 @@
         "title": "ابحث عن العقارات.",
         "description": "يمكن للبحث المتقدم مساعدتك في العثور على العقار المثالي.",
         "advanced_search": "بحث متقدم",
-        "results": "النتائج"
+        "results": "النتائج",
+        "classic_search": "بحث تقليدي",
+        "map_search": "بحث عبر الخريطة",
+        "search": "بحث"
     },
     "property": {
         "share": "مشاركة",
@@ -587,7 +612,11 @@
         },
         "message": "راسل البائع",
         "social_media": "وسائل التواصل الاجتماعي",
-        "whatsapp": "WhatsApp"
+        "whatsapp": "WhatsApp",
+        "general_info": "معلومات عامة",
+        "visitability": "إمكانية الزيارة",
+        "yes": "نعم",
+        "no": "لا"
     },
     "chat": {
         "new_chat": {

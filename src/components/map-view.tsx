@@ -9,6 +9,8 @@ import L from "leaflet";
 import markerIconUrl from "leaflet/dist/images/marker-icon.png";
 import markerShadowUrl from "leaflet/dist/images/marker-shadow.png";
 import { useMapEvents } from "react-leaflet";
+import { CustomZoomControl } from "@/app/[locale]/componenets/layout/properties-map";
+import { useGeoLocation } from "@/hooks/use-get-location";
 
 function ClickHandler({ onClick }: { onClick: (latlng: [number, number]) => void }) {
     useMapEvents({
@@ -55,6 +57,36 @@ const Map: React.FC<MapProps> = ({ coordinates, defaultZoom = 5, onChange }) => 
         }
     }, [coordinates]);
 
+
+    const { location: gpsLocation, isLoading: isLoadingLocation, error, refreshLocation } = useGeoLocation();
+
+ 
+
+    useEffect(() => {
+
+        if (isLoadingLocation || coordinates || !gpsLocation) {
+            return;
+        }
+
+
+        setLocation(gpsLocation);
+
+
+        onChange && onChange(gpsLocation)
+        setZoom(13);
+
+    }, [isLoadingLocation, gpsLocation]);
+
+
+    const getGpsLocation = async () => {
+        const cords = await refreshLocation()
+        setLocation(cords as any)
+        onChange && onChange(cords as any)
+
+    }
+
+
+    /*
     useEffect(() => {
         if (coordinates) {
             return;
@@ -86,27 +118,33 @@ const Map: React.FC<MapProps> = ({ coordinates, defaultZoom = 5, onChange }) => 
         );
     }, []);
 
+*/
+
     return (
         <div className="relative border-1 rounded-lg overflow-hidden" style={{
             zIndex: 0
         }}>
-            <MapContainer center={location} zoom={defaultZoom} style={{ height: "400px", width: "100%" }} >
+            <MapContainer center={location} zoom={defaultZoom} style={{ height: "400px", width: "100%", position: "relative" }} className={"min-h-0 !relative "} zoomControl={false}>
+                <CustomZoomControl getGeoLocation={getGpsLocation} />
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 
                 />
-                <Marker position={location}>
-                    <Popup>
-                        You are Here
-                    </Popup>
-                </Marker>
-                <ClickHandler
+                {
+                    location &&
+                    <Marker position={location}>
+
+
+                    </Marker>
+                }
+
+                <RecenterAutomatically location={location} />
+                   <ClickHandler
                     onClick={(coords) => { 
                         onChange && onChange(coords)
 
                     }}
                 />
-                <RecenterAutomatically location={location} />
             </MapContainer>
         </div>
     );

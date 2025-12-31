@@ -66,8 +66,8 @@ const AccountPage: React.FC = ({ }) => {
                 !loading && user &&
                 < Tabs defaultValue="account" className="w-full space-y-2" 
                     dir={locale == "ar" ? "rtl" : "ltr"}>
-                    <div className=" flex ">
-                        <TabsList >
+                    <div className=" flex max-w-full overflow-x-auto">
+                        <TabsList>
                             <TabsTrigger className="min-w-32 px-8" value="account">{t("account")}</TabsTrigger>
                             <TabsTrigger className="min-w-32 px-8" value="login_setting">{t("login_settings")}</TabsTrigger>
                             <TabsTrigger className="min-w-32 px-8" value="notifications">{t("notifications")}</TabsTrigger>

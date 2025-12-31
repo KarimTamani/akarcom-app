@@ -22,14 +22,15 @@ interface Props {
     className?: string;
     value?: SearchPropertyFilter,
     onValueChange?: (value: SearchPropertyFilter) => void;
+    forMap?: boolean
 }
 
 
 const toggleClass: string = "!max-w-24 w-24 !rounded-none border-none hover:!bg-accent/20 focus:!bg-background/20 bg-foreground/10 dark:bg-background/10 data-[state=on]:!bg-background/20 font-medium"
 
-const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onValueChange }) => {
+const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onValueChange, forMap = false }) => {
 
-    const [ open , setOpen] = useState<boolean> ( false) ; 
+    const [open, setOpen] = useState<boolean>(false);
     const { propertyTypes, isLoading: isFetchingTypes } = usePropertyQuery(true);
 
     const [filters, setFilters] = useState<SearchPropertyFilter>({
@@ -59,6 +60,15 @@ const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onVa
         onValueChange && onValueChange(filters);
         setOpen(false)
     }
+
+
+    useEffect(() => {
+        if (forMap) { 
+        onValueChange && onValueChange(filters);
+            
+        }
+    } , [filters , forMap])
+
     const locale = useLocale();
 
     return (
@@ -97,7 +107,10 @@ const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onVa
                     </ToggleGroupItem>
                 </ToggleGroup>
             }
-            <div className={cn("flex  w-full backdrop-blur-sm bg-background/20  rounded-b-md gap-4 justify-center", !typeSelection && "p-4")}>
+            <div className={cn("flex  w-full backdrop-blur-sm bg-background/20  rounded-b-md gap-4 justify-center ", !typeSelection && "p-4", {
+                "flex-col bg-transparent backdrop-blur-none": forMap
+
+            })}>
                 <div className="flex-1 overflow-hidden space-y-2">
                     <Label>
                         {t("location")}
@@ -121,7 +134,9 @@ const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onVa
                     />
                 </div>
 
-                <div className="flex-1 overflow-hidden space-y-2 hidden lg:flex lg:flex-col">
+                <div className={cn("flex-1 overflow-hidden space-y-2", {
+                    "hidden lg:flex lg:flex-col": !forMap
+                })}>
                     <Label>
                         {t("property_type")}
                     </Label>
@@ -130,7 +145,7 @@ const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onVa
                         dir={locale == "ar" ? "rtl" : "ltr"}
                         onValueChange={(id: string) => {
                             setFilters({
-                                ...value,
+                                ...filters,
                                 property_type_ids: id == "all" ? "all" : Number(id)
                             })
                         }}
@@ -162,7 +177,9 @@ const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onVa
 
                 {
                     typeSelection &&
-                    <div className="flex-1 overflow-hidden space-y-2 hidden lg:flex lg:flex-col">
+                    <div className={cn("flex-1 overflow-hidden space-y-2", {
+                        "hidden lg:flex lg:flex-col": !forMap
+                    })}>
                         <Label>
                             {t("operation_type")}
                         </Label>
@@ -188,7 +205,9 @@ const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onVa
                         </Select>
                     </div>
                 }
-                <div className="flex-1 overflow-hidden space-y-2 hidden lg:flex lg:flex-col">
+                <div className={cn("flex-1 overflow-hidden space-y-2", {
+                    "hidden lg:flex lg:flex-col": !forMap
+                })}>
                     <Label>
                         {t("price")}
                     </Label>
@@ -204,120 +223,125 @@ const Filter: React.FC<Props> = ({ typeSelection = false, className, value, onVa
                         }}
                     />
                 </div>
-                <div className=" min-h-full flex items-end lg:hidden">
+                {
+                    !forMap && <div className=" min-h-full flex items-end lg:hidden">
 
-                    <Dialog open={open} onOpenChange={setOpen}>
-                        <DialogTrigger asChild>
-                            <Button variant="outline" size={"icon"} className={"bg-transparent hover:bg-transparent"}>
-                                <Funnel />
-                            </Button>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
+                        <Dialog open={open} onOpenChange={setOpen}>
+                            <DialogTrigger asChild>
+                                <Button variant="outline" size={"icon"} className={"bg-transparent hover:bg-transparent"}>
+                                    <Funnel />
+                                </Button>
+                            </DialogTrigger>
+                            <DialogContent className="sm:max-w-[425px]">
 
-                            <div className="flex flex-col gap-2">
-                                <div className="flex-1 overflow-hidden space-y-2">
-                                    <Label>
-                                        {t("property_type")}
-                                    </Label>
-                                    <Select
-                                        value={filters?.property_type_ids ? String(filters?.property_type_ids) : undefined}
-                                        dir={locale == "ar" ? "rtl" : "ltr"}
-                                        onValueChange={(id: string) => {
-                                            setFilters({
-                                                ...value,
-                                                property_type_ids: id == "all" ? "all" : Number(id)
-                                            })
-                                        }}
-                                    >
-                                        <SelectTrigger className="w-full ">
-                                            <SelectValue placeholder={t("property_type_placeholder")} />
-                                        </SelectTrigger>
-                                        <SelectContent >
+                                <div className="flex flex-col gap-2">
+                                    <div className="flex-1 overflow-hidden space-y-2">
+                                        <Label>
+                                            {t("property_type")}
+                                        </Label>
+                                        <Select
+                                            value={filters?.property_type_ids ? String(filters?.property_type_ids) : undefined}
+                                            dir={locale == "ar" ? "rtl" : "ltr"}
+                                            onValueChange={(id: string) => {
+                                                setFilters({
+                                                    ...filters,
+                                                    property_type_ids: id == "all" ? "all" : Number(id)
+                                                })
+                                            }}
+                                        >
+                                            <SelectTrigger className="w-full ">
+                                                <SelectValue placeholder={t("property_type_placeholder")} />
+                                            </SelectTrigger>
+                                            <SelectContent >
 
-                                            <SelectItem key={"all"} value={"all"}  >
-                                                {t("all")}
+                                                <SelectItem key={"all"} value={"all"}  >
+                                                    {t("all")}
 
-                                            </SelectItem>
-                                            {
-                                                propertyTypes.map((propertyType: PropertyType) => (
-                                                    <SelectGroup key={propertyType.id}>
-                                                        <SelectLabel>{propertyType.name}</SelectLabel>
-                                                        {
-                                                            propertyType.other_property_types.map((childType: PropertyType) => (
-                                                                <SelectItem key={childType.id} value={String(childType.id)}>{childType.name}</SelectItem>
-                                                            ))
-                                                        }
-                                                    </SelectGroup>
-                                                ))
-                                            }
-                                        </SelectContent>
-                                    </Select>
+                                                </SelectItem>
+                                                {
+                                                    propertyTypes.map((propertyType: PropertyType) => (
+                                                        <SelectGroup key={propertyType.id}>
+                                                            <SelectLabel>{propertyType.name}</SelectLabel>
+                                                            {
+                                                                propertyType.other_property_types.map((childType: PropertyType) => (
+                                                                    <SelectItem key={childType.id} value={String(childType.id)}>{childType.name}</SelectItem>
+                                                                ))
+                                                            }
+                                                        </SelectGroup>
+                                                    ))
+                                                }
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
                                 </div>
-                            </div>
 
-                            {
-                                typeSelection &&
+                                {
+                                    typeSelection &&
+                                    <div className="flex-1 overflow-hidden space-y-2">
+                                        <Label>
+                                            {t("operation_type")}
+                                        </Label>
+                                        <Select
+                                            defaultValue="all"
+                                            value={filters.ad_type}
+                                            dir={locale == "ar" ? "rtl" : "ltr"}
+                                            onValueChange={(value: "all" | "sale" | "rent") => {
+                                                setFilters({
+                                                    ...filters,
+                                                    ad_type: value
+                                                })
+                                            }}
+                                        >
+                                            <SelectTrigger className="w-full" >
+                                                <SelectValue placeholder={t("operation_type")} />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectItem key={"all"} value="all">{t("all")}</SelectItem>
+                                                <SelectItem key={"sale"} value="sale">{t("sale")}</SelectItem>
+                                                <SelectItem key={"rent"} value="rent">{t("rent")}</SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+                                }
                                 <div className="flex-1 overflow-hidden space-y-2">
                                     <Label>
-                                        {t("operation_type")}
+                                        {t("price")}
                                     </Label>
-                                    <Select
-                                        defaultValue="all"
-                                        value={filters.ad_type}
-                                        dir={locale == "ar" ? "rtl" : "ltr"}
-                                        onValueChange={(value: "all" | "sale" | "rent") => {
+                                    <PriceRange
+                                        minPrice={filters.start_price}
+                                        maxPrice={filters.end_price}
+                                        onChange={(min: number | undefined, max: number | undefined) => {
                                             setFilters({
                                                 ...filters,
-                                                ad_type: value
+                                                start_price: min,
+                                                end_price: max
                                             })
                                         }}
-                                    >
-                                        <SelectTrigger className="w-full" >
-                                            <SelectValue placeholder={t("operation_type")} />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem key={"all"} value="all">{t("all")}</SelectItem>
-                                            <SelectItem key={"sale"} value="sale">{t("sale")}</SelectItem>
-                                            <SelectItem key={"rent"} value="rent">{t("rent")}</SelectItem>
-                                        </SelectContent>
-                                    </Select>
+                                    />
                                 </div>
-                            }
-                            <div className="flex-1 overflow-hidden space-y-2">
-                                <Label>
-                                    {t("price")}
-                                </Label>
-                                <PriceRange
-                                    minPrice={filters.start_price}
-                                    maxPrice={filters.end_price}
-                                    onChange={(min: number | undefined, max: number | undefined) => {
-                                        setFilters({
-                                            ...filters,
-                                            start_price: min,
-                                            end_price: max
-                                        })
-                                    }}
-                                />
-                            </div>
-                            <AlertDialogFooter>
-                                <DialogClose asChild>
-                                    <Button variant="outline">{t("cancel")}</Button>
-                                </DialogClose>
-                                <Button type="button" onClick={search}>{t("search")}   </Button>
-                            </AlertDialogFooter>
-                        </DialogContent>
+                                <AlertDialogFooter>
+                                    <DialogClose asChild>
+                                        <Button variant="outline">{t("cancel")}</Button>
+                                    </DialogClose>
+                                    <Button type="button" onClick={search}>{t("search")}   </Button>
+                                </AlertDialogFooter>
+                            </DialogContent>
 
-                    </Dialog>
-                </div>
+                        </Dialog>
+                    </div>
+                }
 
-                <div className="shrink-0 flex items-end">
-                    <Button
-                        size={"icon"}
-                        onClick={search}
-                    >
-                        <Search />
-                    </Button>
-                </div>
+                {
+                    !forMap &&
+                    <div className="shrink-0 flex items-end">
+                        <Button
+                            size={"icon"}
+                            onClick={search}
+                        >
+                            <Search />
+                        </Button>
+                    </div>
+                }
             </div>
         </div>
     )

@@ -79,7 +79,7 @@ const LoginSettingForm: React.FC = ({ }) => {
             <h3 className="text-xl font-medium  shrink-0 my-4">
                 {t("account.reset_password")}
             </h3>
-            <div className="w-[33%]">
+            <div className="w-full md:w-[420px]">
                 <Form {...form} >
                     <form
                         onSubmit={form.handleSubmit(onSubmit)}

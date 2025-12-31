@@ -33,6 +33,7 @@ import { PropertyType } from "@/lib/property";
 import { Separator } from "@/components/ui/separator";
 import { useAuth } from "@/providers/auth-provider";
 import { ProfileDropdown } from "./profile-dropdown";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 
 
@@ -44,7 +45,7 @@ const Navbar = () => {
     const router = useRouter();
 
     const { user } = useAuth();
- 
+
     const handleScroll = () => {
 
         if (window.scrollY > 8) {
@@ -98,6 +99,10 @@ const Navbar = () => {
                                 quality={100}
                             />
                         </Link>
+                        {
+                            isMobile && <SidebarTrigger variant='ghost' className='scale-125 sm:scale-100 size-8' />
+
+                        }
                         <div className=" w-full hidden md:flex justify-center">
                             <NavigationMenu viewport={isMobile} >
                                 <NavigationMenuList className="flex-wrap ">
@@ -168,18 +173,18 @@ const Navbar = () => {
 
                         </Button>
                         {
-                            !user ? 
-                            <Button
-                                onClick={() => {
-                                    router.push("/auth/sign-in")
-                                }}
-                                rel="noopener noreferrer "
-                                className="min-w-24 "
-                            >
-                                {t("sign_in")}
-                            </Button>
-                            : 
-                            <ProfileDropdown/>
+                            !user ?
+                                <Button
+                                    onClick={() => {
+                                        router.push("/auth/sign-in")
+                                    }}
+                                    rel="noopener noreferrer "
+                                    className="min-w-24 "
+                                >
+                                    {t("sign_in")}
+                                </Button>
+                                :
+                                <ProfileDropdown />
                         }
                     </div>
                 </MaxWidthWrapper>

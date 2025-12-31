@@ -34,13 +34,13 @@ interface ComboboxProps {
   isDisabled?: boolean;
   isLoading?: boolean;
 
-  onBlur? : any
+  onBlur?: any
 }
 
 
 export const Combobox = (props: ComboboxProps) => {
 
-  const { items, label = "label", placeholder, onSelectionChange, selectedItem, className, isDisabled, onQueryChange, isLoading , onBlur} = props;
+  const { items, label = "label", placeholder, onSelectionChange, selectedItem, className, isDisabled, onQueryChange, isLoading, onBlur } = props;
   const [query, setQuery] = React.useState<string>("");
   const ref = React.useRef<HTMLDivElement>(null);
   const [width, setWidth] = React.useState<number | undefined>(undefined);
@@ -49,14 +49,12 @@ export const Combobox = (props: ComboboxProps) => {
   const [value, setValue] = React.useState<string | undefined>("")
 
 
-  
+
   React.useEffect(() => {
     setValue(selectedItem);
   }, [selectedItem]);
 
-  React.useEffect(() => {
-    onSelectionChange && onSelectionChange(value as string);
-  }, [value])
+
 
 
   React.useEffect(() => {
@@ -130,6 +128,8 @@ export const Combobox = (props: ComboboxProps) => {
                       value={item.id}
                       onSelect={(currentValue) => {
                         setValue(currentValue);
+                        onSelectionChange && onSelectionChange(currentValue as string);
+
                         setOpen(false)
                       }}
                     >

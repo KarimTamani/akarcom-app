@@ -2,6 +2,7 @@ import LongText from "@/components/long-text"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Carousel, CarouselApi, CarouselContent, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { useRouter } from "@/i18n/navigation"
 import { Property, PropertyImage, PropertyType } from "@/lib/property"
@@ -24,10 +25,10 @@ interface Props {
 
 const AdCard: React.FC<Props> = ({ property, orientation = "vertical", propertyTypes }) => {
     const [liked, setLiked] = useState<boolean>(property.favorites?.length > 0);
-    const [firstImage, setFirstImage] = useState<PropertyImage | undefined>(undefined);
+    const [images, setImages] = useState<string[]>([]);
     const [propertyType, setPropertyType] = useState<PropertyType | undefined>(undefined);
 
-    const { user , openAuthDialog } = useAuth() ; 
+    const { user, openAuthDialog } = useAuth();
 
     useEffect(() => {
         const flatTypes: PropertyType[] | undefined = propertyTypes?.flatMap((propertyType: PropertyType) => propertyType.other_property_types);
@@ -39,18 +40,23 @@ const AdCard: React.FC<Props> = ({ property, orientation = "vertical", propertyT
 
 
     useEffect(() => {
-        const image: PropertyImage | undefined = property.property_images.find((image: PropertyImage) => (image.image_url as string).includes("/images"));
-        setFirstImage(image);
+        const imageExtensions = /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i;
+        const urls: string[] = property.property_images.map((propertyImage: PropertyImage) => propertyImage.image_url as string);
+
+
+        const imageUrls = urls.filter((url: any) => imageExtensions.test(url));
+
+        setImages(imageUrls);
     }, [property.property_images])
 
     const t = useTranslations("components.card")
 
 
     const onLike = useCallback(async (like: boolean) => {
-        if ( ! user) { 
+        if (!user) {
             openAuthDialog("signin")
-            return ; 
-        } 
+            return;
+        }
 
         try {
             const response = await api.put('property/favorite/' + property.id)
@@ -61,28 +67,60 @@ const AdCard: React.FC<Props> = ({ property, orientation = "vertical", propertyT
             }
         }
         setLiked(like);
-    }, [property , user]);
+    }, [property, user]);
 
     const router = useRouter();
-    
-    const isMobile = useIsMobile() ; 
+
+    const isMobile = useIsMobile();
+    const [crouselApi, setApi] = useState<CarouselApi | null>(null)
 
     return (
 
         <a href={orientation == "horizontal" ? "/property/" + property.slug : undefined}
+            className="group"
         >
 
             <Card className={cn("w-72 p-0 rounded-lg overflow-hidden relative  flex gap-0 shadow-md my-2",
-                (orientation == "horizontal" && !isMobile) && "w-full flex flex-row mt-0 !mb-4 hover:shadow-lg" , {
-                    "w-full" : isMobile 
-                })}>
+                (orientation == "horizontal" && !isMobile) && "w-full flex flex-row mt-0 !mb-4 hover:shadow-lg", {
+                "w-full": isMobile
+            })}>
                 {
-                    firstImage &&
-                    <img
-                        src={firstImage.image_url as string}
-                        alt='Banner'
-                        className={cn('aspect-video h-60  object-cover shrink-0', (orientation == "horizontal" && !isMobile)  && "w-80")}
-                    />
+
+                    <Carousel className={cn("w-full relative", { "w-120": orientation == "horizontal" && !isMobile })}
+                        opts={{
+                            align: "start",
+                        }}
+                        orientation={"horizontal"}
+
+                        dir="ltr"
+                        setApi={setApi}
+                        onClick={(event : any) => {
+                            event.preventDefault() ; 
+                        }}
+
+
+                    >
+                        <CarouselContent className="-mt-1 " >
+                            {
+                                images.map((image: string) => (
+
+                                    <img
+                                        src={image as string}
+                                        alt='Banner'
+                                        className={cn('aspect-video h-60 w-full object-cover shrink-0', (orientation == "horizontal" && !isMobile) && "w-full")}
+                                    />
+                                ))
+                            }
+                        </CarouselContent >
+                        <CarouselPrevious className="absolute top-[50%] left-2 -translate-Y-[50%] flex lg:hidden group-hover:flex" onClick={(event: any) => {
+                            crouselApi?.scrollPrev();
+                            event.preventDefault();
+                        }} />
+                        <CarouselNext className="absolute top-[50%] right-2 -translate-Y-[50%] flex lg:hidden group-hover:flex" onClick={(event: any) => {
+                            crouselApi?.scrollNext();
+                            event.preventDefault();
+                        }} />
+                    </Carousel>
                 }
                 {
                     orientation == "vertical" &&

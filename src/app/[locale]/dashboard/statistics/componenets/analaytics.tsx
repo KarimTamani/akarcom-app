@@ -101,6 +101,7 @@ const Analytics: React.FC = ({ }) => {
         viewsData.forEach((value: any) => previous_total += value.previous);
 
         views_growth = getGrowth(total_views, previous_total) ?? undefined
+      
     } else {
         total_views = undefined
     }

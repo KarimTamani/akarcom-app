@@ -1,5 +1,5 @@
 "use client"
-import { Property, PropertyImage } from "@/lib/property"
+import { Property, PropertyImage, PropertyType } from "@/lib/property"
 import useGetPropertyBySlug from "../../hooks/use-get-property-by-slug";
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
@@ -25,6 +25,8 @@ import TikTokIcon from "@/components/icons/tiktok";
 import AdsList from "@/app/[locale]/componenets/ads-list";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/providers/auth-provider";
+import usePropertyQuery from "@/app/[locale]/dashboard/ads/hooks/use-get-property-types";
+import MediaDialog from "./media-dialog";
 
 
 
@@ -42,9 +44,13 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
     const [liked, setLiked] = useState<boolean>(false);
     const { user, openAuthDialog } = useAuth();
 
+    const [open, setOpen] = useState<boolean>(false);
+    const [urls, setUrls] = useState<string[]>([])
+
+    const { propertyTypes, isLoading: isFetchingTypes } = usePropertyQuery(true);
     useEffect(() => {
         setLiked(property != undefined && property.favorites?.length > 0);
-    }, [property])
+    }, [property]);
 
     useEffect(() => {
         let firstImage: any | undefined;
@@ -52,11 +58,17 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
 
         if (!property?.property_images)
             return;
-        firstImage = { src: property.property_images[0].image_url, alt: property.title };
 
-        for (let index = 1; index < Math.min(property.property_images.length, 5); index++) {
+
+        const imageExtensions = /\.(jpg|jpeg|png|gif|webp|bmp|svg)$/i;
+
+        const allImages = property.property_images.filter((propertyImage: PropertyImage) => imageExtensions.test(propertyImage.image_url as string));
+
+        firstImage = { src: allImages[0].image_url, alt: property.title };
+
+        for (let index = 1; index < Math.min(allImages.length, 5); index++) {
             gridImages.push({
-                src: property.property_images[index].image_url,
+                src: allImages[index].image_url,
                 alt: property.title
             })
         }
@@ -67,19 +79,14 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                 images: [firstImage]
             })
         }
-
         if (gridImages.length > 0) {
             images.push({
                 type: "grid",
                 images: gridImages
             })
         }
-
         setGalleryImages(images);
     }, [property?.property_images])
-
-
-
 
     useEffect(() => {
 
@@ -137,7 +144,7 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
         window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
     };
 
-    const router = useRouter() ; 
+    const router = useRouter();
 
     const openMassanger = () => {
         if (!user) {
@@ -145,11 +152,33 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
             return;
         }
         router.push(`/dashboard/chats/?user_id=${property?.users.id}&property_id=${property?.id}`)
-        
+
     }
-    if (loading || !property)
+
+    const general_info_t = useTranslations("ads.create")
+
+
+    useEffect(() => {
+        if (property?.property_images) {
+            setUrls(property.property_images.map((propertyImage: PropertyImage) => propertyImage.image_url as string));
+        }
+    }, [property?.property_images])
+    if (loading || !property || isFetchingTypes)
         return <PropertySkeleton />;
 
+
+    const flatTypes: PropertyType[] | undefined = propertyTypes?.flatMap((propertyType: PropertyType) => propertyType.other_property_types);
+    const propertyType = flatTypes?.find((type: PropertyType) => type.id == property.property_type_id);
+
+    const openDialog = (image: string) => {
+
+        setUrls([
+            image,
+            ...urls.filter((value: string) => value != image)
+        ])
+        setOpen(true)
+
+    }
     return (
         <div className="h-full flex flex-col gap-2" >
             <div className='mb-2 flex flex-wrap items-center justify-between space-y-2 '>
@@ -178,9 +207,10 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                     </Button>
                 </div>
             </div>
-            <div className="-mx-2">
+            <div className="-mx-2" >
                 <Gallery
                     sections={galleryImages}
+                    onClick={openDialog}
                 />
             </div>
             <div className="grid   grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr]  gap-4 ">
@@ -213,7 +243,7 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                             <Badge variant={"outline"}>
                                 <University className="text-primary" />
                                 {t("schools")} {property.schools}
-                            </Badge> 
+                            </Badge>
                         </div>
                         {
                             (property.ownership_book || property.furnished) && <>
@@ -245,21 +275,81 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                             <div dangerouslySetInnerHTML={{ __html: property.description as string }} />
 
                         </div>
-
                         <Separator />
-                        <div  >
-                            <Label>
-                                {t("created_at")}<span className="font-semibold">{new Date(property.created_at).toLocaleDateString('en-US')} </span>
-                            </Label>
+                        <div className="grid  grid-cols-1 sm:grid-cols-2 gap-4">
+
+                            <PropertiesMap
+                                properties={[property]}
+
+                                height="300px"
+                                className="rounded-md overflow-hidden border-2 border-background ring-1 ring-border "
+
+                            />
+                            <div className="px-2 space-y-2 h-full  ">
+
+                                <div className="flex flex-col justify-evenly  h-full min-h-0">
+                                    <h3 className="font-semibold">
+                                        {t("general_info")}
+                                    </h3>
+                                    <div className=" flex justify-between ">
+                                        <Label>
+                                            {t("created_at")}
+                                        </Label>
+                                        <span className="font-semibold">{new Date(property.created_at).toLocaleDateString('en-US')} </span>
+                                    </div>
+                                    <div className=" flex justify-between ">
+                                        <Label>
+                                            {t("visitability")}
+                                        </Label>
+                                        <span className="font-semibold">{
+                                            property.visitability ? t("yes") : t("no")
+                                        } </span>
+                                    </div>
+
+                                    <div className=" flex justify-between ">
+                                        <Label>
+                                            {general_info_t("property_type")}
+                                        </Label>
+                                        <span className="font-semibold">{
+                                            propertyType ? propertyType?.name : t("no")
+                                        } </span>
+                                    </div>
+                                    <div className=" flex justify-between ">
+                                        <Label>
+                                            {general_info_t("buit_date")}
+                                        </Label>
+                                        <span className="font-semibold">{property.buit_date ? new Date(property.buit_date).toLocaleDateString('en-US') : t("no")} </span>
+                                    </div>
+                                    <div className=" flex justify-between ">
+                                        <Label>
+                                            {general_info_t("gaz")}
+                                        </Label>
+                                        <span className="font-semibold">{
+                                            property.gaz ? t("yes") : t("no")
+                                        } </span>
+                                    </div>
+                                    <div className=" flex justify-between ">
+                                        <Label>
+                                            {general_info_t("electricity")}
+                                        </Label>
+                                        <span className="font-semibold">{
+                                            property.electricity ? t("yes") : t("no")
+                                        } </span>
+                                    </div>
+                                    <div className=" flex justify-between ">
+                                        <Label>
+                                            {general_info_t("water")}
+                                        </Label>
+                                        <span className="font-semibold">{
+                                            property.water ? t("yes") : t("no")
+                                        } </span>
+                                    </div>
+                                </div>
+
+
+                            </div>
                         </div>
 
-                        <PropertiesMap
-                            properties={[property]}
-
-                            height="300px"
-                            className="rounded-md overflow-hidden border-2 border-background ring-1 ring-border "
-
-                        />
 
 
 
@@ -283,7 +373,7 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
                                 </Label>
                             }
                             <Label className="text-primary font-semibold text-md">
-                                {property.price} {t("currency")} { property.add_type == "rent" ? "/" + t(property.rent_period as string) : "" } 
+                                {property.price} {t("currency")} {property.add_type == "rent" ? "/" + t(property.rent_period as string) : ""}
                             </Label>
                         </div>
 
@@ -385,6 +475,11 @@ const PropertyView: React.FC<PropertyProps> = ({ slug }) => {
             <div className="mt-20">
                 <AdsList />
             </div>
+            <MediaDialog
+                open={open}
+                onOpen={setOpen}
+                urls={urls}
+            />
         </div>
     )
 

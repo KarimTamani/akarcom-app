@@ -23,7 +23,7 @@ const useGetSubscriptionPlans = () => {
         try {
  
             const response = await api.get("/subscription/subscription_plan" );
-            console.log ( response)
+            
             if (response && response.data) {
                 const { data } = response.data;
                 setPlans(data) ; 

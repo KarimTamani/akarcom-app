@@ -14,6 +14,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import ListPagination from "@/components/layout/list-pagination";
 import { PaginationState } from "@tanstack/react-table";
 import { PropertySkeletonCard } from "../componenets/property-skeleton-card";
+import useLocations from "@/hooks/use-locations";
+import { Button } from "@/components/ui/button";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { List, Map } from "lucide-react";
+import { cn } from "@/lib/utils";
+import MapSearch from "./components/map-search";
 
 
 
@@ -39,7 +45,9 @@ const SearchPage: React.FC = ({ }) => {
     useEffect(() => {
         if (isLoadingLocation)
             return;
-
+        if (params.latitude && params.longitude) {
+            setFilters({ sort_by: "distance", ...params })
+        }
         if (location) {
             setFilters({ sort_by: "distance", latitude: location[0], longitude: location[1], ...params })
             return;
@@ -51,10 +59,11 @@ const SearchPage: React.FC = ({ }) => {
 
     const { properties, isLoading: isLoadingPorprties, pageCount } = useSearchProperty(filters);
 
-    const { propertyTypes, isLoading: isFetchingTypes } = usePropertyQuery(false);
-
+    const { propertyTypes, isLoading: isFetchingTypes } = usePropertyQuery(true);
+    console.log (propertyTypes)
 
     const onFilterChange = (values: SearchPropertyFilter) => {
+
 
         const params = new URLSearchParams({});
 
@@ -79,9 +88,11 @@ const SearchPage: React.FC = ({ }) => {
         if (values.max_area)
             params.append("max_area", String(values.max_area));
 
+        if (values.min_area)
+            params.append("min_area", String(values.min_area));
+
         if (values.num_rooms)
             params.append("num_rooms", String(values.num_rooms));
-
 
         if (values.bethrooms)
             params.append("bethrooms", String(values.bethrooms));
@@ -89,8 +100,23 @@ const SearchPage: React.FC = ({ }) => {
         if (values.furnished)
             params.append("furnished", String(values.furnished));
 
+        if (values.gaz)
+            params.append("gaz", String(values.gaz));
+
+        if (values.electricity)
+            params.append("electricity", String(values.electricity));
+
+        if (values.water)
+            params.append("water", String(values.water));
+
         if (values.ownership_book)
             params.append("ownership_book", String(values.ownership_book));
+
+        if (values.mosques)
+            params.append("mosques", String(values.mosques));
+
+        if (values.schools)
+            params.append("schools", String(values.schools));
 
         if (values.offset)
             params.append("offset", String(values.offset));
@@ -98,7 +124,11 @@ const SearchPage: React.FC = ({ }) => {
         if (values.limit)
             params.append("limit", String(values.limit));
 
+        if (values.wilaya_id)
+            params.append("wilaya_id", String(values.wilaya_id))
 
+        if (values.commune_id)
+            params.append("commune_id", String(values.commune_id))
 
         router.push(`/search?${params.toString()}`);
     }
@@ -107,8 +137,6 @@ const SearchPage: React.FC = ({ }) => {
     const onPaginationChange = (value: PaginationState) => {
         const offset = value.pageIndex * value.pageSize;
         const limit = value.pageSize;
-
-
         onFilterChange({
             ...filters,
             offset,
@@ -117,9 +145,16 @@ const SearchPage: React.FC = ({ }) => {
         setPagination(value)
     }
 
+    const { wilayas, isLoading: isLoadingWilayas, communes, loadingCommune } = useLocations(filters?.wilaya_id ? Number(filters.wilaya_id) : undefined);
+    const isLoading = !(isLoadingLocation || isLoadingPorprties || isFetchingTypes || isLoadingWilayas);
 
+    const [searchType, setSearchType] = useState<"map" | "classic">("classic");
 
-    const isLoading = !(isLoadingLocation || isLoadingPorprties || isFetchingTypes)
+    const [openMan, setOpenMap] = useState<boolean>(false);
+    useEffect(() => {
+        setOpenMap(searchType == "map");
+    }, [searchType])
+
 
     return (
         <MaxWidthWrapper className="pt-20 ">
@@ -131,12 +166,30 @@ const SearchPage: React.FC = ({ }) => {
                             {t("description")}
                         </p>
                     </div>
+                    <ToggleGroup type="single" variant="outline" value={searchType} onValueChange={setSearchType as any}>
+                        <ToggleGroupItem value="classic" className={cn("px-4", {
+                            "!bg-primary !text-white": searchType === "classic"
+
+                        })}>
+                            <List />
+                            {t("classic_search")}
+                        </ToggleGroupItem>
+                        <ToggleGroupItem value="map" className={cn("px-4", {
+                            "!bg-primary !text-white": searchType === "map"
+
+                        })}>
+                            <Map />
+                            {t("map_search")}
+                        </ToggleGroupItem>
+
+                    </ToggleGroup>
                 </div>
                 <Filter
                     typeSelection={true}
                     className="shadow-none "
                     value={filters}
                     onValueChange={onFilterChange}
+
 
                 />
                 <div className="w-full flex mt-4 gap-4 ">
@@ -146,7 +199,10 @@ const SearchPage: React.FC = ({ }) => {
                             properties={properties}
                             onChange={onFilterChange}
                             value={filters}
-                            refreshLocation = { refreshLocation }
+                            refreshLocation={refreshLocation}
+                            wilayas={wilayas}
+                            communes={communes}
+                            loadingCommune={loadingCommune}
                         />
                     </div>
                     <div className="w-full max-w-full overflow-hidden ">
@@ -158,7 +214,7 @@ const SearchPage: React.FC = ({ }) => {
                                     <AdCard property={property} orientation="horizontal" propertyTypes={propertyTypes} />
                                 </div>
                             ))
-                                : (Array.from({ length: 10 }, (_, i) => <PropertySkeletonCard />))
+                                : (Array.from({ length: 10 }, (_, i) => <PropertySkeletonCard key={i} />))
 
                         }
 
@@ -170,7 +226,22 @@ const SearchPage: React.FC = ({ }) => {
                     </div>
                 </div>
             </div>
-
+            <MapSearch
+                properties={properties}
+                open={openMan}
+                location={location as any}
+                refreshLocation={refreshLocation}
+                wilayas={wilayas}
+                communes={communes}
+                loadingCommune={loadingCommune}
+                onChange={onFilterChange}
+                value={filters }
+                loading={isLoadingPorprties}
+                onOpenChange={(value: boolean) => {
+                    setSearchType("classic")
+                    setOpenMap(value);
+                }}
+            />
         </MaxWidthWrapper>
     )
 }

@@ -10,12 +10,12 @@ import { useEffect, useState } from "react"
 
 const useLocations = (wilaya_id?: number) => {
     const [allWilayas, setAllWilayas] = useState<Wilaya[]>([])
-
+  const [allCommunes, setAllCommunes] = useState<Commune[]>([]);
+  
     const [wilayas, setWilayas] = useState<Wilaya[]>([])
-    const [communes, setCommunes] = useState<Commune[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [  loadingCommune , setLoadingCommune] = useState<boolean> ( false) ; 
-
+    const [communes , setCommunes] = useState<Commune[]>([])
     const locale = useLocale();
 
     useEffect(() => {
@@ -46,6 +46,16 @@ const useLocations = (wilaya_id?: number) => {
     }, [allWilayas]) ; 
 
 
+        useEffect(() => {
+        if (locale != "ar")
+            setCommunes(allCommunes)
+        else
+            setCommunes(allCommunes.map((commune: Commune) => (
+                {...commune , name : commune.name_ar}
+            )))
+    }, [allCommunes]) ; 
+
+
     useEffect(() => {
         if ( ! wilaya_id) 
             return ; 
@@ -55,7 +65,7 @@ const useLocations = (wilaya_id?: number) => {
                 const response = await api.get('/location/commune/' + wilaya_id ) ; 
                 if (response && response.status) { 
                     const { data } = response.data ; 
-                    setCommunes(data) ; 
+                    setAllCommunes(data) ; 
                 }
             }catch(error) { 
                 console.log (error) ; 

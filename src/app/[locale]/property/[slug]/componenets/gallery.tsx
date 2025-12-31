@@ -9,25 +9,21 @@ type GallerySection = {
     type?: string
     images: GalleryImage[]
 }
-
-const Gallery = ({ sections }: { sections: GallerySection[] }) => {
+const Gallery = ({ sections , onClick }: { sections: GallerySection[] , onClick : (url : string) => void  }) => {
     return (
         <section >
             <div className='mx-auto max-w-7xl  '>
-
                 {/* Gallery Grid */}
                 <div className={cn('grid gap-0', { "md:grid-cols-2": sections.length > 1 })}     >
                     {sections.map((section, sectionIndex) => {
-
-
                         return (
                             <div key={sectionIndex} className={cn({
                                 'grid ': section.type === 'grid',
                                 "grid-cols-2 ": section.type === 'grid' && section.images.length >= 2,
                             })}>
                                 {section.images.map((image, imageIndex) => (
-                                    <img key={imageIndex} src={image.src} alt={image.alt} className={cn(
-                                        'rounded-lg object-cover w-full h-full p-2 overflow-hidden',
+                                    <img key={imageIndex} src={image.src} alt={image.alt} onClick={() => onClick && onClick (image.src ) } className={cn(
+                                        'rounded-lg object-cover w-full h-full p-2 overflow-hidden cursor-pointer',
                                         
                                         { "max-h-[560px]   " : section.type  != "grid" || section.images.length <= 2 }  , 
                                         

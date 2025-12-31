@@ -63,7 +63,13 @@ export interface Property {
   property_property_tags :PropertyPropertyTag[] ; 
   favorites : any[] ; 
   commune_id: number; 
-  commune? : Commune
+  buit_date? : string ; 
+  commune? : Commune ; 
+  visitability? : boolean ; 
+  water? : boolean ; 
+  gaz ? : boolean ; 
+  electricity?: boolean ; 
+ 
 }
 
 

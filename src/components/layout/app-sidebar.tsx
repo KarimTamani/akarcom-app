@@ -13,7 +13,7 @@ import {
 } from '@/components/ui/sidebar'
 import { useSidebarData } from './data/app-sidebar-data'
 import { NavGroup, NavItem } from './types';
-import { ChevronsUpDown, LogOut } from 'lucide-react';
+import { ChevronsUpDown, LogOut, PlusIcon } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
@@ -32,6 +32,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const { user, logout } = useAuth();
 
     const t = useTranslations("sidebar");
+     const ads_t = useTranslations("ads");
     const router = useRouter();
 
     const onLogOut = () => {
@@ -41,6 +42,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
     const backHome = () => {
         router.replace("/")
+    }
+
+    const openCreateForm = () => {
+        router.push("ads/create")
     }
 
     return (
@@ -83,6 +88,18 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                         </SidebarGroup>
 
                     ))
+                }
+                {
+                    isMobile &&
+                    <div className='px-2 w-full flex '>
+                        <Button
+                            onClick={openCreateForm}
+                            className='w-full'
+                        >
+                            {ads_t("create_action")}
+                            <PlusIcon />
+                        </Button>
+                    </div>
                 }
             </SidebarContent>
 

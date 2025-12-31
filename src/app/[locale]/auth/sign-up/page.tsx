@@ -32,11 +32,22 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({ children, dialogMode = fals
     const router = useRouter();
     const { signup, oAuth, openAuthDialog } = useAuth()
     const t = useTranslations("auth");
+
+
+    const phoneNumberField = z.coerce
+        .string()
+        .trim()
+    
+        .refine(
+            (val) => !val || /^0\d{9}$/.test(val),
+            { message: t("errors.phone_number_invalid") }
+        ) as any ;
     const formSchema = z
         .object({
             email: z.string()
                 .min(1, t("errors.email_required"))
                 .email({ message: t("errors.email_invalid") }),
+            phone_number: phoneNumberField,
             full_name: z.string().min(1, t("errors.fullname_required")),
             password: z
                 .string()
@@ -56,7 +67,8 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({ children, dialogMode = fals
             email: '',
             password: '',
             confirm_password: '',
-            full_name: ""
+            full_name: "" , 
+            
         },
     })
 
@@ -158,6 +170,19 @@ const SignupLayout: React.FC<SignupLayoutProps> = ({ children, dialogMode = fals
                         )}
                     />
 
+                    <FormField
+                        control={form.control}
+                        name='phone_number'
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>{t("phone_number")}</FormLabel>
+                                <FormControl>
+                                    <Input type="phone" placeholder={t("phone_number_placeholder")} {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
 
 
                     <FormField

@@ -14,7 +14,7 @@ interface AuthDialogProps {
 const AuthDialog: React.FC<AuthDialogProps> = ({ open, setOpen, dialogType }) => {
 
 
-    console.log (dialogType)
+
     return (
         <Dialog
             open={open} onOpenChange={setOpen}

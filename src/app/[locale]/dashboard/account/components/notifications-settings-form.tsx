@@ -58,7 +58,7 @@ const NotificationsSettingForm: React.FC<Props> = ({ defaultSettings , onChange 
                     {t("notifications_header")}
                 </p>
             </div>
-            <div className="w-[33%]">
+            <div className="w-full md:w-[420px]">
                 <div className="flex flex-col gap-6">
                     <div className="flex items-start gap-3">
                         <Checkbox id="ads" onCheckedChange={(checked: any) => setSettings({ ...settings, ads: checked })} checked={settings.ads} />

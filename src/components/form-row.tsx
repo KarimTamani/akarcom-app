@@ -9,16 +9,19 @@ interface Props {
     children: React.ReactNode
     label?: string | React.ReactNode;
     description?: string | React.ReactNode;
-    className?: string
+    className?: string ; 
+ 
 }
 
 
 
-const FormRow: React.FC<Props> = ({ children, label, description, className }) => {
+const FormRow: React.FC<Props> = ({ children, label, description, className  }) => {
 
     return (
 
         <div className={cn("flex  pb-4 gap-4 flex-col lg:flex-row ", className)}>
+            {
+              
             <div className="flex flex-col gap-2 flex-1  ">
                 {
                     label &&
@@ -33,8 +36,9 @@ const FormRow: React.FC<Props> = ({ children, label, description, className }) =
                     </Label>
                 }
             </div>
-            <div className="flex-4 flex">
-                <div className="flex-col space-y-4 w-full lg:max-w-[420px] sm:max-w-full ">
+            }
+            <div className="flex-4 flex ">
+                <div className="flex flex-col space-y-4 w-full lg:max-w-[420px] sm:max-w-full  ">
                     {children}
                 </div>
             </div>

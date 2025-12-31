@@ -75,6 +75,8 @@
         "sign_up_action": "Create new account",
         "create_account_via": "Create an account via",
         "have_account": "Already have an account?",
+        "phone_number": "Phone number",
+        "phone_number_placeholder": "Enter phone number...",
         "login_via": "Log in via",
         "dont_have_account": "Don't have an account?",
         "forget_password": "Forget password?",
@@ -88,7 +90,8 @@
             "password_match": "Passwords don't match.",
             "wrong_credentials": "Wrong email or password , please try again",
             "email_taken": "An account with this email already exists.",
-            "invalid_data": "Invalid informations please try again"
+            "invalid_data": "Invalid informations please try again",
+            "phone_number_invalid": "Phone number must follow the pattern 0 XX XX XX XX."
         }
     },
     "sidebar": {
@@ -386,6 +389,11 @@
             "condition": "Property condition",
             "condition_placeholder": "Pick condition...",
             "condition_description": "Please select the property condition from the following list.",
+            "gaz": "Gas availability",
+            "electricity": "Availability of electricity",
+            "water": "Availability of water",
+            "buit_date": "Construction date",
+            "visitability": "Visitability",
             "conditions": {
                 "new": "New",
                 "excellent": "Excellent",
@@ -393,10 +401,10 @@
                 "needs_renovation": "Needs Renovation",
                 "damaged": "Damaged"
             },
-            "wilaya_id" : "Wilaya" , 
-            "wilaya_placeholder" : "Select wilaya..." , 
-            "commune_id" : "Commune" , 
-            "commune_placeholder" : "Select commune..." , 
+            "wilaya_id": "Wilaya",
+            "wilaya_placeholder": "Select wilaya...",
+            "commune_id": "Commune",
+            "commune_placeholder": "Select commune...",
             "virtual_visit": "Virtual visit",
             "virtual_visit_description": "Please upload the virtual visit",
             "virtual_visit_placeholder": "Drag and drop the .zip file of the virtual visit ",
@@ -422,9 +430,17 @@
                 "project_plan_invalid": "Project plan URL must be valid",
                 "ownership_book_invalid": "Ownership book must be a boolean",
                 "property_images_required": "At least one image is required",
-                "property_tags_invalid": "Property tags must be a valid array" , 
-                "wilaya_required" : "Wilaya is required" , 
-                "commune_required" : "Commune is required"
+                "property_tags_invalid": "Property tags must be a valid array",
+                "wilaya_required": "Wilaya is required",
+                "commune_required": "Commune is required"
+            },
+            "steps": {
+                "step_1": "Step 1",
+                "step_1_description": "General information",
+                "step_2": "Step 2",
+                "step_2_description": "Site",
+                "step_3": "Step 3",
+                "step_3_description": "Media"
             },
             "toast": {
                 "success": {
@@ -552,7 +568,10 @@
         "title": "Search for real estate.",
         "description": "Advanced search can help you find your ideal property.",
         "advanced_search": "Advanced search",
-        "results": "Results"
+        "results": "Results" , 
+        "classic_search": "Classic search" , 
+        "map_search" : "Map search" , 
+        "search" : "Search"
     },
     "property": {
         "share": "Share",
@@ -591,7 +610,11 @@
         },
         "message": "Message the seller",
         "whatsapp": "WhatsApp",
-        "social_media": "Social media"
+        "social_media": "Social media",
+        "general_info": "General information",
+        "visitability": "Visitability" , 
+        "yes" : "Yes" , 
+        "no" : "No"
     },
     "chat": {
         "new_chat": {
@@ -667,11 +690,10 @@
         "create_action": "New plan",
         "create_plan": {
             "title": "Create subscription plan",
-            "edit_title" : "Edit subscription plan" , 
-            
+            "edit_title": "Edit subscription plan",
             "description": "create a new subscription plan with new name , price and features",
             "create": "Create",
-            "edit" : "Edit" , 
+            "edit": "Edit",
             "name": "Plan name",
             "name_placeholder": "Give the plan a name...",
             "plan_description": "Description",
@@ -686,35 +708,35 @@
                 "name_required": "Plan name is required",
                 "price": "Price must be a positive integer",
                 "property_min": "Min 1 property"
-            } , 
-            "toast" : {
-                "create" : {
-                    "title" : "Plan created" , 
-                    "description" : "The subscription plan has been created successfully."
-                } , 
-                "edit" : { 
-                    "title" :  "Plan updated" , 
-                    "description" : "Your subscription plan was updated successfully."
+            },
+            "toast": {
+                "create": {
+                    "title": "Plan created",
+                    "description": "The subscription plan has been created successfully."
+                },
+                "edit": {
+                    "title": "Plan updated",
+                    "description": "Your subscription plan was updated successfully."
                 }
             }
         },
         "features": {
-            "properties" : "Properties",
-            "faqs" : "FAQs",
-            "tickets" : "Tickets",
-            "chat" : "Chat",
-            "virtual_visit" : "Virtual visit"
-        } , 
-        "subscriptions" : "Subscriptions" , 
-        "plans" : "Plans" , 
-        "plans_columns" : { 
-            "name" : "Plan name" , 
-            "price" : "Price (DZD)" , 
-            "max_properties" : "Max Property" , 
-            "features" : "Features" , 
-            "is_active" : "Active" , 
-            "actions" : "Actions", 
-            "created_at" : "Created at"
+            "properties": "Properties",
+            "faqs": "FAQs",
+            "tickets": "Tickets",
+            "chat": "Chat",
+            "virtual_visit": "Virtual visit"
+        },
+        "subscriptions": "Subscriptions",
+        "plans": "Plans",
+        "plans_columns": {
+            "name": "Plan name",
+            "price": "Price (DZD)",
+            "max_properties": "Max Property",
+            "features": "Features",
+            "is_active": "Active",
+            "actions": "Actions",
+            "created_at": "Created at"
         }
     }
 }

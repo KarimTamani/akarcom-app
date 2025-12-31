@@ -39,8 +39,7 @@ const AdsList: React.FC<Props> = ({ defaultFilters }) => {
 
     }, [defaultFilters])
 
-    useEffect(() => {
-        console.log(location)
+    useEffect(() => { 
 
 
         if (defaultFilters && defaultFilters.sort_by == "created_at")
@@ -67,7 +66,7 @@ const AdsList: React.FC<Props> = ({ defaultFilters }) => {
             opts={{
                 align: "start",
             }}
-            orientation={isMobile ? "vertical" : "horizontal"}
+            orientation={  "horizontal"}
             dir="ltr"
         >
             <CarouselContent className="-mt-1 h-[440px]">
@@ -81,9 +80,9 @@ const AdsList: React.FC<Props> = ({ defaultFilters }) => {
                             </div>
                         )
                 }
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            </CarouselContent >
+            <CarouselPrevious className=" hidden lg:flex"/>
+            <CarouselNext  className=" hidden lg:flex"/>
         </Carousel>
     )
 }

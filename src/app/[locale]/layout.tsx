@@ -12,6 +12,8 @@ import Navbar from "./componenets/navbar";
 import { headers } from "next/headers";
 import Footer from "./componenets/footer";
 import AnimationContainer from "@/components/animation-container";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { HomeSidebar } from "./componenets/layout/sidebar";
 
 
 // Load only the Almarai font
@@ -53,16 +55,23 @@ export default async function RootLayout({
         <ThemeProvider>
 
           <NextIntlClientProvider messages={messages} locale={locale}>
-
-
             <AuthProvider>
-              <Navbar />
-              <Toaster />
-              {children}
+              <SidebarProvider >
+                <HomeSidebar />
+                <SidebarInset className="h-fit">
+
+
+                  <Navbar />
+                  <Toaster />
+                  {children}
+
+                  <Footer />
+                </SidebarInset>
+              </SidebarProvider>
+
             </AuthProvider>
 
 
-            <Footer />
 
 
           </NextIntlClientProvider>

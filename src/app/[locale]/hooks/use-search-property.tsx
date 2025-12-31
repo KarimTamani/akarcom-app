@@ -19,10 +19,19 @@ export interface SearchPropertyFilter {
     end_price?: number;
     property_type_ids?: number | "all";
     max_area?: number;
+    min_area?: number;
     num_rooms?: number;
     bethrooms?: number;
     furnished?: boolean;
-    ownership_book?: boolean
+    ownership_book?: boolean;
+    wilaya_id?: number;
+    commune_id?: number;
+    gaz?: boolean;
+    water?: boolean;
+    electricity?: boolean;
+    mosques? : boolean ; 
+    schools? : boolean ; 
+    
 }
 
 
@@ -30,8 +39,8 @@ export interface SearchPropertiesResult {
     properties: Property[],
     isLoading: boolean,
     error: boolean,
-    fetch: () => Promise<void>, 
-    pageCount : number 
+    fetch: () => Promise<void>,
+    pageCount: number
 }
 
 
@@ -51,8 +60,8 @@ const useSearchProperty = (searchFilters: SearchPropertyFilter | undefined): Sea
         try {
             const response = await api.get("/property", {
                 params: {
-                    offset: filters?.offset  ,
-                    limit: filters?.limit ,
+                    offset: filters?.offset,
+                    limit: filters?.limit,
                     sort_by: filters?.sort_by,
                     latitude: filters?.latitude,
                     longitude: filters?.longitude,
@@ -64,8 +73,17 @@ const useSearchProperty = (searchFilters: SearchPropertyFilter | undefined): Sea
                     num_rooms: filters?.num_rooms,
                     bethrooms: filters?.bethrooms,
                     max_area: filters?.max_area,
+                    min_area: filters?.min_area,
                     furnished: !filters?.furnished ? undefined : true,
                     ownership_book: !filters?.ownership_book ? undefined : true,
+                    wilaya_id: filters?.wilaya_id,
+                    commune_id: filters?.commune_id,
+                    water: !filters?.water ? undefined : true,
+                    gaz: !filters?.gaz ? undefined : true,
+                    electricity: !filters?.electricity ? undefined : true,
+                    
+                    mosques: !filters?.mosques ? undefined : true,
+                    schools: !filters?.schools ? undefined : true, 
                 }
             });
             if (response && response.data) {

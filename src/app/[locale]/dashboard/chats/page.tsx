@@ -457,8 +457,8 @@ const ChatPage: React.FC = ({ }) => {
 
                   </Button>
                 </div>
-                <Button className='h-full sm:hidden'>
-                  <IconSend size={18} /> {t("send")}
+                <Button className='h-full sm:hidden'                     onClick={sendMessage}>
+                       {sending ? <Spinner /> : <IconSend size={18} />}   {t("send")}
                 </Button>
               </div>
             </div>
