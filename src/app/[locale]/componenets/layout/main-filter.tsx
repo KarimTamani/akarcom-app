@@ -64,15 +64,16 @@ const MainFilter: React.FC = ({ }) => {
     } , [ ])
     
     return (
-        <div className="relative">
+        <div className="relative max-h-[60vh] overflow-hidden lg:max-h-fit lg:overflow-visible ">
             {
-
+                
                 <PropertiesMap
                     properties={properties }
                     location={ location  as number[] | undefined}
                     getGeoLocation = { refreshLocation}
                     onClick={ onMarkerClick}
-                />
+                 
+                /> 
             }
             <div className="absolute w-full  bottom-16">
                 <MaxWidthWrapper>
